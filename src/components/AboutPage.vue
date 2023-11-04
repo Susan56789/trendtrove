@@ -6,7 +6,7 @@
   
 <script>
 export default {
-    name: 'About', // Single-word component name
+    name: 'AboutPage', // Single-word component name
     // Component logic goes here
 };
 </script>
