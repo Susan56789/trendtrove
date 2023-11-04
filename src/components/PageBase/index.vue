@@ -2,12 +2,12 @@
     <!-- Main navigation container -->
     <nav
         class="flex-no-wrap relative flex w-full items-center justify-between bg-[#FBFBFB] 
-                        py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4">
+                            py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4">
         <div class="flex w-full flex-wrap items-center justify-between px-3">
             <!-- Hamburger button for mobile view -->
             <button
                 class="block border-0 bg-transparent px-2 text-neutral-500 hover:no-underline 
-                                hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
+                                    hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
                 type="button" data-te-collapse-init data-te-target="#navbarSupportedContent1"
                 aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
                 <!-- Hamburger icon -->
@@ -24,10 +24,10 @@
             <div class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
                 id="navbarSupportedContent1" data-te-collapse-item>
                 <!-- Logo -->
-                <a class="mb-4 ml-2 mr-5 mt-3 flex items-center text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:mb-0 lg:mt-0"
-                    href="#">
+                <p
+                    class="mb-4 ml-2 mr-5 mt-3 flex items-center text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:mb-0 lg:mt-0">
                     <img :src="imageUrl" alt="Logo" style="height: 15px" loading="lazy" />
-                </a>
+                </p>
                 <!-- Left navigation links -->
                 <ul class="list-style-none mr-auto flex flex-col pl-0 lg:flex-row" data-te-navbar-nav-ref>
                     <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>

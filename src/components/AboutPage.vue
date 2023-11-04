@@ -1,6 +1,7 @@
 <template>
     <div>
         <!-- Your component content goes here -->
+        About
     </div>
 </template>
   
