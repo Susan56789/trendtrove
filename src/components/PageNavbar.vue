@@ -22,6 +22,11 @@
                     <div class="text-gray-600 lg:pr-4">
                         <ul class="space-y-6 tracking-wide font-medium text-sm md:flex md:space-y-0">
                             <li>
+                                <a href="/shop" class="block md:px-4 transition hover:text-yellow-700">
+                                    <span>Shop</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/sale" class="block md:px-4 transition hover:text-yellow-700">
                                     <span>Today's Deals</span>
                                 </a>
@@ -47,8 +52,9 @@
                                 Sign up
                             </span>
                         </button>
-                        <a href="/login" type="button" title="Start buying" class="w-full py-3 px-6 text-center rounded-full transition 
-                                    bg-yellow-300 hover:bg-yellow-100 active:bg-yellow-400 focus:bg-yellow-300 sm:w-max">
+                        <a href="/login" type="button" title="Start buying"
+                            class="w-full py-3 px-6 text-center rounded-full transition 
+                                            bg-yellow-300 hover:bg-yellow-100 active:bg-yellow-400 focus:bg-yellow-300 sm:w-max">
                             <span class="block text-yellow-900 font-semibold text-sm">
                                 Login
                             </span>
