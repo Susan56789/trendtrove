@@ -21,8 +21,8 @@
                                     class="w-full p-4 rounded-full">
                                 <button type="button" @click="submitSearch" title="Start buying"
                                     class="ml-auto py-3 px-6 rounded-full text-center transition bg-gradient-to-b 
-                                                                                                                from-yellow-200 to-yellow-300 hover:to-red-300 active:from-yellow-400 
-                                                                                                                focus:from-red-400 md:px-12">
+                                                                                                                    from-yellow-200 to-yellow-300 hover:to-red-300 active:from-yellow-400 
+                                                                                                                    focus:from-red-400 md:px-12">
                                     <span class="hidden text-yellow-900 font-semibold md:block">
                                         Search
                                     </span>
@@ -76,7 +76,7 @@
                             </div>
 
                         </div>
-                        <div v-else-if="searchSubmitted && filteredProducts.length === 0" class="mt-4">
+                        <div v-else-if="searchSubmitted | filteredProducts.length === 0" class="mt-4">
                             <p class="text-gray-500">No products found in the selected category.</p>
                         </div>
                         <div v-else-if="searchSubmitted" class="mt-4">
