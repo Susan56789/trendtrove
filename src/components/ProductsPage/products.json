@@ -5,43 +5,92 @@
         "description": "Stylish red Nike shoes",
         "category": "Shoes",
         "price": 299.99,
-        "image": "/products/rednikeshoe.jpg",
+        "image": "/products/rednikeshoe.png",
         "rating": 4.5
     },
     {
         "id": 2,
-        "name": "Product 2",
-        "description": "Description for Product 2",
-        "category": "Clothing",
+        "name": "Brown Lady Handbag",
+        "description": "Brown lady handbag",
+        "category": "Handbags",
         "price": 49.95,
-        "image": "https://example.com/product2.jpg",
+        "image": "/products/brownhandbag.png",
         "rating": 4.5
     },
     {
         "id": 3,
-        "name": "Product 3",
-        "description": "Description for Product 3",
-        "category": "Electronics",
+        "name": "32 inch LG Smart TV",
+        "description": "Quality LG Smart TV",
+        "category": "TVs",
         "price": 199.99,
-        "image": "https://example.com/product3.jpg",
+        "image": "/products/lgtv.png",
         "rating": 4.5
     },
     {
         "id": 4,
-        "name": "Product 4",
-        "description": "Description for Product 4",
-        "category": "Home",
+        "name": "Green fancy dress",
+        "description": "Green fancy dress",
+        "category": "Lady's wear",
         "price": 129.50,
-        "image": "https://example.com/product4.jpg",
+        "image": "/products/greendress.png",
         "rating": 4.5
     },
     {
         "id": 5,
-        "name": "Product 5",
+        "name": "HP Laptop",
         "description": "Description for Product 5",
-        "category": "Clothing",
-        "price": 79.99,
-        "image": "https://example.com/product5.jpg",
+        "category": "Laptops",
+        "price": 499.99,
+        "image": "/products/HPLaptop.png",
+        "rating": 4.5
+    },
+    {
+        "id": 6,
+        "name": "Gey Nike Shoes",
+        "description": "Grey Nike Running Shoes",
+        "category": "Shoes",
+        "price": 699.99,
+        "discountedPrice": 599.00,
+        "image": "/products/greynike.png",
+        "rating": 4.5
+    },
+    {
+        "id": 7,
+        "name": "Black Lady Handbag",
+        "description": "Description for Product 7",
+        "category": "Handbags",
+        "price": 49.95,
+        "image": "/products/blackhandbag.png",
+        "rating": 4.5
+    },
+    {
+        "id": 8,
+        "name": "42 inch LG Smart TV",
+        "description": "Description for Product 8",
+        "category": "TVs",
+        "price": 299.99,
+        "discountedPrice": 199.00,
+        "image": "/products/lgtv.png",
+        "rating": 4.5
+    },
+    {
+        "id": 9,
+        "name": "Red fancy dress",
+        "description": "Red fancy dress",
+        "category": "Lady's wear",
+        "price": 129.50,
+        "discountedPrice": 125.00,
+        "image": "/products/redfancydress.png",
+        "rating": 4.5
+    },
+    {
+        "id": 10,
+        "name": "Floral Heels",
+        "description": "Red blue floral heels",
+        "category": "Shoes",
+        "price": 399.99,
+        "discountedPrice": 350.00,
+        "image": "/products/floralheels.png",
         "rating": 4.5
     }
 ]
