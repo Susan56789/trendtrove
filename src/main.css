@@ -10,3 +10,67 @@
         margin: 0;
     }
 }
+
+/* styles.css */
+
+/* Mobile-first approach */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 100%;
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+/* Responsive typography */
+@media (min-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 992px) {
+    body {
+        font-size: 18px;
+    }
+}
+
+/* Responsive navigation menu */
+.menu {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .menu {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+
+/* Responsive grid layout */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+}

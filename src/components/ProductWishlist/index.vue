@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { wishlistData } from "./wishlistData.js";
+import wishlistData from "./wishlistData.json";
 export default {
     name: 'ProductWishlist',
     data() {

@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "name": "Red Nike Shoes",
+        "description": "Stylish red Nike shoes",
+        "category": "Shoes",
+        "price": 299.99,
+        "image": "/products/rednikeshoe.jpg",
+        "rating": 4.5
+    },
+    {
+        "id": 2,
+        "name": "Product 2",
+        "description": "Description for Product 2",
+        "category": "Clothing",
+        "price": 49.95,
+        "image": "https://example.com/product2.jpg",
+        "rating": 4.5
+    },
+    {
+        "id": 3,
+        "name": "Product 3",
+        "description": "Description for Product 3",
+        "category": "Electronics",
+        "price": 199.99,
+        "image": "https://example.com/product3.jpg",
+        "rating": 4.5
+    },
+    {
+        "id": 4,
+        "name": "Product 4",
+        "description": "Description for Product 4",
+        "category": "Home",
+        "price": 129.50,
+        "image": "https://example.com/product4.jpg",
+        "rating": 4.5
+    },
+    {
+        "id": 5,
+        "name": "Product 5",
+        "description": "Description for Product 5",
+        "category": "Clothing",
+        "price": 79.99,
+        "image": "https://example.com/product5.jpg",
+        "rating": 4.5
+    }
+]
