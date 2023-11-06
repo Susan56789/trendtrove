@@ -5,6 +5,7 @@
         </div>
         <div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between">
             <ProductFilter @filterProducts="filterProducts" />
+
         </div>
 
         <div class="grid grid-cols-3 gap-4 p-4">
@@ -21,11 +22,13 @@ import ProductFilter from './ProductFilter.vue';
 import ShopPagination from './ShopPagination.vue';
 import products from './products.json';
 
+
 export default {
     components: {
         SingleProduct,
         ProductFilter,
         ShopPagination,
+
     },
     data() {
         return {

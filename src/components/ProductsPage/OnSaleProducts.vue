@@ -4,11 +4,11 @@
             <h1 class="text-center text-2xl font-bold text-gray-800">Today's Offer</h1>
         </div>
         <div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between">
-            <article
-                class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+            <article class="rounded-xl bg-white p-3  ">
                 <a href="#">
                     <div class="grid grid-cols-3 gap-4">
-                        <div v-for="product in productsOnSale" :key="product.id" class="p-4 border rounded">
+                        <div v-for="product in productsOnSale" :key="product.id"
+                            class="p-4 border rounded shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
                             <div class="image-container relative flex items-end overflow-hidden rounded-xl">
                                 <img :src="product.image" :alt="product.name"
                                     class="mx-auto h-200 w-200 object-cover mb-4 " />
