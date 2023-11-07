@@ -3,7 +3,7 @@
     <div class="flex min-h-screen bg-white">
 
         <div class="w-1/2 bg-cover md:block hidden"
-            style="background-image:  url(https://images.unsplash.com/photo-1520243947988-b7b79f7873e9?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NDd8fGJsYWNrJTIwZm9yZXN0fGVufDB8fDB8eWVsbG93&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60)">
+            style="background-image:  url(https://creazilla-store.fra1.digitaloceanspaces.com/emojis/46515/shopping-cart-emoji-clipart-md.png)">
         </div>
         <!-- <div class="bg-no-repeat bg-right bg-cover max-w-max max-h-8 h-12 overflow-hidden">
             <img src="log_in.webp" alt="hey">
