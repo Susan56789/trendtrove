@@ -67,6 +67,11 @@ const routes = [
             {
                 path: '/myaccount/update',
                 component: () => import('./components/UserPage/AccountUpdate.vue')
+            },
+            {
+                path: "/category/:categoryId",
+                component: () => import("./components/ProductCategories/index.vue"),
+                props: true
             }
 
         ]

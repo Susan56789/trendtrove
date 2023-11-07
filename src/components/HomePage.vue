@@ -7,7 +7,7 @@
             <div class="container m-auto px-6 pt-32 md:px-12 lg:pt-[4.8rem] lg:px-7">
                 <div class="flex items-center flex-wrap px-2 md:px-0">
                     <div class="relative lg:w-6/12 lg:py-24 xl:py-32">
-                        <h1 class="font-bold text-4xl text-yellow-900 md:text-5xl lg:w-10/12">All your shopping at one go!
+                        <h1 class="font-bold text-4xl text-yellow-900 md:text-5xl lg:w-10/12">One Order Away!
                         </h1>
                         <form action="" class="w-full mt-12">
                             <div class="relative flex p-1 rounded-full bg-white border border-yellow-200 shadow-md md:p-2">
@@ -21,8 +21,8 @@
                                     class="w-full p-4 rounded-full">
                                 <button type="button" @click="submitSearch" title="Start buying"
                                     class="ml-auto py-3 px-6 rounded-full text-center transition bg-gradient-to-b 
-                                                                                                                    from-yellow-200 to-yellow-300 hover:to-red-300 active:from-yellow-400 
-                                                                                                                    focus:from-red-400 md:px-12">
+                                                                                                                                        from-yellow-200 to-yellow-300 hover:to-red-300 active:from-yellow-400 
+                                                                                                                                        focus:from-red-400 md:px-12">
                                     <span class="hidden text-yellow-900 font-semibold md:block">
                                         Search
                                     </span>
@@ -86,11 +86,14 @@
                             <p class="text-gray-500">Please enter a search query and select a category.</p>
                         </div>
                     </div>
+                    <div class="ml-auto -mb-24 lg:-mb-56 lg:w-6/12">
+                        <img src="https://pnglib.nyc3.cdn.digitaloceanspaces.com/uploads/2020/01/shoppings_5e0e01a18f63d.png"
+                            class="relative" alt="food illustration" loading="lazy" width="4500" height="4500">
+                    </div>
+
+                    <PopularCategories />
 
 
-
-                    <p class="mt-8 text-gray-700 lg:w-10/12">Sit amet consectetur adipisicing elit. <a href="#"
-                            class="text-yellow-700">connection</a> tenetur nihil quaerat suscipit, sunt dignissimos.</p>
                 </div>
 
             </div>
@@ -100,10 +103,13 @@
   
 <script>
 import products from './ProductsPage/products.json'
-
+import PopularCategories from './ProductCategories/PopularCategories.vue';
 
 export default {
     name: "HomePage",
+    components: {
+        PopularCategories
+    },
     data() {
         return {
             products: products,
