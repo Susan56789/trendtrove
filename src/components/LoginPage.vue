@@ -1,12 +1,12 @@
 <template>
     <div class="h-screen flex">
         <div class="hidden lg:flex w-full lg:w-1/2 login_img_section
-                justify-around items-center">
+                            justify-around items-center">
             <div class=" 
-                        bg-black 
-                        opacity-20 
-                        inset-0 
-                        z-0">
+                                    bg-black 
+                                    opacity-20 
+                                    inset-0 
+                                    z-0">
 
             </div>
             <div class="w-full mx-auto px-20 flex-col items-center space-y-6">
@@ -14,7 +14,7 @@
                 <p class="text-white mt-1">The simplest app to use</p>
                 <div class="flex justify-center lg:justify-start mt-6">
                     <a href="/shop" class="hover:bg-indigo-700 hover:text-white hover:-translate-y-1 transition-all duration-500 bg-white 
-                            text-indigo-800 mt-4 px-4 py-2 rounded-2xl font-bold mb-2">Shop Now!</a>
+                                        text-indigo-800 mt-4 px-4 py-2 rounded-2xl font-bold mb-2">Shop Now!</a>
                 </div>
             </div>
         </div>
@@ -46,11 +46,11 @@
                     <button type="submit"
                         class="block w-full bg-indigo-600 mt-5 py-2 rounded-2xl hover:bg-indigo-700 hover:-translate-y-1 transition-all duration-500 text-white font-semibold mb-2">Login</button>
                     <div class="flex justify-between mt-4">
-                        <span
+                        <a href="/passwordreset"
                             class="text-sm ml-2 hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">Forgot
-                            Password ?</span>
+                            Password ?</a>
 
-                        <a href="#"
+                        <a href="/signup"
                             class="text-sm ml-2 hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">Don't
                             have an account yet?</a>
                     </div>

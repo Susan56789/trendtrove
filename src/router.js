@@ -50,6 +50,23 @@ const routes = [
             {
                 path: '/sale',
                 component: () => import('./components/ProductsPage/OnSaleProducts.vue')
+            },
+            {
+                path: 'myaccount',
+                component: () => import('./components/UserPage/index.vue')
+            },
+            {
+                path: '/signup',
+                component: () => import('./components/UserPage/CreateAccount.vue')
+            },
+
+            {
+                path: '/passwordreset',
+                component: () => import('./components/UserPage/ForgotPassword.vue')
+            },
+            {
+                path: '/myaccount/update',
+                component: () => import('./components/UserPage/AccountUpdate.vue')
             }
 
         ]
