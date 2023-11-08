@@ -1,6 +1,6 @@
 <template>
     <!-- Footer container -->
-    <footer class="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
+    <footer class="bg-neutral-100 text-center text-neutral-600 lg:text-left">
         <div
             class="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
             <div class="mr-12 hidden lg:block">
@@ -150,7 +150,7 @@
         </div>
 
         <!--Copyright section-->
-        <div class="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
+        <div class="bg-neutral-200 p-6 text-center" id="copyright">
             <span>© 2023 Copyright:</span>
             <a class="font-semibold text-neutral-600 dark:text-neutral-400" href="/">Trend Trove</a>
         </div>
@@ -162,5 +162,16 @@ export default {
     name: "PageFooter"
 }
 </script>
+
+<style scoped>
+footer {
+    background-color: rgb(71, 103, 134);
+    color: white;
+}
+
+#copyright {
+    background-color: rgb(71, 103, 134);
+}
+</style>
 
 

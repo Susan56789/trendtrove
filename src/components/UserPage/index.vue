@@ -1,5 +1,5 @@
 <template>
-    <div class="pt-32  bg-white">
+    <div class="pt-32  bg-yellow-50">
 
         <section class=" py-1 bg-blueGray-50">
             <div id="sidebar" class="lg:block hidden bg-white w-64 h-screen fixed rounded-none border-none">

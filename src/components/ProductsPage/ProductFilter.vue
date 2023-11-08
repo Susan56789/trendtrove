@@ -1,12 +1,15 @@
 <template>
-    <div class="flex items-center space-x-4 mb-4">
+    <div class="flex items-center space-x-4 mb-4 bg-yellow-50">
         <label>Filter by Category:</label>
-        <select v-model="selectedCategory" @change="filterProducts" class="mr-4">
+        <select v-model="selectedCategory" @change="filterProducts" class="w-100 mt-1 py-1 px-1 rounded-lg border border-gray-400 
+                    dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
             <option value="">All</option>
             <option v-for="category in categories" :key="category">{{ category }}</option>
         </select>
         <label>Filter by Price:</label>
-        <input type="number" v-model="selectedPrice" @input="filterProducts" placeholder="Enter max price">
+        <input type="number" class="w-100 mt-1 py-1 px-1 rounded-lg border border-gray-400 
+            dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
+            v-model="selectedPrice" @input="filterProducts" placeholder="Enter max price">
     </div>
 </template>
   

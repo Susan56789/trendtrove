@@ -1,6 +1,7 @@
 <template>
     <div>
-        <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+        <article
+            class="rounded-xl bg-yellow-50 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
             <a href="#">
                 <div class="mt-1 p-2">
                     <div class="image-container relative flex items-end overflow-hidden rounded-xl">
@@ -22,8 +23,8 @@
                         <p v-if="product.discountedPrice" class="text-green-500 font-semibold">$ {{ product.discountedPrice
                         }}</p>
                         <p v-else class="text-green-500 font-semibold">$ {{ product.price }}</p>
-                        <div
-                            class="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
+                        <div class="flex items-center space-x-1.5 rounded-lg bg-indigo-500
+                                 px-4 py-1.5 text-white duration-100 hover:bg-indigo-600">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="h-4 w-4">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -34,7 +35,7 @@
 
                         </div>
                         <button @click="addToWishlist"
-                            class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-700">
+                            class="bg-green-500 text-white px-2 py-1.5 rounded-lg duration-100 hover:bg-green-700">
                             Add to Wishlist
                         </button>
                     </div>

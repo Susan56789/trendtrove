@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto mt-10">
+    <div class="container mx-auto mt-10 bg-yellow-50">
         <h1 class="text-2xl font-bold mb-4">Wishlist</h1>
         <div v-if="wishlist.length === 0" class="text-gray-600">Your wishlist is empty.</div>
 

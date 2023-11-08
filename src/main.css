@@ -81,3 +81,49 @@ footer {
     padding: 1rem;
     text-align: center;
 }
+
+/* same styling to all type=submit */
+
+input[type="submit"] {
+    background-color: rgba(75, 0, 130, 0.8) !important;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+/* hover  */
+input[type="submit"]:hover {
+    background-color: rgb(212, 16, 124);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+/* same styling to all type=submit button */
+
+button[type="submit"] {
+    background-color: rgba(75, 0, 130, 0.8) !important;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    width: 100%;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+/* hover  */
+button[type="submit"]:hover {
+    background-color: rgb(212, 16, 124);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}

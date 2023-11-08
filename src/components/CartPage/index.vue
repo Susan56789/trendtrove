@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen bg-gray-100 pt-20">
+    <div class="h-screen bg-gray-100 pt-20 bg-yellow-50">
         <h1 class="mb-10 text-center text-2xl font-bold">Cart Items</h1>
         <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
             <div class="rounded-lg md:w-2/3">
@@ -80,7 +80,8 @@
                         <p class="text-sm text-gray-700">including VAT</p>
                     </div>
                 </div>
-                <button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check
+                <button type="submit"
+                    class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check
                     out</button>
             </div>
         </div>

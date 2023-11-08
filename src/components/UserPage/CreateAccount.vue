@@ -1,6 +1,6 @@
 <template>
     <!-- url('/img/hero-pattern.svg') -->
-    <div class="flex min-h-screen bg-white">
+    <div class="flex min-h-screen bg-yellow-50">
 
         <div class="w-1/2 bg-cover md:block hidden"
             style="background-image:  url(https://creazilla-store.fra1.digitaloceanspaces.com/emojis/46515/shopping-cart-emoji-clipart-md.png)">
@@ -10,14 +10,15 @@
         </div> -->
 
 
-        <div class="md:w-1/2 max-w-lg mx-auto my-24 px-4 py-5 shadow-none">
+        <div class="md:w-1/2 max-w-lg mx-auto my-24 px-4 py-5 bg-white rounded-md shadow-2xl p-5">
 
-            <div class="text-left p-0 font-sans">
 
-                <h1 class=" text-gray-800 text-3xl font-medium">Create an account for free</h1>
-                <h3 class="p-1 text-gray-700">Free forever. No payment needed.</h3>
-            </div>
-            <form action="#" class="p-0">
+            <form action="#" class="">
+                <div class="text-left p-0 font-sans">
+
+                    <h1 class=" text-gray-800 text-3xl font-medium">Create an account now!</h1>
+                    <h3 class="p-1 text-gray-700">Track your orders any time.</h3>
+                </div>
                 <div class="mt-5">
 
                     <!-- <label for="email" class="sc-bqyKva ePvcBv">Email</label> -->
@@ -47,8 +48,8 @@
                 </div>
 
                 <div class="mt-10">
-                    <input type="submit" value="Sign up with email"
-                        class="py-3 bg-green-500 text-white w-full rounded hover:bg-green-600">
+                    <input type="submit" value="Sign up"
+                        class="block w-full bg-indigo-600 mt-5 py-2 rounded-2xl hover:bg-indigo-700 hover:-translate-y-1 transition-all duration-500 text-white font-semibold mb-2">
                 </div>
             </form>
             <a class="" href="/login" data-test="Link"><span class="block  p-5 text-center text-gray-800  text-xs ">Already

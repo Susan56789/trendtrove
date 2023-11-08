@@ -1,7 +1,7 @@
 <template>
     <div v-show="isVisible" @click="scrollToTop" class="fixed bottom-6 right-6 cursor-pointer">
         <i
-            class="fas fa-arrow-up fixed bottom-6 right-6 bg-purple-500 hover:bg-purple-700 text-white py-2 px-4 rounded"></i>
+            class="fas fa-arrow-up fixed bottom-6 right-6 bg-indigo-500 hover:bg-indigo-700 text-white py-2 px-4 rounded"></i>
     </div>
 </template>
   

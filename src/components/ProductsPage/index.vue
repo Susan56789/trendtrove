@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg-yellow-50">
         <router-view /> <!-- This is where your page components will be rendered -->
         <ProductList />
     </div>

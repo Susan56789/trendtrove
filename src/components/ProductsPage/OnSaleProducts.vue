@@ -1,10 +1,10 @@
 <template>
-    <div>
-        <div class="pt-32  bg-white">
+    <div class="bg-yellow-50">
+        <div class="pt-32 ">
             <h1 class="text-center text-2xl font-bold text-gray-800">Today's Offer</h1>
         </div>
         <div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between">
-            <article class="rounded-xl bg-white p-3  ">
+            <article class="rounded-xl bg-white p-3 bg-yellow-50 ">
                 <a href="#">
                     <div class="grid grid-cols-3 gap-4">
                         <div v-for="product in productsOnSale" :key="product.id"
@@ -29,8 +29,8 @@
                                 <p class="text-gray-500 line-through">$ {{ product.price }}</p>
                                 <p class="text-green-500 font-semibold">$ {{ product.discountedPrice }}</p>
 
-                                <div
-                                    class="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
+                                <div class="flex items-center space-x-1.5 rounded-lg bg-indigo-500 
+                                                        px-4 py-1.5 text-white duration-100 hover:bg-indigo-600">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -41,7 +41,7 @@
 
                                 </div>
                                 <button @click="addToWishlist"
-                                    class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-700">
+                                    class="bg-green-500 text-white px-2 py-1.5 rounded-lg duration-100 hover:bg-green-700">
                                     Add to Wishlist
                                 </button>
                             </div>
