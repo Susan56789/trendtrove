@@ -1,0 +1,30 @@
+[
+    {
+        "id": 2,
+        "name": "Shoes",
+        "description": "Description for Category 2",
+        "products": 15,
+        "imageUrl": "/products/greynike.png"
+    },
+    {
+        "id": 3,
+        "name": "TVs",
+        "description": "Description for Category 3",
+        "products": 8,
+        "imageUrl": "/products/greynike.png"
+    },
+    {
+        "id": 4,
+        "name": "Handbags",
+        "description": "Description for Category 3",
+        "products": 8,
+        "imageUrl": "/products/greynike.png"
+    },
+    {
+        "id": 5,
+        "name": "Laptops",
+        "description": "Description for Category 3",
+        "products": 8,
+        "imageUrl": "/products/greynike.png"
+    }
+]

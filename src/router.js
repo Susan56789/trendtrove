@@ -30,7 +30,8 @@ const routes = [
             },
             {
                 path: '/product/:id',
-                component: () => import('./components/ProductPage/index.vue')
+                component: () => import('./components/ProductPage/index.vue'),
+                props: true
             },
             {
                 path: '/checkout',
@@ -69,7 +70,7 @@ const routes = [
                 component: () => import('./components/UserPage/AccountUpdate.vue')
             },
             {
-                path: "/category/:categoryId",
+                path: "/category/:id",
                 component: () => import("./components/ProductCategories/index.vue"),
                 props: true
             }
