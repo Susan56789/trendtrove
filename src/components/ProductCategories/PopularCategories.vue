@@ -23,29 +23,33 @@
         </article>
     </section>
 </template>
-  
+
 <script>
 import categories from './categories.json';
+import products from '../ProductsPage/products.json';
 
 export default {
     name: 'PopularCategories',
     data() {
         return {
-            categories: categories
+            categories: categories,
+            products: products
         };
     },
     computed: {
         topCategories() {
+            // Count the number of products in each category
+            const categoryCounts = this.categories.map(category => ({
+                ...category,
+                productCount: this.products.filter(product => product.category === category.name).length
+            }));
+
             // Sort categories by the number of products in descending order
-            const sortedCategories = [...this.categories].sort((a, b) => b.products - a.products);
+            const sortedCategories = categoryCounts.sort((a, b) => b.productCount - a.productCount);
+
             // Get the top 3 categories
             return sortedCategories.slice(0, 3);
         }
     }
 };
-
-
 </script>
-  
-<style scoped></style>
-  

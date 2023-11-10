@@ -26,5 +26,12 @@
         "description": "Description for Category 3",
         "products": 8,
         "imageUrl": "/products/greynike.png"
+    },
+    {
+        "id": 6,
+        "name": "Lady's wear",
+        "description": "Description for Category 3",
+        "products": 8,
+        "imageUrl": "/products/greynike.png"
     }
 ]

@@ -92,5 +92,44 @@
         "discountedPrice": 350.00,
         "image": "/products/floralheels.png",
         "rating": 4.5
+    },
+    {
+        "id": 11,
+        "name": "42 inch Android Smart TV",
+        "description": "Description for Product 8",
+        "category": "TVs",
+        "price": 399.99,
+        "image": "/products/lgtv.png",
+        "rating": 4.5
+    },
+    {
+        "id": 12,
+        "name": "Red fancy dress",
+        "description": "Red fancy dress",
+        "category": "Lady's wear",
+        "price": 129.50,
+        "discountedPrice": 125.00,
+        "image": "/products/redfancydress.png",
+        "rating": 4.5
+    },
+    {
+        "id": 13,
+        "name": "Red fancy dress",
+        "description": "Red fancy dress",
+        "category": "Lady's wear",
+        "price": 129.50,
+        "discountedPrice": 125.00,
+        "image": "/products/redfancydress.png",
+        "rating": 4.5
+    },
+    {
+        "id": 14,
+        "name": "Red fancy dress",
+        "description": "Red fancy dress",
+        "category": "Lady's wear",
+        "price": 129.50,
+        "discountedPrice": 125.00,
+        "image": "/products/redfancydress.png",
+        "rating": 4.5
     }
 ]
