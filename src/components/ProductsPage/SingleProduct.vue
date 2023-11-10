@@ -19,12 +19,14 @@
                     <p class="mt-1 text-sm text-slate-400">{{ product.description }}</p>
 
                     <div class="mt-3 flex items-end justify-between">
-                        <p v-if="product.discountedPrice" class="text-gray-500 line-through">$ {{ product.price }}</p>
-                        <p v-if="product.discountedPrice" class="text-green-500 font-semibold">$ {{ product.discountedPrice
+                        <p v-if="product.discountedPrice" class="text-gray-500 line-through">KES. {{
+                            formatNumber(product.price) }}</p>
+                        <p v-if="product.discountedPrice" class="text-green-500 font-semibold">KES. {{
+                            formatNumber(product.discountedPrice)
                         }}</p>
-                        <p v-else class="text-green-500 font-semibold">$ {{ product.price }}</p>
+                        <p v-else class="text-green-500 font-semibold">KES. {{ formatNumber(product.price) }}</p>
                         <div class="flex items-center space-x-1.5 rounded-lg bg-indigo-500
-                                 px-4 py-1.5 text-white duration-100 hover:bg-indigo-600">
+                                                         px-4 py-1.5 text-white duration-100 hover:bg-indigo-600">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="h-4 w-4">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -49,6 +51,7 @@
 </template>
   
 <script>
+
 export default {
     props: {
         product: {
@@ -57,13 +60,16 @@ export default {
         },
     },
     methods: {
+        formatNumber(value) {
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        },
         addToCart() {
             // Emit an event to add the product to the cart
-            this.$emit('addToCart', this.product);
+            this.KES.emit('addToCart', this.product);
         },
         addToWishlist() {
             // Emit an event to add the product to the wishlist
-            this.$emit('addToWishlist', this.product);
+            this.KES.emit('addToWishlist', this.product);
         },
     },
 };

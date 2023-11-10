@@ -4,7 +4,7 @@
         "name": "Red Nike Shoes",
         "description": "Stylish red Nike shoes",
         "category": "Shoes",
-        "price": 299.99,
+        "price": 6000,
         "image": "/products/rednikeshoe.png",
         "rating": 4.5
     },
@@ -13,7 +13,7 @@
         "name": "Brown Lady Handbag",
         "description": "Brown lady handbag",
         "category": "Handbags",
-        "price": 49.95,
+        "price": 4995,
         "image": "/products/brownhandbag.png",
         "rating": 4.5
     },
@@ -22,7 +22,7 @@
         "name": "32 inch LG Smart TV",
         "description": "Quality LG Smart TV",
         "category": "TVs",
-        "price": 199.99,
+        "price": 19999,
         "image": "/products/lgtv.png",
         "rating": 4.5
     },
@@ -31,7 +31,7 @@
         "name": "Green fancy dress",
         "description": "Green fancy dress",
         "category": "Lady's wear",
-        "price": 129.50,
+        "price": 1250,
         "image": "/products/greendress.png",
         "rating": 4.5
     },
@@ -40,7 +40,7 @@
         "name": "HP Laptop",
         "description": "Description for Product 5",
         "category": "Laptops",
-        "price": 499.99,
+        "price": 29999,
         "image": "/products/HPLaptop.png",
         "rating": 4.5
     },
@@ -49,8 +49,8 @@
         "name": "Gey Nike Shoes",
         "description": "Grey Nike Running Shoes",
         "category": "Shoes",
-        "price": 699.99,
-        "discountedPrice": 599.00,
+        "price": 6999,
+        "discountedPrice": 5999.00,
         "image": "/products/greynike.png",
         "rating": 4.5
     },
@@ -59,7 +59,7 @@
         "name": "Black Lady Handbag",
         "description": "Description for Product 7",
         "category": "Handbags",
-        "price": 49.95,
+        "price": 2995,
         "image": "/products/blackhandbag.png",
         "rating": 4.5
     },
@@ -68,8 +68,8 @@
         "name": "42 inch LG Smart TV",
         "description": "Description for Product 8",
         "category": "TVs",
-        "price": 299.99,
-        "discountedPrice": 199.00,
+        "price": 49999,
+        "discountedPrice": 39999.00,
         "image": "/products/lgtv.png",
         "rating": 4.5
     },
@@ -78,8 +78,8 @@
         "name": "Red fancy dress",
         "description": "Red fancy dress",
         "category": "Lady's wear",
-        "price": 129.50,
-        "discountedPrice": 125.00,
+        "price": 1950,
+        "discountedPrice": 1250.00,
         "image": "/products/redfancydress.png",
         "rating": 4.5
     },
@@ -88,8 +88,8 @@
         "name": "Floral Heels",
         "description": "Red blue floral heels",
         "category": "Shoes",
-        "price": 399.99,
-        "discountedPrice": 350.00,
+        "price": 3999,
+        "discountedPrice": 3500.00,
         "image": "/products/floralheels.png",
         "rating": 4.5
     },
@@ -98,38 +98,18 @@
         "name": "42 inch Android Smart TV",
         "description": "Description for Product 8",
         "category": "TVs",
-        "price": 399.99,
+        "price": 39999,
         "image": "/products/lgtv.png",
         "rating": 4.5
     },
     {
         "id": 12,
-        "name": "Red fancy dress",
-        "description": "Red fancy dress",
-        "category": "Lady's wear",
-        "price": 129.50,
-        "discountedPrice": 125.00,
-        "image": "/products/redfancydress.png",
-        "rating": 4.5
-    },
-    {
-        "id": 13,
-        "name": "Red fancy dress",
-        "description": "Red fancy dress",
-        "category": "Lady's wear",
-        "price": 129.50,
-        "discountedPrice": 125.00,
-        "image": "/products/redfancydress.png",
-        "rating": 4.5
-    },
-    {
-        "id": 14,
-        "name": "Red fancy dress",
-        "description": "Red fancy dress",
-        "category": "Lady's wear",
-        "price": 129.50,
-        "discountedPrice": 125.00,
-        "image": "/products/redfancydress.png",
+        "name": "Samsung Galaxy Watch 5",
+        "description": "Enhance your Galaxy smartphone experience with the Galaxy Watch4 Classic 46mm, the largest display in the Classic design. ",
+        "category": "Watches",
+        "price": 29000.00,
+        "discountedPrice": 25000.00,
+        "image": "/products/Samsung-Galaxy-Watch-5-B.jpg",
         "rating": 4.5
     }
 ]

@@ -4,34 +4,41 @@
         "name": "Shoes",
         "description": "Description for Category 2",
         "products": 15,
-        "imageUrl": "/products/greynike.png"
+        "imageUrl": "/products/shoe.png"
     },
     {
         "id": 3,
         "name": "TVs",
         "description": "Description for Category 3",
         "products": 8,
-        "imageUrl": "/products/greynike.png"
+        "imageUrl": "/products/Tvs.png"
     },
     {
         "id": 4,
         "name": "Handbags",
         "description": "Description for Category 3",
         "products": 8,
-        "imageUrl": "/products/greynike.png"
+        "imageUrl": "/products/Handbags.png"
     },
     {
         "id": 5,
         "name": "Laptops",
         "description": "Description for Category 3",
         "products": 8,
-        "imageUrl": "/products/greynike.png"
+        "imageUrl": "/products/Laptops.png"
     },
     {
         "id": 6,
         "name": "Lady's wear",
         "description": "Description for Category 3",
         "products": 8,
-        "imageUrl": "/products/greynike.png"
+        "imageUrl": "/products/ladywear.png"
+    },
+    {
+        "id": 7,
+        "name": "Watches",
+        "description": "Description for Category 3",
+        "products": 8,
+        "imageUrl": "/products/Watches.png"
     }
 ]

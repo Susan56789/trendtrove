@@ -26,11 +26,12 @@
                             <p class="mt-1 text-sm text-slate-400">{{ product.description }}</p>
 
                             <div class="mt-3 flex items-end justify-between">
-                                <p class="text-gray-500 line-through">$ {{ product.price }}</p>
-                                <p class="text-green-500 font-semibold">$ {{ product.discountedPrice }}</p>
+                                <p class="text-gray-500 line-through">KES. {{ formatNumber(product.price) }}</p>
+                                <p class="text-green-500 font-semibold">KES. {{
+                                    formatNumber(product.discountedPrice) }}</p>
 
                                 <div class="flex items-center space-x-1.5 rounded-lg bg-indigo-500 
-                                                        px-4 py-1.5 text-white duration-100 hover:bg-indigo-600">
+                                                                px-4 py-1.5 text-white duration-100 hover:bg-indigo-600">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -63,6 +64,18 @@ export default {
         return {
             products: products,
         };
+    }, methods: {
+        formatNumber(value) {
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        },
+        addToCart() {
+            // Emit an event to add the product to the cart
+            this.KES.emit('addToCart', this.product);
+        },
+        addToWishlist() {
+            // Emit an event to add the product to the wishlist
+            this.KES.emit('addToWishlist', this.product);
+        },
     },
     computed: {
         productsOnSale() {
