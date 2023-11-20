@@ -15,7 +15,7 @@ const connection = mysql.createConnection({
     host: 'localhost', // your database server name
     user: 'root', // your database username
     password: '', // your database password
-    database: 'trendtrove' // your database name
+    database: 'trendstore' // your database name
 });
 
 connection.connect();
