@@ -6,12 +6,12 @@
         <div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between">
             <article class="rounded-xl bg-white p-3 bg-yellow-50 ">
                 <a href="#">
-                    <div class="grid grid-cols-3 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         <div v-for="product in productsOnSale" :key="product.id"
                             class="p-4 border rounded shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
                             <div class="image-container relative flex items-end overflow-hidden rounded-xl">
-                                <img :src="product.image" :alt="product.name"
-                                    class="mx-auto h-200 w-200 object-cover mb-4 " />
+                                <img :src="product.image" :alt="product.name" class="mx-auto w-full h-200 object-cover mb-4" />
+
                                 <div
                                     class="absolute bottom-3 left-3 inline-flex items-center rounded-lg bg-white p-2 shadow-md">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400"
@@ -38,7 +38,8 @@
                                             d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                                     </svg>
 
-                                    <button @click="addToCart" class="text-sm">Add to cart</button>
+                                    <button @click="addToCart" class="text-sm sm:w-full">Add to cart</button>
+
 
                                 </div>
                                 <button @click="addToWishlist"
