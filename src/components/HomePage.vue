@@ -3,7 +3,7 @@
     <div class="relative w-full">
         <router-view></router-view>
 
-        <div class="flex items-center justify-center bg-yellow-50 p-32 h-screen">
+        <div class="relative bg-yellow-50">
             <div class="container m-auto px-6 pt-32 md:px-12 lg:pt-[4.8rem] lg:px-7">
                 <div class="flex items-center flex-wrap px-2 md:px-0">
                     <div class="relative lg:w-6/12 lg:py-24 xl:py-32">

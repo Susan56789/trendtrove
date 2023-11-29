@@ -1,9 +1,9 @@
 <template>
     <section>
-        <article class="mt-50 ">
+        <article class="mt-50">
             <h2 class="text-2xl font-extrabold text-gray-900">Top Categories</h2>
 
-            <section class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
+            <section class="mt-6 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-8">
                 <article v-for="category in topCategories" :key="category.id"
                     class="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out"
                     :style="{ backgroundImage: 'url(' + category.imageUrl + ')' }">
