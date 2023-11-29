@@ -36,6 +36,15 @@ body {
         font-size: 18px;
     }
 }
+.hero-pic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 400px;
+    margin: 0 auto;
+    border-radius: 50%;
+}
 
 /* Responsive navigation menu */
 .menu {
