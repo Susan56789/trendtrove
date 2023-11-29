@@ -53,17 +53,10 @@ body {
     border-radius: 50%;
 }
 
-/* Responsive navigation menu */
-.menu {
-    display: none;
-}
+
 
 @media (max-width: 768px) {
-    .menu {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
+   
     .hero-pic{
         height: 200px;
         width: 200px;
