@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-yellow-50">
+    <div class="flex items-center justify-center bg-yellow-50 p-32 h-screen">
         <div class="pt-32 ">
             <h1 class="text-center text-2xl font-bold text-gray-800">Today's Offer</h1>
         </div>

@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-yellow-50 p-32">
+    <div class="flex items-center justify-center bg-yellow-50 p-32 h-screen">
         <h2 class="text-center text-2xl font-bold text-gray-800">Category: {{ selectedCategoryName }}</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <div v-for="product in filteredProducts" :key="product.id" class="bg-white border rounded-lg shadow-md p-4">

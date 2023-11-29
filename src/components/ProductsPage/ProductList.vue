@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="pt-32  bg-yellow-50">
+        <div class="flex items-center justify-center bg-yellow-50 p-32 h-screen">
             <h1 class="text-center text-2xl font-bold text-gray-800">All Products</h1>
         </div>
         <div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between">
