@@ -91,7 +91,7 @@
                         </div>
                 
                         <!-- Top categories -->
-                        <div class="mt-50 lg:w-full">
+                        <div class="mt-50 lg:w-70%">
                           <PopularCategories />
                         </div>
                       </div>
