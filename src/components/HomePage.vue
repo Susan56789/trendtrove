@@ -91,8 +91,10 @@
                             class="relative hero-pic" alt="food illustration" loading="lazy" width="4500" height="4500">
                     </div>
 
-                    <PopularCategories />
-
+                    <!-- top categories -->
+                    <div class="mt-20">
+                        <PopularCategories />
+                    </div>
 
                 </div>
 
