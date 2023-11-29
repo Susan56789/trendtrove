@@ -6,7 +6,7 @@
       <div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between">
         <article class="rounded-xl bg-white p-3 bg-yellow-50 ">
           <a href="#">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
               <div v-for="product in productsOnSale" :key="product.id"
                    class="p-4 border rounded shadow-lg hover:shadow-xl hover:transform hover:scale-105 sm:mx-2">
                 <div class="image-container relative flex items-end overflow-hidden rounded-xl">
