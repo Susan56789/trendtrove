@@ -64,6 +64,13 @@ body {
         margin: 60px;
         justify-content: center;
     }
+    .grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+        margin: 0 auto;
+        width: 80%;
+    }
 }
 
 
