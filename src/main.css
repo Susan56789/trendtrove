@@ -45,6 +45,12 @@ body {
     margin: 0 auto;
     border-radius: 50%;
 }
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    padding: 16px;
+}
 
 /* Responsive navigation menu */
 .menu {
@@ -59,24 +65,6 @@ body {
     }
 }
 
-/* Responsive grid layout */
-.grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 1rem;
-}
-
-@media (min-width: 768px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 992px) {
-    .grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
 
 /* Responsive images */
 img {

@@ -76,9 +76,9 @@
                             </div>
 
                         </div>
-                        <!-- <div v-else-if="searchSubmitted | filteredProducts.length === 0" class="mt-4">
+                        <div v-else-if="searchSubmitted | filteredProducts.length === 0" class="mt-4">
                             <p class="text-gray-500">No products found in the selected category.</p>
-                        </div> -->
+                        </div>
                         <div v-else-if="searchSubmitted" class="mt-4">
                             <p class="text-gray-500">No products found.</p>
                         </div>
