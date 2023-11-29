@@ -14,7 +14,7 @@
             </button>
           </div>
   
-          <div v-if="isMobileMenuOpen" class="w-full lg:flex flex-wrap justify-end items-center space-y-6 p-6 rounded-xl bg-white md:space-y-0 md:p-0 md:flex-nowrap md:bg-transparent lg:w-7/12">
+          <div v-if="isMobileMenuOpen || isLargeScreen" class="w-full lg:flex flex-wrap justify-end items-center space-y-6 p-6 rounded-xl bg-white md:space-y-0 md:p-0 md:flex-nowrap md:bg-transparent lg:w-7/12">
             <div class="text-gray-600 lg:pr-4">
               <ul class="space-y-6 tracking-wide font-medium text-sm md:flex md:space-y-0">
                 <li>
@@ -67,6 +67,7 @@ export default {
         return {
             imageUrl: Logo,
             isMobileMenuOpen: false,
+      isLargeScreen: window.innerWidth >= 1024,
       
 
         }
