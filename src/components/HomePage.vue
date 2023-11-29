@@ -76,9 +76,9 @@
                             </div>
 
                         </div>
-                        <div v-else-if="searchSubmitted | filteredProducts.length === 0" class="mt-4">
+                        <!-- <div v-else-if="searchSubmitted | filteredProducts.length === 0" class="mt-4">
                             <p class="text-gray-500">No products found in the selected category.</p>
-                        </div>
+                        </div> -->
                         <div v-else-if="searchSubmitted" class="mt-4">
                             <p class="text-gray-500">No products found.</p>
                         </div>
@@ -86,8 +86,8 @@
                             <p class="text-gray-500">Please enter a search query and select a category.</p>
                         </div>
                     </div>
-                    <div class="ml-auto -mb-24 lg:-mb-56 lg:w-6/12">
-                        <img src="https://pnglib.nyc3.cdn.digitaloceanspaces.com/uploads/2020/01/shoppings_5e0e01a18f63d.png"
+                    <div class="ml-30 -mb-24 lg:-mb-56 lg:w-6/12">
+                        <img src="/poducts/13833.jpg"
                             class="relative" alt="food illustration" loading="lazy" width="4500" height="4500">
                     </div>
 
