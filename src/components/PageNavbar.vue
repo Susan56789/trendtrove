@@ -78,8 +78,18 @@ export default {
     },
         navigateTo(route) {
             this.$router.push(route);
-        }
-    }
+        },
+        handleResize() {
+      this.isLargeScreen = window.innerWidth >= 1024; // Adjust the breakpoint as needed
+    },
+    },
+    mounted() {
+    window.addEventListener('resize', this.handleResize);
+  },
+  unmounted() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+ 
 }
 
 </script>
