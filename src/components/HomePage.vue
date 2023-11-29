@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="ml-30 -mb-24 lg:-mb-56 lg:w-6/12">
-                        <img src="/poducts/13833.jpg"
+                        <img src="../../public/products/13833.jpg"
                             class="relative" alt="food illustration" loading="lazy" width="4500" height="4500">
                     </div>
 
