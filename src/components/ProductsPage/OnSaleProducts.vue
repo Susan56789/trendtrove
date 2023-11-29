@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-yellow-50">
+    <div class="bg-yellow-50 overflow-x-auto">
         <div class="pt-32 ">
             <h1 class="text-center text-2xl font-bold text-gray-800">Today's Offer</h1>
         </div>
@@ -8,7 +8,7 @@
                 <a href="#">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         <div v-for="product in productsOnSale" :key="product.id"
-                            class="p-4 border rounded shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
+     class="p-4 border rounded shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 sm:mx-2">
                             <div class="image-container relative flex items-end overflow-hidden rounded-xl">
                                 <img :src="product.image" :alt="product.name" class="mx-auto w-full h-200 object-cover mb-4" />
 
