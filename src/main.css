@@ -45,12 +45,6 @@ body {
     margin: 0 auto;
     border-radius: 50%;
 }
-.grid{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 16px;
-    padding: 16px;
-}
 
 /* Responsive navigation menu */
 .menu {
