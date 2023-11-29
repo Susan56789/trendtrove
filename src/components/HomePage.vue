@@ -92,7 +92,7 @@
                     </div>
 
                     <!-- top categories -->
-                    <div class="mt-54">
+                    <div class="mt-50">
                         <PopularCategories />
                     </div>
 
