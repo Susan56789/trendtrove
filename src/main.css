@@ -63,6 +63,12 @@ body {
         justify-content: space-around;
         align-items: center;
     }
+    .hero-pic{
+        height: 200px;
+        width: 200px;
+        margin: 0 auto;
+        border-radius: 50%;
+    }
 }
 
 
