@@ -86,12 +86,12 @@
                         </div>
                 
                         <!-- Right section with an illustration and top categories -->
-                        <div class="ml-30 -mb-24 lg:-mb-56 lg:w-6/12">
+                        <div class="lg:w-6/12 lg:-mb-56">
                           <img src="../../public/products/13833.jpg" class="relative hero-pic" alt="food illustration" loading="lazy" width="4500" height="4500">
                         </div>
                 
                         <!-- Top categories -->
-                        <div class="mt-50">
+                        <div class="mt-50 lg:w-full">
                           <PopularCategories />
                         </div>
                       </div>
