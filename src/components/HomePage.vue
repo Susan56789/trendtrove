@@ -1,43 +1,42 @@
 <template>
-    <!-- component -->
-    <div class="relative w-full">
-        <router-view></router-view>
-
-        <div class="relative bg-yellow-50">
-            <div class="container m-auto px-6 pt-32 md:px-12 lg:pt-[4.8rem] lg:px-7">
-                <div class="flex items-center flex-wrap px-2 md:px-0">
-                    <div class="relative lg:w-6/12 lg:py-24 xl:py-32">
-                        <h1 class="font-bold text-4xl text-yellow-900 md:text-5xl lg:w-10/12">One Order Away!
-                        </h1>
-                        <form action="" class="w-full mt-12">
-                            <div class="relative flex p-1 rounded-full bg-white border border-yellow-200 shadow-md md:p-2">
-                                <select v-model="selectedCategory" @change="filterProducts">
-                                    <option value="">All Categories</option>
-                                    <option v-for="category in categories" :key="category">{{ category }}</option>
-
-
-                                </select>
-                                <input v-model="searchQuery" type="text" placeholder="Search Products"
-                                    class="w-full p-4 rounded-full">
-                                <button type="button" @click="submitSearch" title="Start buying"
-                                    class="ml-auto py-3 px-6 rounded-full text-center transition bg-gradient-to-b 
-                                                                                                                                        from-yellow-200 to-yellow-300 hover:to-red-300 active:from-yellow-400 
-                                                                                                                                        focus:from-red-400 md:px-12">
-                                    <span class="hidden text-yellow-900 font-semibold md:block">
-                                        Search
-                                    </span>
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="w-5 mx-auto text-yellow-900 md:hidden bi bi-search" fill="currentColor"
-                                        viewBox="0 0 16 16">
-                                        <path
-                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </form>
-                        <div v-if="searchSubmitted && filteredProducts.length > 0" class="grid grid-cols-3 gap-4">
-                            <div v-for="product in filteredProducts" :key="product.id"
-                                class="p-4 border rounded shadow-md hover:shadow-lg transition duration-300">
+    <div class="relative w-full bg-yellow-50">
+      <!-- Displaying router view and form for searching -->
+      <router-view></router-view>
+  
+      <div class="container m-auto px-6 pt-32 md:px-12 lg:pt-[4.8rem] lg:px-7">
+        <div class="flex items-center flex-wrap px-2 md:px-0">
+          <!-- Left section with search bar and products -->
+          <div class="relative lg:w-6/12 lg:py-24 xl:py-32">
+            <h1 class="font-bold text-4xl text-yellow-900 md:text-5xl lg:w-10/12">One Order Away!</h1>
+  
+            <!-- Search form -->
+            <form action="" class="w-full mt-12">
+              <div class="relative flex p-1 rounded-full bg-white border border-yellow-200 shadow-md md:p-2">
+                <!-- Dropdown for category selection -->
+                <select v-model="selectedCategory" @change="filterProducts">
+                  <option value="">All Categories</option>
+                  <option v-for="category in categories" :key="category">{{ category }}</option>
+                </select>
+  
+                <!-- Input for search query -->
+                <input v-model="searchQuery" type="text" placeholder="Search Products" class="w-full p-4 rounded-full">
+  
+                <!-- Search button -->
+                <button type="button" @click="submitSearch" title="Start buying"
+                  class="ml-auto py-3 px-6 rounded-full text-center transition bg-gradient-to-b 
+                  from-yellow-200 to-yellow-300 hover:to-red-300 active:from-yellow-400 
+                  focus:from-red-400 md:px-12">
+                  <span class="hidden text-yellow-900 font-semibold md:block">Search</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 mx-auto text-yellow-900 md:hidden bi bi-search" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                  </svg>
+                </button>
+              </div>
+            </form>
+                        <!-- Displaying search results or warnings based on conditions -->
+          <div v-if="searchSubmitted && filteredProducts.length > 0" class="grid grid-cols-3 gap-4">
+            <div v-for="product in filteredProducts" :key="product.id" 
+            class="p-4 border rounded shadow-md hover:shadow-lg transition duration-300">
                                 <article>
                                     <a href="#">
                                         <div class="mt-1 p-2">
@@ -58,12 +57,12 @@
                                             <p class="mt-1 text-sm text-slate-400">{{ product.description }}</p>
 
                                             <div class="mt-3 flex items-end justify-between">
-                                                <p v-if="product.discountedPrice" class="text-gray-500 line-through">$ {{
+                                                <p v-if="product.discountedPrice" class="text-gray-500 line-through">KES. {{
                                                     product.price }}</p>
-                                                <p v-if="product.discountedPrice" class="text-green-500 font-semibold">$ {{
+                                                <p v-if="product.discountedPrice" class="text-green-500 font-semibold">KES. {{
                                                     product.discountedPrice
                                                 }}</p>
-                                                <p v-else class="text-green-500 font-semibold">$ {{ product.price }}</p>
+                                                <p v-else class="text-green-500 font-semibold">KES. {{ product.price }}</p>
 
                                             </div>
                                         </div>
@@ -76,31 +75,31 @@
                             </div>
 
                         </div>
-                        <div v-else-if="searchSubmitted | filteredProducts.length === 0" class="mt-4">
+                        
+                        <div v-else-if="searchSubmitted && filteredProducts.length === 0" class="mt-4">
                             <p class="text-gray-500">No products found in the selected category.</p>
-                        </div>
-                        <div v-else-if="searchSubmitted" class="mt-4">
+                          </div>
+                          <div v-else-if="searchSubmitted" class="mt-4">
                             <p class="text-gray-500">No products found.</p>
+                          </div>
+                          
                         </div>
-                        <div v-else class="mt-4">
-                            <p class="text-gray-500">Please enter a search query and select a category.</p>
+                
+                        <!-- Right section with an illustration and top categories -->
+                        <div class="ml-30 -mb-24 lg:-mb-56 lg:w-6/12">
+                          <img src="../../public/products/13833.jpg" class="relative hero-pic" alt="food illustration" loading="lazy" width="4500" height="4500">
                         </div>
-                    </div>
-                    <div class="ml-30 -mb-24 lg:-mb-56 lg:w-6/12">
-                        <img src="../../public/products/13833.jpg"
-                            class="relative hero-pic" alt="food illustration" loading="lazy" width="4500" height="4500">
-                    </div>
-
-                    <!-- top categories -->
-                    <div class="mt-50">
-                        <PopularCategories />
-                    </div>
-
-                </div>
+                
+                        <!-- Top categories -->
+                        <div class="mt-50">
+                          <PopularCategories />
+                        </div>
+                      </div>
+                        
 
             </div>
         </div>
-    </div>
+   
 </template>
   
 <script>
