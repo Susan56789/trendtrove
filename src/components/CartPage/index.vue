@@ -9,7 +9,17 @@
           <CartItemsList :cart="cart" @remove="removeProduct" />
         </div>
         <div class="md:w-1/3">
-          <CartSummary :cart="cart" :shipping-fee="shippingFee" :total-cost="totalCost" @checkout="checkout" />
+          <template v-if="isCartEmpty">
+            <div class="text-center text-gray-500">
+              Your cart is empty.
+            </div>
+            <a href="/shop" class="w-full mt-4 bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded">
+              Continue Shopping
+            </a>
+          </template>
+          <template v-else>
+            <CartSummary :cart="cart" :shipping-fee="shippingFee" :total-cost="totalCost" @checkout="checkout" />
+          </template>
         </div>
       </div>
     </div>
@@ -21,7 +31,7 @@ import CartItemsList from './CartItemsList.vue';
 import CartSummary from './CartSummary.vue';
 
 export default {
-  name: 'CartPage',
+name: 'CartPage',
   components: {
     CartItemsList,
     CartSummary,
@@ -42,28 +52,16 @@ export default {
   },
   methods: {
     removeProduct(index) {
-    this.$set(this.cart, index, { ...this.cart[index] });
-    this.cart.splice(index, 1);
-  },
-   addToCart(product) {
-    const existingProductIndex = this.cart.findIndex((p) => p.id === product.id);
-
-    if (existingProductIndex !== -1) {
-      // If the product already exists in the cart, increase its quantity
-      this.$set(this.cart, existingProductIndex, {
-        ...this.cart[existingProductIndex],
-        quantity: this.cart[existingProductIndex].quantity + 1,
-      });
-    } else {
-      // If the product is not in the cart, add it with quantity 1
-      this.cart.push({ ...product, quantity: 1 });
-    }
-  },
-  checkout() {
-    // Implement your checkout logic here
-  },
+      this.$set(this.cart, index, { ...this.cart[index] }); // Ensure reactivity
+      this.cart.splice(index, 1);
+    },
+    checkout() {
+      // Implement your checkout logic here
+    },
   },
 };
 </script>
 
-<style></style>
+<style>
+/* ... your existing styles ... */
+</style>
