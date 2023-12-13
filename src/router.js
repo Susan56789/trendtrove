@@ -79,7 +79,7 @@ const routes = [
     },
     {
         path: '*',
-        component: () => import('./components/NotFoundPage.vue')
+        component: () => import('./components/NotFound.vue')
     },
 
 ];
