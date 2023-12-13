@@ -31,3 +31,4 @@ export default {
 
 <style scoped>
 /* ... your existing styles ... */
+</style>
