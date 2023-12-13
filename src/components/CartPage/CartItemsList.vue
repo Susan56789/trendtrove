@@ -22,10 +22,21 @@ import CartItem from './CartItem.vue';
 
 export default {
   props: {
-    cart: {
-      type: Array,
-      default: () => [],
+    cart: [
+    {
+      id: 1,
+      name: 'Product 1',
+      price: 100,
+      quantity: 1,
+      image: 'https://picsum.photos/200',
     },
+    {
+      id: 2,
+      name: 'Product 2',
+      price: 200,
+      quantity: 2,
+    },
+    ],
   },
   data() {
     return {

@@ -2,7 +2,10 @@
   <div>
     <h2>Cart Summary</h2>
     <div v-if="isCartEmpty" class="text-center text-gray-500">
-      Your cart is empty.
+      <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <rect width="100" height="100" fill="transparent" stroke="black" stroke-width="2"/>
+</svg>
+
     </div>
     <div v-else>
       <ul>
