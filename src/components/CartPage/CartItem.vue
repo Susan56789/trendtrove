@@ -13,12 +13,7 @@ export default {
     product: {
       type: Object,
       required: true,
-      default: () => ({
-        id: 1,
-        name: 'Dummy Product',
-        price: 10.99,
-        quantity: 1,
-      }),
+      default: () => ({}),
     },
   },
   methods: {
