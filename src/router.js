@@ -78,7 +78,7 @@ const routes = [
         ]
     },
     {
-        path: '*',
+        path: '/:pathMatch(.*)*', // 404 Not Found
         component: () => import('./components/NotFound.vue')
     },
 
