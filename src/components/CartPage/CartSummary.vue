@@ -1,7 +1,18 @@
 <template>
   <div>
-    <!-- Cart summary details here -->
-    <button @click="checkout">Checkout</button>
+    <h2>Cart Summary</h2>
+    <div v-if="isCartEmpty" class="text-center text-gray-500">
+      Your cart is empty.
+    </div>
+    <div v-else>
+      <ul>
+        <li v-for="(product, index) in cart" :key="index">
+          {{ product.name }} - Quantity: {{ product.quantity }} - Total: {{ product.quantity * product.price }}
+        </li>
+      </ul>
+      <p>Total Quantity: {{ totalQuantity }}</p>
+      <p>Total Price: {{ totalPrice }}</p>
+    </div>
   </div>
 </template>
 
@@ -12,23 +23,21 @@ export default {
       type: Array,
       default: () => [],
     },
-    shippingFee: {
-      type: Number,
-      default: 5,
-    },
-    totalCost: {
-      type: Number,
-      default: 0,
-    },
   },
-  methods: {
-    checkout() {
-      this.$emit('checkout');
+  computed: {
+    isCartEmpty() {
+      return this.cart.length === 0;
+    },
+    totalQuantity() {
+      return this.cart.reduce((total, product) => total + product.quantity, 0);
+    },
+    totalPrice() {
+      return this.cart.reduce((total, product) => total + product.quantity * product.price, 0);
     },
   },
 };
 </script>
 
 <style scoped>
-/* ... your existing styles ... */
+/* ... your styles ... */
 </style>

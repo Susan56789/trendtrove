@@ -1,10 +1,9 @@
 <template>
   <div>
-    <!-- ... your existing template code ... -->
+    <div>{{ product.name }} - {{ product.price }} - Quantity: {{ product.quantity }}</div>
     <button @click="decrementQuantity">-</button>
-    <span>{{ product.quantity }}</span>
     <button @click="incrementQuantity">+</button>
-    <!-- ... your existing template code ... -->
+    <button @click="remove">Remove</button>
   </div>
 </template>
 
@@ -27,11 +26,14 @@ export default {
       // Increase the quantity and emit the updated quantity
       this.$emit('updateQuantity', this.product.quantity + 1);
     },
-    // ... your other methods ...
+    remove() {
+      // Emit an event to notify the parent component to remove this product
+      this.$emit('remove');
+    },
   },
 };
 </script>
 
 <style scoped>
-/* ... your existing styles ... */
+/* ... your styles ... */
 </style>

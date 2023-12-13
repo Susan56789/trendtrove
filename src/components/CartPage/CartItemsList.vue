@@ -4,13 +4,15 @@
       Your cart is empty.
     </div>
     <div v-else>
-      <CartItem
-        v-for="(product, index) in cart"
-        :key="index"
-        :product="product"
-        @remove="removeProduct(index)"
-        @updateQuantity="updateQuantity(index, $event)"
-      />
+      <ul>
+        <CartItem
+          v-for="(product, index) in cartData"
+          :key="index"
+          :product="product"
+          @remove="removeProduct(index)"
+          @updateQuantity="updateQuantity(index, $event)"
+        />
+      </ul>
     </div>
   </div>
 </template>
@@ -19,7 +21,7 @@
 import CartItem from './CartItem.vue';
 
 export default {
-   props: {
+  props: {
     cart: {
       type: Array,
       default: () => [],
