@@ -37,6 +37,7 @@ export default {
       priceFilter: null,
       currentPage: 1,
       itemsPerPage: 9,
+      cart: [],
     };
   },
   computed: {
