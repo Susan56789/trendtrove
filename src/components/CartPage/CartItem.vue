@@ -1,25 +1,24 @@
 <template>
-    <div>
-      <!-- Your CartItem template here -->
-      <button @click="remove">Remove</button>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      product: {
-        type: Object,
-        required: true,
-      },
+  <div>
+    <!-- Cart item details here -->
+    <button @click="removeFromCart">Remove</button>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    product: {
+      type: Object,
+      required: true,
     },
-    methods: {
-      remove() {
-        this.$emit('remove');
-      },
+  },
+  methods: {
+    removeFromCart() {
+      this.$emit('remove');
     },
-  };
-  </script>
-  
-  <style scoped></style>
-  
+  },
+};
+</script>
+
+<style></style>

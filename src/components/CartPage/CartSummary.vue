@@ -1,33 +1,32 @@
 <template>
-    <div>
-      <!-- Your CartSummary template here -->
-      <button @click="checkout">Checkout</button>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      cart: {
-        type: Array,
-        default: () => [],
-      },
-      shippingFee: {
-        type: Number,
-        default: 5,
-      },
-      totalCost: {
-        type: Number,
-        default: 0,
-      },
+  <div>
+    <!-- Cart summary details here -->
+    <button @click="checkout">Checkout</button>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    cart: {
+      type: Array,
+      default: () => [],
     },
-    methods: {
-      checkout() {
-        this.$emit('checkout');
-      },
+    shippingFee: {
+      type: Number,
+      default: 5,
     },
-  };
-  </script>
-  
-  <style scoped></style>
-  
+    totalCost: {
+      type: Number,
+      default: 0,
+    },
+  },
+  methods: {
+    checkout() {
+      this.$emit('checkout');
+    },
+  },
+};
+</script>
+
+<style></style>

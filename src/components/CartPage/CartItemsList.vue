@@ -13,9 +13,6 @@
 import CartItem from './CartItem.vue';
 
 export default {
-  components: {
-    CartItem,
-  },
   props: {
     cart: {
       type: Array,
@@ -27,10 +24,8 @@ export default {
       this.$emit('remove', index);
     },
   },
-  computed: {
-    isCartEmpty() {
-      return this.cart.length === 0;
-    },
+  components: {
+    CartItem,
   },
 };
 </script>
