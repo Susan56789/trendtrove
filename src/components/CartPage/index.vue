@@ -13,9 +13,9 @@
             <div class="text-center text-gray-500">
               Your cart is empty.
             </div>
-            <a href="/shop" class="w-full mt-4 bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded">
-              Continue Shopping
-            </a>
+            <router-link to="/shop" class="w-full mt-4 bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded">
+  Continue Shopping
+</router-link>
           </template>
           <template v-else>
             <CartSummary :cart="cart" :shipping-fee="shippingFee" :total-cost="totalCost" @checkout="checkout" />
