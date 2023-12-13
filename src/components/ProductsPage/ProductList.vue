@@ -73,12 +73,10 @@
       },
       addToCart(product) {
         this.cart.push(product);
-        // Emit an event to notify CartPage about the update
         this.$emit('cart-updated', this.cart);
       },
       addToWishlist(product) {
         this.wishlist.push(product);
-        // Emit an event to notify CartPage about the update
         this.$emit('wishlist-updated', this.wishlist);
       },
     },

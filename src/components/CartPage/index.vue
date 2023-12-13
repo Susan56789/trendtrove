@@ -6,12 +6,7 @@
       <div class="container mx-auto my-8">
         <div class="flex flex-col md:flex-row">
           <div class="md:w-2/3 pr-8">
-            <div v-if="isCartEmpty" class="text-center text-gray-500">
-              Your cart is empty.
-            </div>
-            <div v-else>
-              <CartItem v-for="(product, index) in cart" :key="index" :product="product" @remove="removeProduct" />
-            </div>
+            <CartItemsList :cart="cart" @remove="removeProduct" />
           </div>
           <div class="md:w-1/3">
             <CartSummary :cart="cart" :shipping-fee="shippingFee" :total-cost="totalCost" @checkout="checkout" />
@@ -22,13 +17,13 @@
   </template>
   
   <script>
-  import CartItem from './CartItem.vue';
+  import CartItemsList from './CartItemsList.vue';
   import CartSummary from './CartSummary.vue';
   
   export default {
     name: 'CartPage',
     components: {
-      CartItem,
+      CartItemsList,
       CartSummary,
     },
     data() {
@@ -47,6 +42,7 @@
     },
     methods: {
       removeProduct(index) {
+        this.$set(this.cart, index, { ...this.cart[index] }); // Ensure reactivity
         this.cart.splice(index, 1);
       },
       checkout() {
@@ -57,4 +53,3 @@
   </script>
   
   <style></style>
-  
