@@ -12,6 +12,7 @@ HOME
 <a href="/contact" class="bg-gradient-to-r from-red-400 to-red-500 hover:from-red-500 hover:to-red-500 text-white font-semibold px-6 py-3 rounded-md">
 Contact Us
 </a>
+
 </div>
 </div>
 </div>
