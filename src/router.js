@@ -79,7 +79,7 @@ const routes = [
     },
     {
         path: '/:pathMatch(.*)*', // 404 Not Found
-        component: () => import('./components/NotFound.vue')
+        component: () => import('./components/NotFoundPage.vue')
     },
 
 ];
