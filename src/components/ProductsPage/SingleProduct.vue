@@ -65,11 +65,11 @@ export default {
         },
         addToCart() {
             // Emit an event to add the product to the cart
-            this.KES.emit('addToCart', this.product);
+            this.$emit('addToCart', this.product);
         },
         addToWishlist() {
             // Emit an event to add the product to the wishlist
-            this.KES.emit('addToWishlist', this.product);
+            this.$emit('addToWishlist', this.product);
         },
     },
 };
