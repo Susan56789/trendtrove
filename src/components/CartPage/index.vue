@@ -6,7 +6,7 @@
       <div class="container mx-auto my-8">
         <div class="flex flex-col md:flex-row">
           <div class="md:w-2/3 pr-8">
-            <div v-if="cart.length === 0" class="text-center text-gray-500">
+            <div v-if="isCartEmpty" class="text-center text-gray-500">
               Your cart is empty.
             </div>
             <div v-else>
@@ -33,14 +33,14 @@
     },
     data() {
       return {
-        cart: [
-          { name: 'Product 1', description: 'Description 1', quantity: 1, price: 10, image: '/products/rednikeshoe.png' },
-          // ... (other product data)
-        ],
+        cart: [],
         shippingFee: 5,
       };
     },
     computed: {
+      isCartEmpty() {
+        return this.cart.length === 0;
+      },
       totalCost() {
         return this.cart.reduce((total, product) => total + product.quantity * product.price, 0);
       },
@@ -48,6 +48,9 @@
     methods: {
       removeProduct(index) {
         this.cart.splice(index, 1);
+      },
+      checkout() {
+        // Implement your checkout logic here
       },
     },
   };
