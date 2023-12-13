@@ -11,7 +11,12 @@
         <div class="md:w-1/3">
           <template v-if="isCartEmpty">
             <div class="text-center text-gray-500">
-             class="bg-green-500 text-white px-2 py-1.5 rounded-lg duration-100 hover:bg-green-700"
+             <svg class="w-12 h-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10" class="fill-current text-yellow-300" />
+  <path d="M15.5 14a2.5 2.5 0 0 1-5 0" class="stroke-current" />
+  <path d="M12 3a9 9 0 0 1 9 9" class="stroke-current" />
+  <path d="M6.5 14a2.5 2.5 0 0 1 5 0" class="stroke-current" />
+</svg>
 
             </div>
             <router-link to="/shop" class="bg-green-500 text-white mt-10 px-2 py-1.5 rounded-lg duration-100 hover:bg-green-700">
