@@ -69,22 +69,19 @@ export default {
     changePage(page) {
       this.currentPage = page;
     },
-    addToCart(product) {
-      // Check if the product is already in the cart
-      const existingCartItem = this.cart.find(item => item.id === product.id);
+   addToCart(product) {
+  const existingCartItem = this.cart.find(item => item.id === product.id);
 
-      if (existingCartItem) {
-        // If the product is already in the cart, update its quantity
-        existingCartItem.quantity++;
-      } else {
-        // If the product is not in the cart, add it with quantity 1
-        this.cart.push({ ...product, quantity: 1 });
-      }
+  if (existingCartItem) {
+    existingCartItem.quantity++;
+  } else {
+    this.cart.push({ ...product, quantity: 1 });
+  }
 
-      // Emit an event to notify the parent component about the change in the cart
-      this.$emit('updateCart', this.cart);
-    },
+  // Emit an event to notify the parent component about the change in the cart
+  this.$emit('updateCart', this.cart);
+  console.log('Cart updated:', this.cart); 
+},
   },
- 
 };
 </script>

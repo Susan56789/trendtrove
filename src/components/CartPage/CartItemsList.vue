@@ -25,28 +25,45 @@ export default {
       default: () => [],
     },
   },
+  data() {
+    return {
+      // Use a local cartData data property to manage the state internally
+      cartData: this.cart,
+    };
+  },
+  computed: {
+    isCartEmpty() {
+      return this.cartData.length === 0;
+    },
+  },
   methods: {
+    updateCart(cart) {
+      // Update the local cartData property
+      this.cartData = cart;
+      console.log('Parent cart updated:', this.cartData);
+
+      // Emit an event to notify the parent component about the change in the cart
+      this.$emit('updateCart', this.cartData);
+    },
     removeProduct(index) {
       this.$emit('remove', index);
     },
     updateQuantity(index, newQuantity) {
-  // Create a copy of the cart array
-  const updatedCart = [...this.cart];
+      // Create a copy of the cart array
+      const updatedCart = [...this.cartData];
 
-  // Update the quantity of the product in the copied cart
-  updatedCart[index].quantity = newQuantity;
+      // Update the quantity of the product in the copied cart
+      updatedCart[index].quantity = newQuantity;
 
-  // Emit an event to notify the parent component about the change in the cart
-  this.$emit('updateCart', updatedCart);
-},
+      // Update the local cartData property
+      this.cartData = updatedCart;
 
+      // Emit an event to notify the parent component about the change in the cart
+      this.$emit('updateCart', this.cartData);
+    },
   },
   components: {
     CartItem,
   },
 };
 </script>
-
-<style scoped>
-/* ... your existing styles ... */
-</style>
