@@ -90,6 +90,7 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
+    mode: 'history', // Use 'history' mode if you want clean URLs
 });
 
 export default router;
