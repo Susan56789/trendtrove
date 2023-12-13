@@ -70,8 +70,8 @@ export default {
       this.currentPage = page;
     },
     addToCart(product) {
-      this.cart.push({ ...product, quantity: 1 });
-    },
+    this.$emit('addToCart', { ...product, quantity: 1 });
+  },
   },
 };
 </script>

@@ -42,12 +42,26 @@ export default {
   },
   methods: {
     removeProduct(index) {
-      this.$set(this.cart, index, { ...this.cart[index] });
-      this.cart.splice(index, 1);
-    },
-    checkout() {
-      // Implement your checkout logic here
-    },
+    this.$set(this.cart, index, { ...this.cart[index] });
+    this.cart.splice(index, 1);
+  },
+   addToCart(product) {
+    const existingProductIndex = this.cart.findIndex((p) => p.id === product.id);
+
+    if (existingProductIndex !== -1) {
+      // If the product already exists in the cart, increase its quantity
+      this.$set(this.cart, existingProductIndex, {
+        ...this.cart[existingProductIndex],
+        quantity: this.cart[existingProductIndex].quantity + 1,
+      });
+    } else {
+      // If the product is not in the cart, add it with quantity 1
+      this.cart.push({ ...product, quantity: 1 });
+    }
+  },
+  checkout() {
+    // Implement your checkout logic here
+  },
   },
 };
 </script>
