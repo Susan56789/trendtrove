@@ -78,7 +78,7 @@ const routes = [
         ]
     },
     {
-        path: '/:catchAll(.*)',
+        path: '*',
         component: () => import('./components/NotFoundPage.vue')
     },
 
