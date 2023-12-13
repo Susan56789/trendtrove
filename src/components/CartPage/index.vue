@@ -44,6 +44,10 @@ export default {
     removeProduct(index) {
       this.$set(this.cart, index, { ...this.cart[index] });
       this.cart.splice(index, 1);
+    },addToCart(product) {
+      // Ensure the cart is being updated here as well.
+      // This method should be correctly implemented to update the 'cart' data property.
+      this.cart.push({ ...product, quantity: 1 });
     },
     checkout() {
       // Implement your checkout logic here

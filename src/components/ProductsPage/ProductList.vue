@@ -69,7 +69,7 @@ export default {
       this.currentPage = page;
     },
     addToCart(product) {
-      this.$emit('addToCart', product);
+      this.cart.push({ ...product, quantity: 1 });
     },
   },
 };
