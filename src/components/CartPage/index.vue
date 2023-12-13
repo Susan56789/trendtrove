@@ -11,9 +11,10 @@
         <div class="md:w-1/3">
           <template v-if="isCartEmpty">
             <div class="text-center text-gray-500">
-              Your cart is empty.
+             class="bg-green-500 text-white px-2 py-1.5 rounded-lg duration-100 hover:bg-green-700"
+
             </div>
-            <router-link to="/shop" class="w-full mt-4 bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded">
+            <router-link to="/shop" class="bg-green-500 text-white mt-10 px-2 py-1.5 rounded-lg duration-100 hover:bg-green-700">
   Continue Shopping
 </router-link>
           </template>
