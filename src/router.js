@@ -73,14 +73,15 @@ const routes = [
                 path: "/category/:id",
                 component: () => import("./components/ProductCategories/index.vue"),
                 props: true
+            },
+            {
+                path: '/:pathMatch(.*)*', // 404 Not Found
+                component: () => import('./components/NotFoundPage.vue')
             }
 
         ]
     },
-    {
-        path: '/:pathMatch(.*)*', // 404 Not Found
-        component: () => import('./components/NotFoundPage.vue')
-    },
+    
 
 ];
 
