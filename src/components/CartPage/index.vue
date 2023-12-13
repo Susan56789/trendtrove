@@ -6,7 +6,7 @@
     <div class="container mx-auto my-8">
       <div class="flex flex-col md:flex-row">
         <div class="md:w-2/3 pr-8">
-          <CartItemsList :cart="cart" @remove="removeProduct" />
+          <CartItemsList :cart="cart" @updateCart="updateCart"  />
         </div>
         <div class="md:w-1/3">
           <template v-if="isCartEmpty">
@@ -51,9 +51,8 @@ name: 'CartPage',
     },
   },
   methods: {
-    removeProduct(index) {
-      this.$set(this.cart, index, { ...this.cart[index] }); // Ensure reactivity
-      this.cart.splice(index, 1);
+     updateCart(cart) {
+      this.cart = cart;
     },
     checkout() {
       // Implement your checkout logic here
