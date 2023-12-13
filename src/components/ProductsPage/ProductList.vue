@@ -62,6 +62,14 @@ export default {
         },
     },
     methods: {
+        addToCart(product) {
+      this.cart.push(product);
+      console.log('Product added to cart:', product);
+    },
+    addToWishlist(product) {
+      this.wishlist.push(product);
+      console.log('Product added to wishlist:', product);
+    },
         filterProducts(category, price) {
             this.categoryFilter = category;
             this.priceFilter = price;
