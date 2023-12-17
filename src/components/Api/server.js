@@ -20,8 +20,19 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-app.get('/api/data', (req, res) => {
-    connection.query('SELECT * FROM products', (error, results) => {
+app.get('/api/products', (req, res) => {
+    // Perform SQL query to fetch data from the database
+    const query = 'SELECT * FROM products';
+    connection.query(query, (error, results) => {
+        if (error) throw error;
+        res.json(results);
+    });
+});
+
+app.get('/api/product-ratings', (req, res) => {
+    // Perform SQL query to fetch data from the database
+    const query = 'SELECT * FROM ratings';
+    connection.query(query, (error, results) => {
         if (error) throw error;
         res.json(results);
     });

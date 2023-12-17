@@ -7,12 +7,8 @@
       <ProductFilter @filterProducts="filterProducts" />
     </div>
     <div class="grid grid-cols-3 gap-4 p-4">
-      <SingleProduct
-        v-for="product in paginatedProducts"
-        :key="product.id"
-        :product="product"
-        @addToCart="addToCart"
-      />
+      <SingleProduct v-for="product in paginatedProducts" :key="product.ProductID" :product="product"
+        @addToCart="addToCart" />
     </div>
     <ShopPagination :totalPages="totalPages" @changePage="changePage" />
   </div>
@@ -22,7 +18,7 @@
 import SingleProduct from './SingleProduct.vue';
 import ProductFilter from './ProductFilter.vue';
 import ShopPagination from './ShopPagination.vue';
-import products from './products.json';
+import axios from 'axios';
 
 export default {
   components: {
@@ -32,35 +28,51 @@ export default {
   },
   data() {
     return {
-      products: products,
+      products: [],
       categoryFilter: null,
       priceFilter: null,
       currentPage: 1,
       itemsPerPage: 9,
       cart: [],
+      ratings: [],
     };
+  },
+  mounted() {
+    this.fetchProducts();
   },
   computed: {
     filteredProducts() {
-      let filteredProducts = this.products;
+      let filteredProducts = this.products || [];
       if (this.categoryFilter) {
         filteredProducts = filteredProducts.filter(product => product.category === this.categoryFilter);
       }
-      if (this.priceFilter) {
+      if (this.priceFilter !== null && this.priceFilter !== undefined) {
         filteredProducts = filteredProducts.filter(product => product.price <= this.priceFilter);
       }
       return filteredProducts;
     },
     totalPages() {
-      return Math.ceil(this.filteredProducts.length / this.itemsPerPage);
+      return Math.ceil((this.filteredProducts || []).length / this.itemsPerPage);
     },
     paginatedProducts() {
       const startIndex = (this.currentPage - 1) * this.itemsPerPage;
       const endIndex = startIndex + this.itemsPerPage;
-      return this.filteredProducts.slice(startIndex, endIndex);
+      return (this.filteredProducts || []).slice(startIndex, endIndex);
     },
   },
   methods: {
+    async fetchProducts() {
+      try {
+        const response = await axios.get('http://localhost:3000/api/products');
+        this.products = response.data || [];
+        const resp = await axios.get('http://localhost:3000/api/product-ratings');
+        this.ratings = resp.data || [];
+        console.log(this.ratings)
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    },
     filterProducts(category, price) {
       this.categoryFilter = category;
       this.priceFilter = price;
@@ -69,19 +81,19 @@ export default {
     changePage(page) {
       this.currentPage = page;
     },
-   addToCart(product) {
-  const existingCartItem = this.cart.find(item => item.id === product.id);
+    addToCart(product) {
+      const existingCartItem = (this.cart || []).find(item => item.id === product.id);
 
-  if (existingCartItem) {
-    existingCartItem.quantity++;
-  } else {
-    this.cart.push({ ...product, quantity: 1 });
-  }
+      if (existingCartItem) {
+        existingCartItem.quantity++;
+      } else {
+        this.cart.push({ ...(product || {}), quantity: 1 });
+      }
 
-  // Emit an event to notify the parent component about the change in the cart
-  this.$emit('updateCart', this.cart);
-  console.log('Cart updated:', this.cart); 
-},
+      // Emit an event to notify the parent component about the change in the cart
+      this.$emit('updateCart', this.cart);
+      console.log('Cart updated:', this.cart);
+    },
   },
 };
 </script>
