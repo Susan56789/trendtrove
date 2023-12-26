@@ -65,9 +65,6 @@ export default {
       try {
         const response = await axios.get('http://localhost:3000/api/products');
         this.products = response.data || [];
-        const resp = await axios.get('http://localhost:3000/api/product-ratings');
-        this.ratings = resp.data || [];
-        console.log(this.ratings)
 
       } catch (error) {
         console.error('Error fetching data:', error);

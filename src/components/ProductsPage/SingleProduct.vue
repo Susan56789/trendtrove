@@ -16,9 +16,7 @@
         <h2 class="text-slate-700">{{ product.ProductName }}</h2>
         <p class="mt-1 text-sm text-slate-400">{{ product.Description }}</p>
         <div class="mt-3 flex items-end justify-between">
-          <p v-if="product.discountedPrice" class="text-gray-500 line-through">KES. {{ product.Price }} </p>
-          <p v-if="product.discountedPrice" class="text-green-500 font-semibold">KES. {{
-            product.DiscountedPrice }}</p>
+          <p v-if="product.DiscountedPrice" class="text-green-500 font-semibold">KES. {{ product.DiscountedPrice }} </p>
           <p v-else class="text-green-500 font-semibold">KES. {{ product.Price }}</p>
 
           <div

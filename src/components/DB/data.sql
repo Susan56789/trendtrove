@@ -16,25 +16,27 @@ CREATE TABLE Products (
     CategoryID INT,
     ProductName VARCHAR(255) NOT NULL,
     Price INT NOT NULL,
+    DiscountedPrice INT,
+    Rating DECIMAL(3, 2),
     ImagePath VARCHAR(255), -- Store the path to the image on the local file system
     CONSTRAINT fk_category
         FOREIGN KEY (CategoryID)
         REFERENCES ProductCategories(CategoryID)
 );
 
-INSERT INTO Products (ProductID,CategoryID, ProductName, Price, ImagePath)
-VALUES (1,1, 'Red Nike Shoes', 6000, '/products/rednikeshoe.png'),
-(2,4, 'Brown Lady Handbag', 4995, '/products/brownhandbag.png'),
-(3,9, '32 inch LG Smart TV', 13999, '/products/lgtv.png'),
-(4,6, 'Green fancy dress', 1250, '/products/greendress.png'),
-(5,2,'HP Laptop', 29999, '/products/HPLaptop.png'),
-(6,1, 'Gey Nike Shoes', 6999, '/products/greynike.png'),
-(7,4, 'Black Lady Handbag', 2995, '//products/blackhandbag.png'),
-(8,9, '42 inch LG Smart TV', 19999, '/products/lgtv.png'),
-(9,6, 'Red fancy dress', 1950, '/products/redfancydress.png'),
-(10,1, 'Red blue floral heels', 3999, '/products/floralheels.png'),
-(11,9, '42 inch Android Smart TV', 39999, '/products/lgtv.png'),
-(12,5, 'Samsung Galaxy Watch 5', 25000, '/products/Samsung-Galaxy-Watch-5-B.jpg')
+INSERT INTO Products (ProductID,CategoryID, ProductName, Price,DiscountedPrice,Rating, ImagePath)
+VALUES (1,1, 'Red Nike Shoes', 6000,5899,4.9, '/products/rednikeshoe.png'),
+(2,4, 'Brown Lady Handbag', 4995,0,3.5, '/products/brownhandbag.png'),
+(3,9, '32 inch LG Smart TV', 13999,13499,4.3, '/products/lgtv.png'),
+(4,6, 'Green fancy dress', 1250,0,5.0, '/products/greendress.png'),
+(5,2,'HP Laptop', 29999,0,3.2, '/products/HPLaptop.png'),
+(6,1, 'Gey Nike Shoes', 6999,6499,4.0, '/products/greynike.png'),
+(7,4, 'Black Lady Handbag', 2995,0,4.2, '//products/blackhandbag.png'),
+(8,9, '42 inch LG Smart TV', 19999,0,4.7, '/products/lgtv.png'),
+(9,6, 'Red fancy dress', 1950,0,3.9, '/products/redfancydress.png'),
+(10,1, 'Red blue floral heels', 3999,0,4.8, '/products/floralheels.png'),
+(11,9, '42 inch Android Smart TV', 39999,35999,4.5, '/products/lgtv.png'),
+(12,5, 'Samsung Galaxy Watch 5', 25000,0,4.7, '/products/Samsung-Galaxy-Watch-5-B.jpg')
 ;
 
 
