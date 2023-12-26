@@ -12,7 +12,7 @@
               <div class="image-container relative flex items-end overflow-hidden rounded-xl">
                 <button v-if="product.amountSaved > 0"
                   class="save-button sm:absolute sm:top-0 sm:right-0 bg-green-500 text-white p-2 duration-100 hover:bg-green-700 rounded-full">
-                  SAVE<br />{{ product.amountSaved }}
+                  SAVE<br />{{ formatNumber(product.amountSaved) }}
                 </button>
                 <img :src="product.ImagePath" :alt="product.ProductName"
                   class="mx-auto w-full h-full object-cover mb-2" />
@@ -28,7 +28,7 @@
               <h2 class="text-slate-700 text-xs">{{ product.ProductName }}</h2>
               <p class="mt-1 text-xxs text-slate-400">{{ product.Description }}</p>
               <div class="mt-2 flex items-end justify-between">
-                <p class="text-green-500 font-semibold text-xxs">KES. {{ product.DiscountedPrice }}</p>
+                <p class="text-green-500 font-semibold text-xxs">KES. {{ formatNumber(product.DiscountedPrice) }}</p>
                 <div
                   class="flex items-center space-x-1.5 rounded-lg bg-indigo-500 px-2 py-1 text-white duration-100 hover:bg-indigo-600">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -84,6 +84,9 @@ export default {
           console.error('Invalid Price or DiscountedPrice for a product:', product);
         }
       });
+    }, formatNumber(value) {
+      // Use toLocaleString to format the number with comma separators
+      return value.toLocaleString();
     },
 
     addToCart(product) {
