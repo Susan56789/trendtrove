@@ -28,6 +28,15 @@ app.get('/api/products', (req, res) => {
         res.json(results);
     });
 });
+app.get('/api/categories', (req, res) => {
+    // Perform SQL query to fetch data from the database
+    const query = 'SELECT * FROM ProductCategories';
+    connection.query(query, (error, results) => {
+        if (error) throw error;
+        console.log(results)
+        res.json(results);
+    });
+});
 
 app.get('/api/product-ratings', (req, res) => {
     // Perform SQL query to fetch data from the database
