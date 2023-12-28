@@ -4,12 +4,27 @@ USE trendstore;
 -- Table: ProductCategories
 CREATE TABLE ProductCategories (
     CategoryID INT PRIMARY KEY,
-    CategoryName VARCHAR(255) NOT NULL
+    CategoryName VARCHAR(255) NOT NULL,
+    Cat_Description varchar(1000),
+    InmageUrl VARCHAR(255)
 );
-INSERT INTO ProductCategories (CategoryID, CategoryName)
-VALUES(1,'Shoes'),(2,'Laptops'),(3,'Phones'),(4,'Handbags'),(5,'Watches'),(6,'Ladies wear'),(7,'Accessories'),(8,'Mens wear');
-INSERT INTO ProductCategories (CategoryID, CategoryName)
-VALUES(9,'TVs');
+
+INSERT INTO ProductCategories (CategoryID, CategoryName,Cat_Description, InmageUrl)
+VALUES(1,'Shoes','Step into style with our diverse collection of footwear in the shoe category.
+ Discover a world where fashion meets comfort, where every step is a statement. 
+ From casual sneakers that redefine street style to elegant heels that elevate your evening look,
+ our shoe category has something for every occasion.','/products/shoe.png'),
+ (2,'Laptops','Explore our Laptops 
+ category and elevate your digital lifestyle with devices 
+ that empower you to work, play, and create with unparalleled efficiency.','/products/Laptops.png'),
+ (3,'Phones','Elevate your communication experience and embrace the future of mobility with our Phones category. Explore, choose, and embark on a journey of technological excellence with devices that redefine the way we connect in the digital age','/products/phones.png'),
+ (4,'Handbags','Indulge in the luxurious textures of premium leather or opt for the versatility of trendy canvas and fabric designs. Our handbags come in a spectrum of colors, patterns, and styles, ensuring there is something for every fashion-forward individual.','/products/Handbags.png'),
+ (5,'Watches','Whether you seek a watch that makes a bold statement or one that discreetly complements your style, our Watches category is a curated journey through the world of horology. Explore the art of timekeeping and find the perfect wrist companion that suits your lifestyle.','/products/Watches.png'),
+ (6,'Ladies wear','Browse our Ladies Wear collection today and embrace the fusion of fashion, comfort, and confidence. Your journey to timeless style begins here.','/products/ladywear.png'),
+ (7,'Accessories','Enhance your style and functionality with our diverse range of accessories. Discover the perfect accents to complement your outfits and lifestyle. From timeless classics to trendy essentials, our Accessories Collection has something for everyone.','/products/Accessories.png'),
+ (8,'Mens wear','Shop now and redefine your wardrobe with our meticulously curated Mens Wear collection. Your journey to sartorial excellence begins here.','/products/menwear.png'),
+ (9,'TVs','Upgrade your home entertainment setup with a TV from our curated collection and embark on a journey of visual delight and unparalleled entertainment. Browse our selection today and redefine the way you experience television.','/products/Tvs.png');
+
 -- Table: Products
 CREATE TABLE Products (
     ProductID INT PRIMARY KEY,
@@ -17,6 +32,7 @@ CREATE TABLE Products (
     ProductName VARCHAR(255) NOT NULL,
     Price INT NOT NULL,
     DiscountedPrice INT,
+    Prod_Description Varchar(1000),
     Rating DECIMAL(3, 2),
     ImagePath VARCHAR(255), -- Store the path to the image on the local file system
     CONSTRAINT fk_category

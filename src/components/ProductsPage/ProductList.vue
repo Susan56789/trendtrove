@@ -4,7 +4,8 @@
       <h1 class="text-center text-2xl font-bold text-gray-800">All Products</h1>
     </div>
     <div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between">
-      <ProductFilter @filterProducts="filterProducts" />
+      <ProductFilter v-if="categories.length > 0" :categories="categories" @filterProducts="filterProducts" />
+
     </div>
     <div class="grid grid-cols-3 gap-4 p-4">
       <SingleProduct v-for="product in paginatedProducts" :key="product.ProductID" :product="product"
@@ -29,6 +30,7 @@ export default {
   data() {
     return {
       products: [],
+      categories: [],
       categoryFilter: null,
       priceFilter: null,
       currentPage: 1,
@@ -38,7 +40,7 @@ export default {
     };
   },
   mounted() {
-    this.fetchProducts();
+    this.fetchData();
   },
   computed: {
     filteredProducts() {
@@ -61,11 +63,15 @@ export default {
     },
   },
   methods: {
-    async fetchProducts() {
+    async fetchData() {
       try {
-        const response = await axios.get('http://localhost:3000/api/products');
-        this.products = response.data || [];
+        const [productsResponse, categoriesResponse] = await Promise.all([
+          axios.get('http://localhost:3000/api/products'),
+          axios.get('http://localhost:3000/api/categories'),
+        ]);
 
+        this.products = productsResponse.data || [];
+        this.categories = categoriesResponse.data || [];
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -87,7 +93,6 @@ export default {
         this.cart.push({ ...(product || {}), quantity: 1 });
       }
 
-      // Emit an event to notify the parent component about the change in the cart
       this.$emit('updateCart', this.cart);
       console.log('Cart updated:', this.cart);
     },
