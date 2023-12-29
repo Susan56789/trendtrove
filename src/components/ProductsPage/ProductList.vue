@@ -4,12 +4,20 @@
       <h1 class="text-center text-2xl font-bold text-gray-800">All Products</h1>
     </div>
     <div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between">
-      <ProductFilter v-if="categories.length > 0" :categories="categories" @filterProducts="filterProducts" />
+      <ProductFilter
+      v-if="categories.length > 0"
+      :categories="categories"
+      @filterProducts="updateFilteredProducts"
+    />
 
     </div>
     <div class="grid grid-cols-3 gap-4 p-4">
-      <SingleProduct v-for="product in paginatedProducts" :key="product.ProductID" :product="product"
-        @addToCart="addToCart" />
+      <SingleProduct
+        v-for="product in paginatedProducts"
+        :key="product.ProductID"
+        :product="product"
+        @addToCart="addToCart"
+      />
     </div>
     <ShopPagination :totalPages="totalPages" @changePage="changePage" />
   </div>
@@ -31,6 +39,7 @@ export default {
     return {
       products: [],
       categories: [],
+      filteredProducts: [],
       categoryFilter: null,
       priceFilter: null,
       currentPage: 1,
@@ -43,23 +52,31 @@ export default {
     this.fetchData();
   },
   computed: {
-    filteredProducts() {
+    filteredProductsList() {
       let filteredProducts = this.products || [];
+
+      // Use the emitted filtered products if available
+      if (this.categoryFilter !== null || this.priceFilter !== null) {
+        filteredProducts = this.$parent.filteredProducts || [];
+      }
+
       if (this.categoryFilter) {
         filteredProducts = filteredProducts.filter(product => product.category === this.categoryFilter);
       }
+
       if (this.priceFilter !== null && this.priceFilter !== undefined) {
         filteredProducts = filteredProducts.filter(product => product.price <= this.priceFilter);
       }
+
       return filteredProducts;
     },
     totalPages() {
-      return Math.ceil((this.filteredProducts || []).length / this.itemsPerPage);
+      return Math.ceil((this.filteredProductsList || []).length / this.itemsPerPage);
     },
     paginatedProducts() {
       const startIndex = (this.currentPage - 1) * this.itemsPerPage;
       const endIndex = startIndex + this.itemsPerPage;
-      return (this.filteredProducts || []).slice(startIndex, endIndex);
+      return (this.filteredProductsList || []).slice(startIndex, endIndex);
     },
   },
   methods: {
