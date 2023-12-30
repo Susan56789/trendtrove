@@ -28,7 +28,7 @@ export default {
     },
     computed: {
         uniqueCategories() {
-            return [...new Set(this.$parent.products.map((product) => product.CategoryID))];
+            return [...new Set(this.$parent.products.map((product) => product.CategoryName))];
         },
     },
     methods: {
@@ -43,7 +43,7 @@ export default {
         filterProducts() {
             const filteredProducts = this.$parent.products.filter((product) => {
                 const categoryMatch =
-                    this.selectedCategory === '' || product.CategoryID === this.selectedCategory;
+                    this.selectedCategory === '' || product.CategoryName === this.selectedCategory;
                 const priceMatch = this.selectedPrice === null || product.Price <= this.selectedPrice;
                 return categoryMatch && priceMatch;
             });

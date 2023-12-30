@@ -4,20 +4,12 @@
       <h1 class="text-center text-2xl font-bold text-gray-800">All Products</h1>
     </div>
     <div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between">
-      <ProductFilter
-      v-if="categories.length > 0"
-      :categories="categories"
-      @filterProducts="updateFilteredProducts"
-    />
+      <ProductFilter v-if="categories.length > 0" :categories="categories" @filterProducts="updateFilteredProducts" />
 
     </div>
     <div class="grid grid-cols-3 gap-4 p-4">
-      <SingleProduct
-        v-for="product in paginatedProducts"
-        :key="product.ProductID"
-        :product="product"
-        @addToCart="addToCart"
-      />
+      <SingleProduct v-for="product in paginatedProducts" :key="product.ProductID" :product="product"
+        @addToCart="addToCart" />
     </div>
     <ShopPagination :totalPages="totalPages" @changePage="changePage" />
   </div>
@@ -61,11 +53,11 @@ export default {
       }
 
       if (this.categoryFilter) {
-        filteredProducts = filteredProducts.filter(product => product.category === this.categoryFilter);
+        filteredProducts = filteredProducts.filter(product => product.CategoryName === this.categoryFilter);
       }
 
       if (this.priceFilter !== null && this.priceFilter !== undefined) {
-        filteredProducts = filteredProducts.filter(product => product.price <= this.priceFilter);
+        filteredProducts = filteredProducts.filter(product => product.Price <= this.priceFilter);
       }
 
       return filteredProducts;
@@ -93,16 +85,16 @@ export default {
         console.error('Error fetching data:', error);
       }
     },
-    filterProducts(category, price) {
-      this.categoryFilter = category;
-      this.priceFilter = price;
+    filterProducts(CategoryName, Price) {
+      this.categoryFilter = CategoryName;
+      this.priceFilter = Price;
       this.currentPage = 1;
     },
     changePage(page) {
       this.currentPage = page;
     },
     addToCart(product) {
-      const existingCartItem = (this.cart || []).find(item => item.id === product.id);
+      const existingCartItem = (this.cart || []).find(item => item.id === product.ProductID);
 
       if (existingCartItem) {
         existingCartItem.quantity++;

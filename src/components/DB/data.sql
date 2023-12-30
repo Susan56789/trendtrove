@@ -29,6 +29,7 @@ VALUES(1,'Shoes','Step into style with our diverse collection of footwear in the
 CREATE TABLE Products (
     ProductID INT PRIMARY KEY,
     CategoryID INT,
+    CategoryName VARCHAR(255),
     ProductName VARCHAR(255) NOT NULL,
     Price INT NOT NULL,
     DiscountedPrice INT,
@@ -39,6 +40,8 @@ CREATE TABLE Products (
         FOREIGN KEY (CategoryID)
         REFERENCES ProductCategories(CategoryID)
 );
+
+DROP TABLE Products;
 
 INSERT INTO Products (ProductID,CategoryID, ProductName, Price,DiscountedPrice,Rating, ImagePath)
 VALUES (1,1, 'Red Nike Shoes', 6000,5899,4.9, '/products/rednikeshoe.png'),
@@ -54,7 +57,21 @@ VALUES (1,1, 'Red Nike Shoes', 6000,5899,4.9, '/products/rednikeshoe.png'),
 (11,9, '42 inch Android Smart TV', 39999,35999,4.5, '/products/lgtv.png'),
 (12,5, 'Samsung Galaxy Watch 5', 25000,0,4.7, '/products/Samsung-Galaxy-Watch-5-B.jpg')
 ;
+SELECT * From Products;
+-- Create a trigger to automatically update categoryName in products table
+DELIMITER //
+CREATE TRIGGER update_category_name
+BEFORE INSERT ON Products
+FOR EACH ROW
+BEGIN
+    SET NEW.CategoryName = (SELECT CategoryName FROM ProductCategories WHERE CategoryID = NEW.CategoryID);
+END;
+//
+DELIMITER ;
 
+
+
+ 
 
 -- Table: Customers
 CREATE TABLE Customers (

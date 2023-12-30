@@ -12,16 +12,16 @@ const cors = require('cors');
 app.use(cors());
 
 const connection = mysql.createConnection({
-    host: 'localhost', // your database server name
-    user: 'root', // your database username
-    password: '', // your database password
-    database: 'trendstore' // your database name
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'trendstore'
 });
 
 connection.connect();
 
 app.get('/api/products', (req, res) => {
-    // Perform SQL query to fetch data from the database
+
     const query = 'SELECT * FROM products';
     connection.query(query, (error, results) => {
         if (error) throw error;
@@ -29,16 +29,14 @@ app.get('/api/products', (req, res) => {
     });
 });
 
-// Endpoint to get products by category ID
+
 app.get('/api/category/id', (req, res) => {
-    // Extract CategoryID from query parameters
+
     const categoryId = parseInt(req.query.CategoryID);
 
     if (isNaN(categoryId)) {
         return res.status(400).json({ error: 'Invalid CategoryID' });
     }
-
-    // Perform SQL query to fetch products based on CategoryID
     const query = 'SELECT * FROM products WHERE CategoryID = ?';
     connection.query(query, [categoryId], (error, results) => {
         if (error) {
@@ -51,7 +49,6 @@ app.get('/api/category/id', (req, res) => {
 });
 
 app.get('/api/categories', (req, res) => {
-    // Perform SQL query to fetch data from the database
     const query = 'SELECT * FROM ProductCategories';
     connection.query(query, (error, results) => {
         if (error) throw error;
@@ -60,7 +57,7 @@ app.get('/api/categories', (req, res) => {
 });
 
 app.get('/api/product-ratings', (req, res) => {
-    // Perform SQL query to fetch data from the database
+
     const query = 'SELECT * FROM ratings';
     connection.query(query, (error, results) => {
         if (error) throw error;
