@@ -28,11 +28,7 @@ const routes = [
                 path: '/shop',
                 component: () => import('./components/ProductsPage/index.vue')
             },
-            {
-                path: '/product/:id',
-                component: () => import('./components/ProductPage/index.vue'),
-                props: true
-            },
+
             {
                 path: '/checkout',
                 component: () => import('./components/CheckoutPage/index.vue')
@@ -81,7 +77,7 @@ const routes = [
 
         ]
     },
-    
+
 
 ];
 
