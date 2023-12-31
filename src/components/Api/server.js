@@ -65,6 +65,96 @@ app.get('/api/product-ratings', (req, res) => {
     });
 });
 
+// Endpoint to add an item to the wishlist
+app.post('/addToWishlist', (req, res) => {
+    const product = req.body;
+
+    // Extract relevant properties from the product object
+    const { ProductName, Prod_Description, ImagePath, Rating, DiscountedPrice, Price } = product;
+
+    // Construct the SQL query with explicit columns
+    const sql = 'INSERT INTO wishlist (ProductName, Prod_Description, ImagePath, Rating, DiscountedPrice, Price) VALUES (?, ?, ?, ?, ?, ?)';
+
+    // Execute the query with parameters
+    connection.query(sql, [ProductName, Prod_Description, ImagePath, Rating, DiscountedPrice, Price], (error, results) => {
+        if (error) throw error;
+        res.send(results);
+    });
+});
+app.get('/api/getWishlistItems', (req, res) => {
+
+    const query = 'SELECT * FROM wishlist';
+    connection.query(query, (error, results) => {
+        if (error) throw error;
+        res.json(results);
+    });
+});
+// Endpoint to remove an item from the wishlist
+app.delete('/removeFromWishlist/:itemId', (req, res) => {
+    const itemId = req.params.itemId;
+    connection.query('DELETE FROM wishlist WHERE id = ?', itemId, (error, results) => {
+        if (error) throw error;
+        res.send(results);
+    });
+});
+// Endpoint to add an item to the cart
+app.post('/addToCart', (req, res) => {
+    const product = req.body;
+
+    // Extract relevant properties from the product object
+    const { ProductName, Prod_Description, ImagePath, Rating, DiscountedPrice, Price } = product;
+
+    // Construct the SQL query with explicit columns
+    const sql = 'INSERT INTO cart (ProductName, Prod_Description, ImagePath, Rating, DiscountedPrice, Price) VALUES (?, ?, ?, ?, ?, ?)';
+
+    // Execute the query with parameters
+    connection.query(sql, [ProductName, Prod_Description, ImagePath, Rating, DiscountedPrice, Price], (error, results) => {
+        if (error) throw error;
+        res.send(results);
+    });
+});
+
+app.get('/api/getCartItems', (req, res) => {
+
+    const query = 'SELECT * FROM cart';
+    connection.query(query, (error, results) => {
+        if (error) throw error;
+        res.json(results);
+    });
+});
+
+// Endpoint to remove an item from the cart
+app.delete('/api/removeCartItem/:itemId', (req, res) => {
+    const itemId = req.params.itemId;
+
+    // Remove the item from the database
+    const query = 'DELETE FROM cart WHERE id = ?';
+    connection.query(query, [itemId], (error, results) => {
+        console.log(results);
+        if (error) {
+            console.error(error);
+            res.status(500).send('Internal Server Error');
+        } else {
+            res.status(200).send('Item removed from the cart');
+        }
+    });
+});
+
+// Endpoint to clear the entire cart
+app.delete('/api/clearCart', (req, res) => {
+    // Clear all items from the cart in the database
+    const query = 'DELETE FROM cart';
+    connection.query(query, (error, results) => {
+        console.log(results);
+        if (error) {
+            console.error(error);
+            res.status(500).send('Internal Server Error');
+        } else {
+            res.status(200).send('Cart cleared');
+        }
+    });
+});
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });

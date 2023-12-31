@@ -70,7 +70,35 @@ END;
 DELIMITER ;
 
 
-
+-- Create a table for wishlist items
+CREATE TABLE wishlist (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  ProductID INT,
+  ProductName VARCHAR(255) ,
+  Prod_Description TEXT,
+  ImagePath VARCHAR(255),
+  Rating DECIMAL(3, 2),
+Price INT,
+DiscountedPrice INT,
+  CONSTRAINT fk_products
+        FOREIGN KEY (ProductID)
+        REFERENCES Products(ProductID)
+);
+DROP TABLE wishlist;
+-- Create a table for cart items
+CREATE TABLE cart (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  ProductID INT,
+  ProductName VARCHAR(255),
+  Prod_Description TEXT,
+  ImagePath VARCHAR(255),
+  Rating DECIMAL(3, 2),
+  Price INT,
+DiscountedPrice INT,
+  CONSTRAINT fk_products
+        FOREIGN KEY (ProductID)
+        REFERENCES Products(ProductID)
+);
  
 
 -- Table: Customers

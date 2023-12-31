@@ -14,7 +14,7 @@
           </div>
         </div>
         <h2 class="text-slate-700">{{ product.ProductName }}</h2>
-        <p class="mt-1 text-sm text-slate-400">{{ product.Description }}</p>
+        <!-- <p class="mt-1 text-sm text-slate-400">{{ product.prod_Description }}</p> -->
         <div class="mt-3 flex items-end justify-between">
           <p v-if="product.DiscountedPrice" class="text-green-500 font-semibold">KES. {{
             formatNumber(product.DiscountedPrice) }} </p>
@@ -27,9 +27,9 @@
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
             </svg>
-            <button @click="addToCart" class="text-sm">Add to Cart</button>
+            <button @click="addToCartButton" class="text-sm"> Add to Cart</button>
           </div>
-          <button @click="addToWishlist"
+          <button @click="addToWishlistButton"
             class="bg-green-500 text-white px-2 py-1.5 rounded-lg duration-100 hover:bg-green-700">
             Add to Wishlist
           </button>
@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   props: {
     product: {
@@ -50,16 +52,45 @@ export default {
   },
   methods: {
     formatNumber(value) {
-      // Use toLocaleString to format the number with comma separators
+
       return value.toLocaleString();
     },
-    addToCart() {
-      this.$emit('addToCart', this.product);
+    addToWishlistButton() {
+      this.addToWishlist(this.product);
     },
-    addToWishlist() {
-      this.$emit('addToWishlist', this.product);
+    addToCartButton() {
+      this.addToCart(this.product);
+    },
+    addToWishlist(product) {
+      // Check if product is defined and has the required properties
+      if (product && product.ProductName && product.Price) {
+        axios.post('http://localhost:3000/addToWishlist', product)
+          .then(response => {
+            console.log(response.data);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      } else {
+        console.error('Invalid product data for wishlist:', product);
+      }
+    },
+    addToCart(product) {
+      // Check if product is defined and has the required properties
+      if (product && product.ProductName && product.Price) {
+        axios.post('http://localhost:3000/addToCart', product)
+          .then(response => {
+            console.log(response.data);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      } else {
+        console.error('Invalid product data for cart:', product);
+      }
     },
   },
+
 };
 </script>
 
