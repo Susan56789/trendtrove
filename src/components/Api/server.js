@@ -127,7 +127,6 @@ app.get('/api/getCartItems', (req, res) => {
 app.delete('/api/removeCartItem/:itemId', (req, res) => {
     const itemId = req.params.itemId;
 
-    // Remove the item from the database
     const query = 'DELETE FROM cart WHERE id = ?';
     connection.query(query, [itemId], (error, results) => {
         console.log(results);
@@ -142,7 +141,7 @@ app.delete('/api/removeCartItem/:itemId', (req, res) => {
 
 // Endpoint to clear the entire cart
 app.delete('/api/clearCart', (req, res) => {
-    // Clear all items from the cart in the database
+
     const query = 'DELETE FROM cart';
     connection.query(query, (error, results) => {
         console.log(results);
@@ -152,6 +151,25 @@ app.delete('/api/clearCart', (req, res) => {
         } else {
             res.status(200).send('Cart cleared');
         }
+    });
+});
+
+// API endpoint to update product quantity
+app.put('/products/:productId', (req, res) => {
+    const productId = req.params.ProductID;
+    const newQuantity = req.body.quantity;
+
+    const updateQuery = 'UPDATE products SET quantity = ? WHERE ProductID = ?';
+
+    connection.query(updateQuery, [newQuantity, productId], (err, result) => {
+        console.log(result)
+        if (err) {
+            console.error('Error updating quantity:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+
+        res.json({ message: 'Quantity updated successfully' });
     });
 });
 

@@ -10,7 +10,7 @@
               <img :src="item.ImagePath" :alt="item.ProductName" class="h-16 w-16 object-cover mr-4" />
               <div>
                 <p class="text-lg">{{ item.ProductName }}</p>
-                <!-- <p class="text-gray-500">{{ item.Prod_Description }}</p> -->
+
                 <div class="flex items-center mt-2">
                   <button @click="decreaseQuantity(index)" class="text-gray-500 px-2">-</button>
                   <span class="mx-2">{{ isValidNumber(item.quantity) ? item.quantity : 0 }}</span>
@@ -79,37 +79,65 @@ export default {
       return value.toLocaleString();
     },
     fetchCartItems() {
+      return new Promise((resolve, reject) => {
+        axios.get('http://localhost:3000/api/getCartItems')
+          .then(response => {
+            this.cartItems = response.data.map(item => ({
+              ...item,
+              quantity: 1,
+            }));
 
-      axios.get('http://localhost:3000/api/getCartItems')
-        .then(response => {
-
-          this.cartItems = response.data.map(item => ({
-            ...item,
-            quantity: 1,
-          }));
-
-        })
-        .catch(error => {
-          console.error(error);
-        });
+          })
+          .catch(error => {
+            console.error(error);
+            reject(error); // Reject the promise in case of an error
+          });
+      });
     },
+
     isValidNumber(value) {
       return typeof value === 'number' && !isNaN(value) && isFinite(value);
     },
+    async updateQuantityInDatabase(productId, newQuantity) {
+      try {
+        const response = await axios.put(`http://localhost:3000/products/${productId}`, {
+          quantity: newQuantity,
+        });
+
+        console.log('Quantity updated in the database:', response.data);
+      } catch (error) {
+        console.error('Failed to update quantity in the database:', error);
+        // Handle errors appropriately
+      }
+    },
     increaseQuantity(index) {
       if (this.isValidNumber(this.cartItems[index].quantity)) {
+        const productId = this.cartItems[index].id;
+
+        // Update the quantity locally
         this.cartItems[index].quantity++;
+
+        // Send a request to update the quantity in the database
+        this.updateQuantityInDatabase(productId, this.cartItems[index].quantity);
       } else {
         console.error('Invalid quantity:', this.cartItems[index].quantity);
       }
     },
+
     decreaseQuantity(index) {
       if (this.isValidNumber(this.cartItems[index].quantity) && this.cartItems[index].quantity > 1) {
+        const productId = this.cartItems[index].id; // Assuming each product has a unique identifier
+
+        // Update the quantity locally
         this.cartItems[index].quantity--;
+
+        // Send a request to update the quantity in the database
+        this.updateQuantityInDatabase(productId, this.cartItems[index].quantity);
       } else {
-        console.error('Invalid quantity or quantity is already 1:', this.cartItems[index].quantity);
+        console.error('Invalid quantity or minimum quantity reached:', this.cartItems[index].quantity);
       }
     },
+
     removeItem(index) {
       const itemId = this.cartItems[index].id;
 
@@ -139,13 +167,24 @@ export default {
         });
     },
     checkout() {
-      // Implement your checkout logic here
-      // This could involve sending the cartItems to the server for further processing
-      console.log('Checkout logic goes here');
+      // Ensure there are items in the cart before proceeding
+      if (this.cartItems.length === 0) {
+        console.error('Cannot proceed with checkout. Cart is empty.');
+        return;
+      }
+
+      // Extract the actual array from the Proxy object
+      const cartItemsArray = Array.from(this.cartItems);
+
+      // Navigate to the checkout page with the cart items
+      this.$router.push({ name: 'Checkout', query: { cartItems: JSON.stringify(cartItemsArray) } });
     },
+
+
   },
   created() {
-    this.fetchCartItems();
+    this.fetchCartItems()
+
   },
-};
+}
 </script>

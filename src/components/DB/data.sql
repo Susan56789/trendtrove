@@ -29,6 +29,7 @@ VALUES(1,'Shoes','Step into style with our diverse collection of footwear in the
 CREATE TABLE Products (
     ProductID INT PRIMARY KEY,
     CategoryID INT,
+    quantity INT,
     CategoryName VARCHAR(255),
     ProductName VARCHAR(255) NOT NULL,
     Price INT NOT NULL,
@@ -40,8 +41,6 @@ CREATE TABLE Products (
         FOREIGN KEY (CategoryID)
         REFERENCES ProductCategories(CategoryID)
 );
-
-DROP TABLE Products;
 
 INSERT INTO Products (ProductID,CategoryID, ProductName, Price,DiscountedPrice,Rating, ImagePath)
 VALUES (1,1, 'Red Nike Shoes', 6000,5899,4.9, '/products/rednikeshoe.png'),
@@ -84,7 +83,7 @@ DiscountedPrice INT,
         FOREIGN KEY (ProductID)
         REFERENCES Products(ProductID)
 );
-DROP TABLE wishlist;
+DROP TABLE Products;
 -- Create a table for cart items
 CREATE TABLE cart (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -99,7 +98,8 @@ DiscountedPrice INT,
         FOREIGN KEY (ProductID)
         REFERENCES Products(ProductID)
 );
- 
+ REPAIR TABLE cart;
+
 
 -- Table: Customers
 CREATE TABLE Customers (

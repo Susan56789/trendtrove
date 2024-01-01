@@ -63,7 +63,7 @@ export default {
     },
     addToWishlist(product) {
       // Check if product is defined and has the required properties
-      if (product && product.ProductName && product.Price) {
+      if (product && product.ProductName && product.Price && product.ProductID) {
         axios.post('http://localhost:3000/addToWishlist', product)
           .then(response => {
             console.log(response.data);
