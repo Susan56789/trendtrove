@@ -30,21 +30,19 @@ app.get('/api/products', (req, res) => {
 });
 
 
-app.get('/api/category/id', (req, res) => {
+app.get('/api/category/id', async (req, res) => {
+    const { CategoryID } = req.query;
+    const query = `SELECT * FROM Products WHERE CategoryID = ${CategoryID}`;
 
-    const categoryId = parseInt(req.query.CategoryID);
+    connection.query(query, (error, results) => {
 
-    if (isNaN(categoryId)) {
-        return res.status(400).json({ error: 'Invalid CategoryID' });
-    }
-    const query = 'SELECT * FROM products WHERE CategoryID = ?';
-    connection.query(query, [categoryId], (error, results) => {
         if (error) {
-            console.error('Error executing SQL query:', error);
+            console.error('Error executing query:', error);
             res.status(500).json({ error: 'Internal Server Error' });
-        } else {
-            res.json(results);
+            return;
         }
+
+        res.json(results);
     });
 });
 
