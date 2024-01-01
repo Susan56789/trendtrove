@@ -101,38 +101,39 @@ DiscountedPrice INT,
  REPAIR TABLE cart;
 
 
--- Table: Customers
-CREATE TABLE Customers (
-    CustomerID INT PRIMARY KEY,
-    FirstName VARCHAR(255) NOT NULL,
-    LastName VARCHAR(255) NOT NULL,
-    Email VARCHAR(255)  NOT NULL
+CREATE TABLE Customer (
+  CustomerID INT AUTO_INCREMENT PRIMARY KEY,
+  Fname VARCHAR(100) NOT NULL,
+  Email VARCHAR(100) NOT NULL,
+  Town VARCHAR(255),
+ StreetName VARCHAR(255),
+  Phone VARCHAR(20),
+  Country VARCHAR(100),
+  Passwrd VARCHAR(255),
+  ImageUrl VARCHAR(255),
+  Gender VARCHAR(255)
 );
 
--- Table: Orders
-CREATE TABLE Orders (
-    OrderID INT PRIMARY KEY,
-    CustomerID INT,
-    OrderDate DATE NOT NULL,
-    CONSTRAINT fk_customer
-        FOREIGN KEY (CustomerID)
-        REFERENCES Customers(CustomerID)
+CREATE TABLE order_table (
+  orderID INT AUTO_INCREMENT PRIMARY KEY,
+  CustomerID INT NOT NULL,
+  order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  total_amount DECIMAL(10, 2) NOT NULL,
+  shipping_fee DECIMAL(10, 2) NOT NULL,
+  FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
 );
 
--- Table: OrderItems
-CREATE TABLE OrderItems (
-    OrderItemID INT PRIMARY KEY,
-    OrderID INT,
-    ProductID INT,
-    Quantity INT NOT NULL,
-    Price DECIMAL(10, 2) NOT NULL,
-    CONSTRAINT fk_order
-        FOREIGN KEY (OrderID)
-        REFERENCES Orders(OrderID),
-    CONSTRAINT fk_product
-        FOREIGN KEY (ProductID)
-        REFERENCES Products(ProductID)
+CREATE TABLE order_item (
+  itemID INT AUTO_INCREMENT PRIMARY KEY,
+  orderID INT NOT NULL,
+  ProductID INT NOT NULL,
+  quantity INT NOT NULL,
+  unit_price DECIMAL(10, 2) NOT NULL,
+  total_price DECIMAL(10, 2) NOT NULL,
+  FOREIGN KEY (orderID) REFERENCES order_table(orderID),
+  FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
+
 
 -- Table: Ratings
 CREATE TABLE Ratings (
