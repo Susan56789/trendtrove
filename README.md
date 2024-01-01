@@ -1,6 +1,6 @@
 <div align='center'>
 
-<img src=https://raw.githubusercontent.com/Susan56789/trendtrove/6f1bd875ad0eb6d5190bc27d5cbfabd618a689a0/public/Demos/Screenshot%202024-01-02%20013059.png alt="logo" width= height= />
+<img src=https://raw.githubusercontent.com/Susan56789/trendtrove/6f1bd875ad0eb6d5190bc27d5cbfabd618a689a0/public/Demos/Screenshot%202024-01-02%20013059.png alt="logo"  />
 
 <h1>E-commerce website for selling and buying products</h1>
 <h4> <span> · </span> <a href="https://github.com/Susan56789/trendtrove/blob/master/README.md"> Documentation </a> <span> · </span> <a href="https://github.com/Susan56789/trendtrove/issues"> Report Bug </a> <span> · </span> <a href="https://github.com/Susan56789/trendtrove/issues"> Request Feature </a> </h4>
