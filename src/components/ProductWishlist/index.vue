@@ -7,9 +7,13 @@
                 <ul v-if="wishlistItems.length > 0" class="space-y-4">
                     <li v-for="(item, index) in wishlistItems" :key="index" class="flex items-center justify-between">
                         <div class="flex items-center">
-                            <img :src="item.ImagePath" :alt="item.ProductName" class="h-16 w-16 object-cover mr-4" />
+                            <router-link :to="'/product/' + product.ProductName">
+                                <img :src="item.ImagePath" :alt="item.ProductName" class="h-16 w-16 object-cover mr-4" />
+                            </router-link>
                             <div>
-                                <p class="text-lg">{{ item.ProductName }}</p>
+                                <router-link :to="'/product/' + product.ProductName">
+                                    <p class="text-lg">{{ item.ProductName }}</p>
+                                </router-link>
                                 <p class="text-lg">KES. {{ formatNumber(item.DiscountedPrice || item.Price) }}</p>
                             </div>
                         </div>

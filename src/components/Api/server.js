@@ -29,6 +29,23 @@ app.get('/api/products', (req, res) => {
     });
 });
 
+/// Define the endpoint for fetching product details
+app.get('/product/:productName', async (req, res) => {
+    const { productName } = req.params;
+    const query = 'SELECT * FROM Products WHERE ProductName = ?';
+
+    connection.query(query, [productName], (error, results) => {
+        if (error) {
+            console.error('Error executing query:', error);
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+
+        res.json(results);
+    });
+});
+
+
 
 app.get('/api/category/id', async (req, res) => {
     const { CategoryID } = req.query;
@@ -127,7 +144,7 @@ app.delete('/api/removeCartItem/:itemId', (req, res) => {
 
     const query = 'DELETE FROM cart WHERE id = ?';
     connection.query(query, [itemId], (error, results) => {
-        console.log(results);
+
         if (error) {
             console.error(error);
             res.status(500).send('Internal Server Error');
@@ -142,7 +159,7 @@ app.delete('/api/clearCart', (req, res) => {
 
     const query = 'DELETE FROM cart';
     connection.query(query, (error, results) => {
-        console.log(results);
+
         if (error) {
             console.error(error);
             res.status(500).send('Internal Server Error');
@@ -160,7 +177,7 @@ app.put('/products/:productId', (req, res) => {
     const updateQuery = 'UPDATE products SET quantity = ? WHERE ProductID = ?';
 
     connection.query(updateQuery, [newQuantity, productId], (err, result) => {
-        console.log(result)
+
         if (err) {
             console.error('Error updating quantity:', err);
             res.status(500).json({ error: 'Internal Server Error' });

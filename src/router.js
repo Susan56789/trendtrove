@@ -71,6 +71,11 @@ const routes = [
                 props: true
             },
             {
+                path: "/product/:name",
+                component: () => import("./components/ProductView/index.vue"),
+                props: true
+            },
+            {
                 path: '/checkout',
                 name: 'Checkout',
                 component: () => import('./components/CheckoutPage/index.vue'),

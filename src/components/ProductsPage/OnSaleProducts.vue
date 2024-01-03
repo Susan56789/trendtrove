@@ -5,42 +5,46 @@
     </div>
     <div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between">
       <article class="rounded-xl bg-white p-3 bg-yellow-50">
-        <a href="#">
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div v-for="product in productsOnSale" :key="product.id"
-              class="p-2 border rounded shadow-lg hover:shadow-xl hover:transform hover:scale-105 mb-4">
-              <div class="image-container relative flex items-end overflow-hidden rounded-xl">
-                <button v-if="product.amountSaved > 0"
-                  class="save-button sm:absolute sm:top-0 sm:right-0 bg-green-500 text-white p-2 duration-100 hover:bg-green-700 rounded-full">
-                  SAVE<br />{{ formatNumber(product.amountSaved) }}
-                </button>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div v-for="product in productsOnSale" :key="product.id"
+            class="p-2 border rounded shadow-lg hover:shadow-xl hover:transform hover:scale-105 mb-4">
+            <div class="image-container relative flex items-end overflow-hidden rounded-xl">
+              <button v-if="product.amountSaved > 0"
+                class="save-button sm:absolute sm:top-0 sm:right-0 bg-green-500 text-white p-2 duration-100 hover:bg-green-700 rounded-full">
+                SAVE<br />{{ formatNumber(product.amountSaved) }}
+              </button>
+              <router-link :to="'/product/' + product.ProductName">
                 <img :src="product.ImagePath" :alt="product.ProductName"
                   class="mx-auto w-full h-full object-cover mb-2" />
-                <div class="absolute bottom-2 left-2 inline-flex items-center rounded-lg bg-white p-1 shadow-md">
-                  <i class="fas fa-star text-yellow-400"></i>
-                  <span class="ml-1 text-sm text-gray-700">{{ product.Rating }}</span>
-                </div>
+              </router-link>
+              <div class="absolute bottom-2 left-2 inline-flex items-center rounded-lg bg-white p-1 shadow-md">
+                <i class="fas fa-star text-yellow-400"></i>
+                <span class="ml-1 text-sm text-gray-700">{{ product.Rating }}</span>
               </div>
-              <h2 class="text-slate-700 text-xs">{{ product.ProductName }}</h2>
-              <p class="mt-1 text-xxs text-slate-400">{{ product.Description }}</p>
-              <div class="mt-2 flex items-end justify-between">
+            </div>
+            <h2 class="text-slate-700 text-xs">{{ product.ProductName }}</h2>
+
+            <div class="mt-2 flex items-end justify-between">
+              <router-link :to="'/product/' + product.ProductName">
                 <p class="text-green-500 font-semibold text-xxs">KES. {{ formatNumber(product.DiscountedPrice) }}</p>
-                <div
-                  class="flex items-center space-x-1.5 rounded-lg bg-indigo-500 px-2 py-1 text-white duration-100 hover:bg-indigo-600">
+              </router-link>
+              <div
+                class="flex items-center space-x-1.5 rounded-lg bg-indigo-500 px-2 py-1 text-white duration-100 hover:bg-indigo-600">
 
-                  <button @click="addToCartButton(product)" class="text-sm"> <i class="fas fa-cart-plus"></i></button>
-
-                </div>
-                <button @click="addToWishlistButton(product)"
-                  class="bg-green-500 text-white px-2 py-1.5 rounded-lg duration-100 hover:bg-green-700">
-                  <i class="fas fa-heart"></i>
-                </button>
+                <button @click="addToCartButton(product)" class="text-sm"> <i class="fas fa-cart-plus"></i></button>
 
               </div>
+              <button @click="addToWishlistButton(product)"
+                class="bg-green-500 text-white px-2 py-1.5 rounded-lg duration-100 hover:bg-green-700">
+                <i class="fas fa-heart"></i>
+              </button>
 
             </div>
+
           </div>
-        </a>
+        </div>
+
       </article>
     </div>
   </div>

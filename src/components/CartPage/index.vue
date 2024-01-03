@@ -7,9 +7,13 @@
         <ul v-if="cartItems.length > 0" class="space-y-4">
           <li v-for="(item, index) in cartItems" :key="index" class="flex items-center justify-between">
             <div class="flex items-center">
-              <img :src="item.ImagePath" :alt="item.ProductName" class="h-16 w-16 object-cover mr-4" />
+              <router-link :to="'/product/' + item.ProductName">
+                <img :src="item.ImagePath" :alt="item.ProductName" class="h-16 w-16 object-cover mr-4" />
+              </router-link>
               <div>
-                <p class="text-lg">{{ item.ProductName }}</p>
+                <router-link :to="'/product/' + item.ProductName">
+                  <p class="text-lg">{{ item.ProductName }}</p>
+                </router-link>
 
                 <div class="flex items-center mt-2">
                   <button @click="decreaseQuantity(index)" class="text-gray-500 px-2">-</button>

@@ -41,21 +41,24 @@
                         <div v-for="product in filteredProducts" :key="product.ProductID"
                             class="p-4 border rounded shadow-md hover:shadow-lg transition duration-300">
                             <article>
-                                <a href="#">
-                                    <div class="mt-1 p-2">
-                                        <div class="image-container relative flex items-end overflow-hidden rounded-xl">
-                                            <img :src="product.ImagePath" :alt="product.ProductName"
-                                                class="mx-auto h-100 w-100 object-cover mb-4 ">
-                                            <div
-                                                class="absolute bottom-3 left-3 inline-flex items-center rounded-lg bg-white p-2 shadow-md">
-                                                <i class="fas fa-star text-yellow-400"></i>
-                                                <span class="ml-1 text-sm text-gray-700">{{ product.Rating }}</span>
-                                            </div>
-                                        </div>
-                                        <h2 class="text-slate-700">{{ product.ProductName }}</h2>
-                                        <!-- <p class="mt-1 text-sm text-slate-400">{{ product.Prod_Description }}</p> -->
 
-                                        <div class="mt-3 flex items-end justify-between">
+                                <div class="mt-1 p-2">
+
+                                    <div class="image-container relative flex items-end overflow-hidden rounded-xl">
+                                        <router-link :to="'/product/' + product.ProductName">
+                                            <img :src="product.ImagePath" :alt="product.ProductName"
+                                                class="mx-auto h-100 w-100 object-cover mb-4 " />
+                                        </router-link>
+                                        <div
+                                            class="absolute bottom-3 left-3 inline-flex items-center rounded-lg bg-white p-2 shadow-md">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <span class="ml-1 text-sm text-gray-700">{{ product.Rating }}</span>
+                                        </div>
+                                    </div>
+                                    <h2 class="text-slate-700">{{ product.ProductName }}</h2>
+
+                                    <div class="mt-3 flex items-end justify-between">
+                                        <router-link :to="'/product/' + product.ProductName">
                                             <p v-if="product.DiscountedPrice" class="text-gray-500 line-through">KES. {{
                                                 formatNumber(product.Price) }}</p>
                                             <p v-if="product.DiscountedPrice" class="text-green-500 font-semibold">KES. {{
@@ -63,23 +66,24 @@
                                             }}</p>
                                             <p v-else class="text-green-500 font-semibold">KES. {{ formatNumber(
                                                 product.Price) }}</p>
-                                            <div
-                                                class="flex items-center space-x-1.5 rounded-lg bg-indigo-500 px-2 py-1 text-white duration-100 hover:bg-indigo-600">
+                                        </router-link>
+                                        <div
+                                            class="flex items-center space-x-1.5 rounded-lg bg-indigo-500 px-2 py-1 text-white duration-100 hover:bg-indigo-600">
 
-                                                <button @click="addToCartButton(product)" class="text-sm"> <i
-                                                        class="fas fa-cart-plus"></i></button>
+                                            <button @click="addToCartButton(product)" class="text-sm"> <i
+                                                    class="fas fa-cart-plus"></i></button>
 
-                                            </div>
-                                            <button @click="addToWishlistButton(product)"
-                                                class="bg-green-500 text-white px-2 py-1.5 rounded-lg duration-100 hover:bg-green-700">
-                                                <i class="fas fa-heart"></i>
-                                            </button>
                                         </div>
+                                        <button @click="addToWishlistButton(product)"
+                                            class="bg-green-500 text-white px-2 py-1.5 rounded-lg duration-100 hover:bg-green-700">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
                                     </div>
+                                </div>
 
 
 
-                                </a>
+
                             </article>
 
                         </div>
