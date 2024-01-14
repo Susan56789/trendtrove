@@ -39,13 +39,18 @@ const connection = mysql.createPool({
 app.options('/api/products', cors());
 
 app.get('/api/products', (req, res) => {
-    const query = 'SELECT * FROM products';
+    const query = 'SELECT * FROM Products';
     connection.query(query, (error, results) => {
-        if (error) throw error;
-        res.json(results);
-        console.log(results)
+        if (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+            res.json(results);
+            console.log(results);
+        }
     });
 });
+
 
 app.get('/product/:productName', async (req, res) => {
     const { productName } = req.params;
