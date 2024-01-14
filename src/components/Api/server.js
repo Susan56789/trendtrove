@@ -12,7 +12,6 @@ app.use(cors({
     credentials: true,
 }));
 
-
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header(
@@ -23,6 +22,7 @@ app.use((req, res, next) => {
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
+
 
 const connection = mysql.createPool({
     host: 'worldempiresafaris.co.ke',

@@ -7,13 +7,13 @@ module.exports = defineConfig({
   },
   devServer: {
     proxy: {
-      '^/api': {
-        target: 'https://worldempiresafaris.co.ke', // Update this URL
+      '/api': {
+        target: 'https://worldempiresafaris.co.ke',
         changeOrigin: true,
-        secure: false,
-        pathRewrite: { '^/api': '/api' },
-        logLevel: 'debug',
-      },
-    },
-  },
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+  }
 })
