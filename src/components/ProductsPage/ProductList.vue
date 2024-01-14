@@ -75,8 +75,8 @@ export default {
     async fetchData() {
       try {
         const [productsResponse, categoriesResponse] = await Promise.all([
-          axios.get('http://worldempiresafaris.co.ke/api/products'),
-          axios.get('http://worldempiresafaris.co.ke/api/categories'),
+          axios.get('https://worldempiresafaris.co.ke/api/products'),
+          axios.get('https://worldempiresafaris.co.ke/api/categories'),
         ]);
 
         this.products = productsResponse.data || [];

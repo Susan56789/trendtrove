@@ -71,7 +71,7 @@ export default {
             const product = this.selectedProduct;
 
             if (product && product.ProductName && product.Price && product.ProductID) {
-                axios.post('http://worldempiresafaris.co.ke/addToWishlist', product)
+                axios.post('https://worldempiresafaris.co.ke/addToWishlist', product)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -87,7 +87,7 @@ export default {
             const product = this.selectedProduct;
 
             if (product && product.ProductName && product.Price) {
-                axios.post('http://worldempiresafaris.co.ke/addToCart', product)
+                axios.post('https://worldempiresafaris.co.ke/addToCart', product)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -102,8 +102,8 @@ export default {
             try {
 
                 const [productsResponse, categoriesResponse] = await Promise.all([
-                    axios.get('http://worldempiresafaris.co.ke/api/products'),
-                    axios.get('http://worldempiresafaris.co.ke/api/categories'),
+                    axios.get('https://worldempiresafaris.co.ke/api/products'),
+                    axios.get('https://worldempiresafaris.co.ke/api/categories'),
                 ]);
 
                 this.products = productsResponse.data || [];
@@ -116,7 +116,7 @@ export default {
         async fetchProductsByCategory(CategoryID) {
             try {
 
-                const response = await axios.get(`http://worldempiresafaris.co.ke/api/category/id?CategoryID=${CategoryID}`);
+                const response = await axios.get(`https://worldempiresafaris.co.ke/api/category/id?CategoryID=${CategoryID}`);
 
                 this.products = Array.from(response.data) || [];
 

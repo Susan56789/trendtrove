@@ -85,7 +85,7 @@ export default {
 
           this.wishlist.push(product);
 
-          axios.post('http://worldempiresafaris.co.ke/addToWishlist', product)
+          axios.post('https://worldempiresafaris.co.ke/addToWishlist', product)
             .then(response => {
               console.log(response.data);
 
@@ -116,7 +116,7 @@ export default {
           // If not in cart, add to cart
           this.cart.push(product); // Update the cart locally
           this.saveCartToStorage(); // Save the cart to localStorage
-          axios.post('http://worldempiresafaris.co.ke/addToCart', product)
+          axios.post('https://worldempiresafaris.co.ke/addToCart', product)
             .then(response => {
               console.log(response.data);
               // Display success alert

@@ -9,7 +9,7 @@ module.exports = defineConfig({
     port: 8080,
     proxy: {
       '^/api': {
-        target: 'http://worldempiresafaris.co.ke',
+        target: 'https://worldempiresafaris.co.ke',
         changeOrigin: true,
         secure: false,
         pathRewrite: { '^/api': '/api' },

@@ -67,7 +67,7 @@ export default {
   methods: {
     async fetchProducts() {
       try {
-        const response = await axios.get('http://worldempiresafaris.co.ke/api/products');
+        const response = await axios.get('https://worldempiresafaris.co.ke/api/products');
         this.products = response.data || [];
         this.calculateAmountSavedForEachProduct();
 
@@ -114,7 +114,7 @@ export default {
           // If not in the local wishlist, add to local wishlist
           this.wishlist.push(product); // Update the local wishlist
           // Perform a request to add the product to the server-side wishlist
-          axios.post('http://worldempiresafaris.co.ke/addToWishlist', product)
+          axios.post('https://worldempiresafaris.co.ke/addToWishlist', product)
             .then(response => {
               console.log(response.data);
               // Display success alert or perform any additional actions
@@ -153,7 +153,7 @@ export default {
       this.saveCartToStorage(); // Save the cart to localStorage
 
       // Perform a request to add the product to the server-side cart
-      axios.post('http://worldempiresafaris.co.ke/addToCart', product)
+      axios.post('https://worldempiresafaris.co.ke/addToCart', product)
         .then(response => {
           console.log(response.data);
           // Display success alert or perform additional actions if needed

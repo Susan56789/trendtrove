@@ -139,7 +139,7 @@ export default {
 
                 // Send the order data to the server for processing
                 axios
-                    .post("http://localhost:3000/api/submitOrder", orderData)
+                    .post("https://worldempiresafaris.co.ke/api/submitOrder", orderData)
                     .then((response) => {
                         console.log("Order submitted:", response.data);
                         // Set orderSubmitted to true to display success message
@@ -159,7 +159,7 @@ export default {
         },
         clearCart() {
             // Assuming the server endpoint for clearing the cart is 'http://localhost:3000/api/clearCart'
-            axios.delete('http://localhost:3000/api/clearCart')
+            axios.delete('https://worldempiresafaris.co.ke/api/clearCart')
                 .then(response => {
                     console.log('Cart cleared:', response.data);
                     // Clear the local cartItems array

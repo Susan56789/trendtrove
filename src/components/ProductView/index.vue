@@ -71,7 +71,7 @@ export default {
             const product = this.selectedProduct;
 
             if (product && product.ProductName && product.Price && product.ProductID) {
-                axios.post('http://worldempiresafaris.co.ke/addToWishlist', product)
+                axios.post('https://worldempiresafaris.co.ke/addToWishlist', product)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -87,7 +87,7 @@ export default {
             const product = this.selectedProduct;
 
             if (product && product.ProductName && product.Price) {
-                axios.post('http://worldempiresafaris.co.ke/addToCart', product)
+                axios.post('https://worldempiresafaris.co.ke/addToCart', product)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -103,7 +103,7 @@ export default {
             const productName = this.$route.params.name;
 
             // Fetch product details based on the product name from the route
-            axios.get(`http://worldempiresafaris.co.ke/product/${productName}`)
+            axios.get(`https://worldempiresafaris.co.ke/product/${productName}`)
                 .then(response => {
                     this.product = response.data[0]; // Access the first item
                     console.log('Product Details:', this.product);
