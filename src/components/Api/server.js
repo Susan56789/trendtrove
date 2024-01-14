@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
@@ -25,12 +26,12 @@ app.use((req, res, next) => {
 
 
 const connection = mysql.createPool({
-    host: 'worldempiresafaris.co.ke',
-    user: 'worldemp_trendy',
-    password: 'Trend@2024',
-    database: 'worldemp_trendtrove',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
     waitForConnections: true,
-    connectionLimit: 10,
+    connectionLimit: 30000,
     queueLimit: 0
 });
 
@@ -46,8 +47,6 @@ app.get('/api/products', (req, res) => {
     });
 });
 
-
-/// Define the endpoint for fetching product details
 app.get('/product/:productName', async (req, res) => {
     const { productName } = req.params;
     const query = 'SELECT * FROM Products WHERE ProductName = ?';
@@ -99,17 +98,17 @@ app.get('/api/product-ratings', (req, res) => {
     });
 });
 
-// Endpoint to add an item to the wishlist
+
 app.post('/addToWishlist', (req, res) => {
     const product = req.body;
 
-    // Extract relevant properties from the product object
+
     const { ProductName, Prod_Description, ImagePath, Rating, DiscountedPrice, Price } = product;
 
-    // Construct the SQL query with explicit columns
+
     const sql = 'INSERT INTO wishlist (ProductName, Prod_Description, ImagePath, Rating, DiscountedPrice, Price) VALUES (?, ?, ?, ?, ?, ?)';
 
-    // Execute the query with parameters
+
     connection.query(sql, [ProductName, Prod_Description, ImagePath, Rating, DiscountedPrice, Price], (error, results) => {
         if (error) throw error;
         res.send(results);
@@ -123,7 +122,7 @@ app.get('/api/allWishlistItems', (req, res) => {
         res.json(results);
     });
 });
-// Endpoint to remove an item from the wishlist
+
 app.delete('/removeFromWishlist/:itemId', (req, res) => {
     const itemId = req.params.itemId;
     connection.query('DELETE FROM wishlist WHERE id = ?', itemId, (error, results) => {
@@ -131,17 +130,17 @@ app.delete('/removeFromWishlist/:itemId', (req, res) => {
         res.send(results);
     });
 });
-// Endpoint to add an item to the cart
+
 app.post('/addToCart', (req, res) => {
     const product = req.body;
 
-    // Extract relevant properties from the product object
+
     const { ProductName, Prod_Description, ImagePath, Rating, DiscountedPrice, Price } = product;
 
-    // Construct the SQL query with explicit columns
+
     const sql = 'INSERT INTO cart (ProductName, Prod_Description, ImagePath, Rating, DiscountedPrice, Price) VALUES (?, ?, ?, ?, ?, ?)';
 
-    // Execute the query with parameters
+
     connection.query(sql, [ProductName, Prod_Description, ImagePath, Rating, DiscountedPrice, Price], (error, results) => {
         if (error) throw error;
         res.send(results);
@@ -157,13 +156,13 @@ app.get('/api/allCartItems', (req, res) => {
     });
 });
 
-// Endpoint to remove an item from the cart
+
 app.delete('/api/removeCartItem/:itemId', (req, res) => {
     const itemId = req.params.itemId;
 
     const query = 'DELETE FROM cart WHERE id = ?';
     connection.query(query, [itemId], (error, results) => {
-
+        console.log(results)
         if (error) {
             console.error(error);
             res.status(500).send('Internal Server Error');
@@ -173,12 +172,12 @@ app.delete('/api/removeCartItem/:itemId', (req, res) => {
     });
 });
 
-// Endpoint to clear the entire cart
+
 app.delete('/api/clearCart', (req, res) => {
 
     const query = 'DELETE FROM cart';
     connection.query(query, (error, results) => {
-
+        console.log(results)
         if (error) {
             console.error(error);
             res.status(500).send('Internal Server Error');
@@ -188,7 +187,7 @@ app.delete('/api/clearCart', (req, res) => {
     });
 });
 
-// API endpoint to update product quantity
+
 app.put('/products/:productId', (req, res) => {
     const productId = req.params.ProductID;
     const newQuantity = req.body.quantity;
@@ -204,6 +203,7 @@ app.put('/products/:productId', (req, res) => {
         }
 
         res.json({ message: 'Quantity updated successfully' });
+        console.log(result)
     });
 });
 
