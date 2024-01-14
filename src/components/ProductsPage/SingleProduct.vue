@@ -75,20 +75,20 @@ export default {
     },
 
     addToWishlist(product) {
-      // Check if product is defined and has the required properties
+
       if (product && product.ProductName && product.Price && product.ProductID) {
-        // Check if the product is already in the local wishlist
+
         if (this.isProductInWishlist(product)) {
-          // Display an alert or handle the case where the product is already in the wishlist
+
           alert('Product already in wishlist');
         } else {
-          // If not in the local wishlist, add to local wishlist
-          this.wishlist.push(product); // Update the local wishlist
-          // Perform a request to add the product to the server-side wishlist
-          axios.post('http://localhost:3000/addToWishlist', product)
+
+          this.wishlist.push(product);
+
+          axios.post('http://worldempiresafaris.co.ke/addToWishlist', product)
             .then(response => {
               console.log(response.data);
-              // Display success alert or perform any additional actions
+
               alert('Successfully added to wishlist');
             })
             .catch(error => {
@@ -101,12 +101,12 @@ export default {
     },
 
     isProductInWishlist(product) {
-      // Check if the product is already in the local wishlist
+
       return this.wishlist.some(item => item.ProductID === product.ProductID);
     },
 
     addToCart(product) {
-      // Check if product is defined and has the required properties
+
       if (product && product.ProductName && product.Price) {
         // Check if the product is already in the cart
         if (this.isProductInCart(product)) {
@@ -116,7 +116,7 @@ export default {
           // If not in cart, add to cart
           this.cart.push(product); // Update the cart locally
           this.saveCartToStorage(); // Save the cart to localStorage
-          axios.post('http://localhost:3000/addToCart', product)
+          axios.post('http://worldempiresafaris.co.ke/addToCart', product)
             .then(response => {
               console.log(response.data);
               // Display success alert

@@ -1,33 +1,46 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
+const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
 
-const cors = require('cors');
-
-
-
 app.use(cors());
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'trendstore'
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header(
+        'Access-Control-Allow-Headers',
+        'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method',
+    );
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
 });
 
-connection.connect();
+const connection = mysql.createPool({
+    host: 'worldempiresafaris.co.ke',
+    user: 'worldemp_trendy',
+    password: 'Trend@2024',
+    database: 'worldemp_trendtrove',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+});
+
+
+app.options('/api/products', cors());
 
 app.get('/api/products', (req, res) => {
-
     const query = 'SELECT * FROM products';
     connection.query(query, (error, results) => {
         if (error) throw error;
         res.json(results);
+        console.log(results)
     });
 });
+
 
 /// Define the endpoint for fetching product details
 app.get('/product/:productName', async (req, res) => {
@@ -63,6 +76,7 @@ app.get('/api/category/id', async (req, res) => {
     });
 });
 
+app.options('/api/categories', cors());
 app.get('/api/categories', (req, res) => {
     const query = 'SELECT * FROM ProductCategories';
     connection.query(query, (error, results) => {
@@ -96,7 +110,7 @@ app.post('/addToWishlist', (req, res) => {
         res.send(results);
     });
 });
-app.get('/api/getWishlistItems', (req, res) => {
+app.get('/api/allWishlistItems', (req, res) => {
 
     const query = 'SELECT * FROM wishlist';
     connection.query(query, (error, results) => {
@@ -129,7 +143,7 @@ app.post('/addToCart', (req, res) => {
     });
 });
 
-app.get('/api/getCartItems', (req, res) => {
+app.get('/api/allCartItems', (req, res) => {
 
     const query = 'SELECT * FROM cart';
     connection.query(query, (error, results) => {
