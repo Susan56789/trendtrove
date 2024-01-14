@@ -6,10 +6,9 @@ module.exports = defineConfig({
     devtool: 'source-map'
   },
   devServer: {
-    port: 8080,
     proxy: {
       '^/api': {
-        target: 'https://worldempiresafaris.co.ke',
+        target: 'https://worldempiresafaris.co.ke', // Update this URL
         changeOrigin: true,
         secure: false,
         pathRewrite: { '^/api': '/api' },
