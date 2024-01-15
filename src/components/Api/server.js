@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const mysql = require('mysql2/promise');
+
 const cors = require('cors');
 require('dotenv').config();
 
@@ -8,7 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(cors({
-    origin: 'https://trendtrove.vercel.app',
+    origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 }));
@@ -38,21 +39,19 @@ const connection = mysql.createPool({
 
 app.options('/api/products', cors());
 
-app.get('/api/products', (req, res) => {
-    const query = 'SELECT * FROM Products';
-    connection.query(query, (error, results) => {
-        if (error) {
-            console.error(error);
-            res.status(500).json({ error: 'Internal Server Error' });
-        } else {
-            res.json(results);
-            console.log(results);
-        }
-    });
+app.get('/api/products', async (req, res) => {
+    try {
+        const [rows, fields] = await connection.execute('SELECT * FROM Products');
+        res.json(rows);
+        console.log("Fields: ", fields);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 
-app.get('/product/:productName', async (req, res) => {
+app.get('/api/product/:productName', async (req, res) => {
     const { productName } = req.params;
     const query = 'SELECT * FROM Products WHERE ProductName = ?';
 
@@ -104,7 +103,7 @@ app.get('/api/product-ratings', (req, res) => {
 });
 
 
-app.post('/addToWishlist', (req, res) => {
+app.post('/api/addToWishlist', (req, res) => {
     const product = req.body;
 
 
@@ -128,7 +127,7 @@ app.get('/api/allWishlistItems', (req, res) => {
     });
 });
 
-app.delete('/removeFromWishlist/:itemId', (req, res) => {
+app.delete('/api/removeFromWishlist/:itemId', (req, res) => {
     const itemId = req.params.itemId;
     connection.query('DELETE FROM wishlist WHERE id = ?', itemId, (error, results) => {
         if (error) throw error;
@@ -136,7 +135,7 @@ app.delete('/removeFromWishlist/:itemId', (req, res) => {
     });
 });
 
-app.post('/addToCart', (req, res) => {
+app.post('/api/addToCart', (req, res) => {
     const product = req.body;
 
 
@@ -193,7 +192,7 @@ app.delete('/api/clearCart', (req, res) => {
 });
 
 
-app.put('/products/:productId', (req, res) => {
+app.put('/api/products/:productId', (req, res) => {
     const productId = req.params.ProductID;
     const newQuantity = req.body.quantity;
 
@@ -212,6 +211,8 @@ app.put('/products/:productId', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
