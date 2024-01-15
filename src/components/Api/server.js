@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
-
+const mysql = require('mysql2');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -26,7 +25,7 @@ app.use((req, res, next) => {
 });
 
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -37,12 +36,14 @@ const connection = mysql.createConnection({
     queueLimit: 0
 });
 
-connection.connect((err) => {
+connection.getConnection((err, connection) => {
     if (err) {
         console.error('Database connection failed: ', err);
         return;
     }
     console.log('Connected to MySQL database');
+    // Don't forget to release the connection after using it
+    connection.release();
 });
 
 
@@ -69,7 +70,6 @@ app.get('/api/product/:productName', async (req, res) => {
         res.json(results);
     });
 });
-
 
 
 app.get('/api/category/id', async (req, res) => {
