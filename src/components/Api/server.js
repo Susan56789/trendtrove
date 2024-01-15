@@ -31,23 +31,27 @@ const connection = mysql.createConnection({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
+    port: process.env.DB_PORT || 3306,
     waitForConnections: true,
     connectionLimit: 30000,
     queueLimit: 0
 });
 
-connection.connect();
-
-
-app.get('/api/products', async (req, res) => {
-    try {
-        const [rows, fields] = await connection.execute('SELECT * FROM Products');
-        res.json(rows);
-        console.log("Fields: ", fields);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
+connection.connect((err) => {
+    if (err) {
+        console.error('Database connection failed: ', err);
+        return;
     }
+    console.log('Connected to MySQL database');
+});
+
+
+app.get('/api/products', (req, res) => {
+    const query = 'SELECT * FROM Products';
+    connection.query(query, (error, results) => {
+        if (error) throw error;
+        res.json(results);
+    });
 });
 
 
@@ -210,8 +214,8 @@ app.put('/api/products/:productId', (req, res) => {
     });
 });
 
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
+
