@@ -1,6 +1,6 @@
 <template>
     <div class="pt-32 relative w-full bg-yellow-50">
-        <!-- Displaying router view and form for searching -->
+
         <router-view></router-view>
 
         <div class="container m-auto px-6 pt-32 md:px-12 lg:pt-[4.8rem] lg:px-7">

@@ -63,21 +63,21 @@ export default {
     },
     computed: {
         popularCategories() {
-            // Count the number of products in each category
+
             const categoryCounts = this.categories.map(category => ({
                 ...category,
                 productCount: this.products.filter(product => product.CategoryID === category.CategoryID).length
             }));
 
-            // Sort categories by the number of products in descending order
+
             const sortedCategories = categoryCounts.sort((a, b) => b.productCount - a.productCount);
 
-            // Get the top 3 categories
+
             return sortedCategories.slice(0, 3);
         }
     },
     mounted() {
-        this.fetchData(); // Corrected method name
+        this.fetchData();
     }
 };
 </script>

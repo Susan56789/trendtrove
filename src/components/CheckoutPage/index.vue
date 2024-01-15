@@ -124,9 +124,9 @@ export default {
             return value.toLocaleString();
         },
         submitOrder() {
-            // Validate user data before submitting the order
+
             if (this.validateUserData()) {
-                // Assuming the server endpoint for order submission is 'http://localhost:3000/api/submitOrder'
+
                 const orderData = {
                     user: this.userData,
                     cartItems: this.localCartItems.map((item) => ({
@@ -137,37 +137,37 @@ export default {
                     total: this.cartTotal + this.shippingFee,
                 };
 
-                // Send the order data to the server for processing
+
                 axios
                     .post("https://worldempiresafaris.co.ke/api/submitOrder", orderData)
                     .then((response) => {
                         console.log("Order submitted:", response.data);
-                        // Set orderSubmitted to true to display success message
+
                         this.orderSubmitted = true;
                     })
                     .catch((error) => {
                         console.error("Order submission failed:", error);
-                        // Handle errors, such as displaying an error message to the user
+
                     });
             } else {
                 console.error("Invalid user data. Please fill in all required fields.");
             }
         },
         validateUserData() {
-            // Implement validation logic for user data
-            return this.userData.name && this.userData.email; // Add more conditions as needed
+
+            return this.userData.name && this.userData.email;
         },
         clearCart() {
-            // Assuming the server endpoint for clearing the cart is 'http://localhost:3000/api/clearCart'
+
             axios.delete('https://worldempiresafaris.co.ke/api/clearCart')
                 .then(response => {
                     console.log('Cart cleared:', response.data);
-                    // Clear the local cartItems array
-                    this.$router.push('/cart'); // Redirect to the cart page after clearing the cart
+
+                    this.$router.push('/cart');
                 })
                 .catch(error => {
                     console.error('Cart clearing failed:', error);
-                    // Handle errors, such as displaying an error message to the user
+
                 });
         },
     },
@@ -175,6 +175,4 @@ export default {
 </script>
   
 
-<style scoped>
-/* Add your styling using Tailwind CSS */
-</style>
+<style scoped></style>

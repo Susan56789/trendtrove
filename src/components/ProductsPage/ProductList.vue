@@ -47,7 +47,7 @@ export default {
     filteredProductsList() {
       let filteredProducts = this.products || [];
 
-      // Use the emitted filtered products if available
+
       if (this.categoryFilter !== null || this.priceFilter !== null) {
         filteredProducts = this.$parent.filteredProducts || [];
       }

@@ -85,7 +85,7 @@ export default {
 
           this.wishlist.push(product);
 
-          axios.post('https://worldempiresafaris.co.ke/addToWishlist', product)
+          axios.post('https://worldempiresafaris.co.ke/api/addToWishlist', product)
             .then(response => {
               console.log(response.data);
 
@@ -108,18 +108,18 @@ export default {
     addToCart(product) {
 
       if (product && product.ProductName && product.Price) {
-        // Check if the product is already in the cart
+
         if (this.isProductInCart(product)) {
-          // Display an alert for product already in cart
+
           alert('Product already in cart');
         } else {
-          // If not in cart, add to cart
-          this.cart.push(product); // Update the cart locally
-          this.saveCartToStorage(); // Save the cart to localStorage
-          axios.post('https://worldempiresafaris.co.ke/addToCart', product)
+
+          this.cart.push(product);
+          this.saveCartToStorage();
+          axios.post('https://worldempiresafaris.co.ke/api/addToCart', product)
             .then(response => {
               console.log(response.data);
-              // Display success alert
+
               alert('Successfully added to cart');
             })
             .catch(error => {
@@ -132,10 +132,10 @@ export default {
     },
 
     removeFromCart(product) {
-      // Remove the product from the local cart
+
       this.cart = this.cart.filter(item => item.ProductID !== product.ProductID);
-      this.saveCartToStorage(); // Save the updated cart to localStorage
-      // Additional logic to remove from the server-side cart can be added here if needed
+      this.saveCartToStorage();
+
     },
 
     saveCartToStorage() {
@@ -148,23 +148,23 @@ export default {
     },
 
     isProductInCart(product) {
-      // Check if the product is not undefined and has the required properties
+
       if (product && product.ProductID) {
-        // Check if the cart is not undefined
+
         if (this.cart) {
-          // Check if the product is already in the local cart
+
           return this.cart.some(item => item.ProductID === product.ProductID);
         } else {
           console.error('Cart is undefined');
-          return false; // Handle the case where the cart is undefined
+          return false;
         }
       } else {
         console.error('Invalid product data for cart:', product);
-        return false; // Handle the case where the product is undefined or missing required properties
+        return false;
       }
     },
     emptyCart() {
-      // Clear both the local storage and the local cart
+
       localStorage.removeItem('cart');
       this.cart = [];
     },

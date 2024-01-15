@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql2/promise');
+const mysql = require('mysql');
 
 const cors = require('cors');
 require('dotenv').config();
@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 });
 
 
-const connection = mysql.createPool({
+const connection = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -36,8 +36,8 @@ const connection = mysql.createPool({
     queueLimit: 0
 });
 
+connection.connect();
 
-app.options('/api/products', cors());
 
 app.get('/api/products', async (req, res) => {
     try {
@@ -84,7 +84,6 @@ app.get('/api/category/id', async (req, res) => {
     });
 });
 
-app.options('/api/categories', cors());
 app.get('/api/categories', (req, res) => {
     const query = 'SELECT * FROM ProductCategories';
     connection.query(query, (error, results) => {

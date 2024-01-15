@@ -47,7 +47,7 @@ export default {
         };
     },
     created() {
-        // Fetch product details when the component is created
+
         this.fetchProductDetails();
     },
     methods: {
@@ -55,23 +55,23 @@ export default {
             if (value !== undefined && value !== null) {
                 return value.toLocaleString();
             }
-            return ''; // or return some default value if you prefer
+            return '';
         }, addToWishlistButton(product) {
-            // Set the selected product before calling addToWishlist
+
             this.selectedProduct = product;
             this.addToWishlist();
         },
         addToCartButton(product) {
-            // Set the selected product before calling addToCart
+
             this.selectedProduct = product;
             this.addToCart();
         },
         addToWishlist() {
-            // Use the selectedProduct property instead of passing product as a parameter
+
             const product = this.selectedProduct;
 
             if (product && product.ProductName && product.Price && product.ProductID) {
-                axios.post('https://worldempiresafaris.co.ke/addToWishlist', product)
+                axios.post('https://worldempiresafaris.co.ke/api/addToWishlist', product)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -83,11 +83,11 @@ export default {
             }
         },
         addToCart() {
-            // Use the selectedProduct property instead of passing product as a parameter
+
             const product = this.selectedProduct;
 
             if (product && product.ProductName && product.Price) {
-                axios.post('https://worldempiresafaris.co.ke/addToCart', product)
+                axios.post('https://worldempiresafaris.co.ke/api/addToCart', product)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -102,10 +102,10 @@ export default {
         fetchProductDetails() {
             const productName = this.$route.params.name;
 
-            // Fetch product details based on the product name from the route
-            axios.get(`https://worldempiresafaris.co.ke/product/${productName}`)
+
+            axios.get(`https://worldempiresafaris.co.ke/api/product/${productName}`)
                 .then(response => {
-                    this.product = response.data[0]; // Access the first item
+                    this.product = response.data[0];
                     console.log('Product Details:', this.product);
                 })
                 .catch(error => {

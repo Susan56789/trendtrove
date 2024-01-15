@@ -83,7 +83,7 @@ export default {
         }
       });
     }, formatNumber(value) {
-      // Use toLocaleString to format the number with comma separators
+
       return value.toLocaleString();
     },
 
@@ -104,20 +104,20 @@ export default {
       }
     },
     addToWishlist(product) {
-      // Check if product is defined and has the required properties
+
       if (product && product.ProductName && product.Price && product.ProductID) {
-        // Check if the product is already in the local wishlist
+
         if (this.isProductInWishlist(product)) {
-          // Display an alert or handle the case where the product is already in the wishlist
+
           alert('Product already in wishlist');
         } else {
-          // If not in the local wishlist, add to local wishlist
-          this.wishlist.push(product); // Update the local wishlist
-          // Perform a request to add the product to the server-side wishlist
-          axios.post('https://worldempiresafaris.co.ke/addToWishlist', product)
+
+          this.wishlist.push(product);
+
+          axios.post('https://worldempiresafaris.co.ke/api/addToWishlist', product)
             .then(response => {
               console.log(response.data);
-              // Display success alert or perform any additional actions
+
               alert('Successfully added to wishlist');
             })
             .catch(error => {
@@ -130,46 +130,46 @@ export default {
     },
 
     isProductInWishlist(product) {
-      // Check if the product is already in the local wishlist
+
       return this.wishlist.some(item => item.ProductID === product.ProductID);
     },
 
     addToCart(product) {
-      // Check if the product is valid
+
       if (!product || !product.ProductName || !product.Price) {
         console.error('Invalid product data for cart:', product);
         return;
       }
 
-      // Check if the product is already in the cart
+
       if (this.isProductInCart(product)) {
-        // Display an alert for a product already in the cart
+
         alert('Product already in cart');
         return;
       }
 
-      // If not in the cart, add it
-      this.cart.push(product); // Update the cart locally
-      this.saveCartToStorage(); // Save the cart to localStorage
 
-      // Perform a request to add the product to the server-side cart
+      this.cart.push(product);
+      this.saveCartToStorage();
+
+
       axios.post('https://worldempiresafaris.co.ke/addToCart', product)
         .then(response => {
           console.log(response.data);
-          // Display success alert or perform additional actions if needed
+
           alert('Successfully added to cart');
         })
         .catch(error => {
           console.error('Error adding to cart:', error);
-          // Handle the error, show an error message, or perform additional actions if needed
+
         });
     },
 
     removeFromCart(product) {
-      // Remove the product from the local cart
+
       this.cart = this.cart.filter(item => item.ProductID !== product.ProductID);
-      this.saveCartToStorage(); // Save the updated cart to localStorage
-      // Additional logic to remove from the server-side cart can be added here if needed
+      this.saveCartToStorage();
+
     },
 
     saveCartToStorage() {
@@ -182,23 +182,23 @@ export default {
     },
 
     isProductInCart(product) {
-      // Check if the product is not undefined and has the required properties
+
       if (product && product.ProductID) {
-        // Check if the cart is not undefined
+
         if (this.cart) {
-          // Check if the product is already in the local cart
+
           return this.cart.some(item => item.ProductID === product.ProductID);
         } else {
           console.error('Cart is undefined');
-          return false; // Handle the case where the cart is undefined
+          return false;
         }
       } else {
         console.error('Invalid product data for cart:', product);
-        return false; // Handle the case where the product is undefined or missing required properties
+        return false;
       }
     },
     emptyCart() {
-      // Clear both the local storage and the local cart
+
       localStorage.removeItem('cart');
       this.cart = [];
     },
@@ -234,16 +234,16 @@ export default {
   top: 0;
   right: 0;
   background-color: #48bb78;
-  /* Adjust the background color */
+
   color: #fff;
-  /* Adjust the text color */
+
   padding: 0.5rem;
-  /* Adjust the padding */
+
   border-radius: 50%;
-  /* Make it circular */
+
 }
 
-/* Media query to apply the styles only for devices with a width of 640 pixels or larger */
+
 @media (min-width: 640px) {
   .save-button {
     position: absolute;

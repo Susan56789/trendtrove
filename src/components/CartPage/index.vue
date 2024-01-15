@@ -94,7 +94,7 @@ export default {
           })
           .catch(error => {
             console.error(error);
-            reject(error); // Reject the promise in case of an error
+            reject(error);
           });
       });
     },
@@ -104,24 +104,24 @@ export default {
     },
     async updateQuantityInDatabase(productId, newQuantity) {
       try {
-        const response = await axios.put(`https://worldempiresafaris.co.ke/products/${productId}`, {
+        const response = await axios.put(`https://worldempiresafaris.co.ke/api/products/${productId}`, {
           quantity: newQuantity,
         });
 
         console.log('Quantity updated in the database:', response.data);
       } catch (error) {
         console.error('Failed to update quantity in the database:', error);
-        // Handle errors appropriately
+
       }
     },
     increaseQuantity(index) {
       if (this.isValidNumber(this.cartItems[index].quantity)) {
         const productId = this.cartItems[index].id;
 
-        // Update the quantity locally
+
         this.cartItems[index].quantity++;
 
-        // Send a request to update the quantity in the database
+
         this.updateQuantityInDatabase(productId, this.cartItems[index].quantity);
       } else {
         console.error('Invalid quantity:', this.cartItems[index].quantity);
@@ -130,12 +130,12 @@ export default {
 
     decreaseQuantity(index) {
       if (this.isValidNumber(this.cartItems[index].quantity) && this.cartItems[index].quantity > 1) {
-        const productId = this.cartItems[index].id; // Assuming each product has a unique identifier
+        const productId = this.cartItems[index].id;
 
-        // Update the quantity locally
+
         this.cartItems[index].quantity--;
 
-        // Send a request to update the quantity in the database
+
         this.updateQuantityInDatabase(productId, this.cartItems[index].quantity);
       } else {
         console.error('Invalid quantity or minimum quantity reached:', this.cartItems[index].quantity);
@@ -145,12 +145,12 @@ export default {
     removeItem(index) {
       const itemId = this.cartItems[index].id;
 
-      // Send a request to remove the item from the cart in the database
+
       axios.delete(`https://worldempiresafaris.co.ke/api/removeCartItem/${itemId}`)
         .then(response => {
           console.log(response.data);
 
-          // Remove the item from the local cartItems array
+
           this.cartItems.splice(index, 1);
         })
         .catch(error => {
@@ -158,12 +158,12 @@ export default {
         });
     },
     clearCart() {
-      // Send a request to clear the entire cart in the database
+
       axios.delete('https://worldempiresafaris.co.ke/api/clearCart')
         .then(response => {
           console.log(response.data);
 
-          // Clear the local cartItems array
+
           this.cartItems = [];
         })
         .catch(error => {
@@ -171,16 +171,16 @@ export default {
         });
     },
     checkout() {
-      // Ensure there are items in the cart before proceeding
+
       if (this.cartItems.length === 0) {
         console.error('Cannot proceed with checkout. Cart is empty.');
         return;
       }
 
-      // Extract the actual array from the Proxy object
+
       const cartItemsArray = Array.from(this.cartItems);
 
-      // Navigate to the checkout page with the cart items
+
       this.$router.push({ name: 'Checkout', query: { cartItems: JSON.stringify(cartItemsArray) } });
     },
 

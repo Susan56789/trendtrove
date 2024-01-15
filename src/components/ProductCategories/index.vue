@@ -57,21 +57,21 @@ export default {
             return value.toLocaleString();
         },
         addToWishlistButton(product) {
-            // Set the selected product before calling addToWishlist
+
             this.selectedProduct = product;
             this.addToWishlist();
         },
         addToCartButton(product) {
-            // Set the selected product before calling addToCart
+
             this.selectedProduct = product;
             this.addToCart();
         },
         addToWishlist() {
-            // Use the selectedProduct property instead of passing product as a parameter
+
             const product = this.selectedProduct;
 
             if (product && product.ProductName && product.Price && product.ProductID) {
-                axios.post('https://worldempiresafaris.co.ke/addToWishlist', product)
+                axios.post('https://worldempiresafaris.co.ke/api/addToWishlist', product)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -83,11 +83,11 @@ export default {
             }
         },
         addToCart() {
-            // Use the selectedProduct property instead of passing product as a parameter
+
             const product = this.selectedProduct;
 
             if (product && product.ProductName && product.Price) {
-                axios.post('https://worldempiresafaris.co.ke/addToCart', product)
+                axios.post('https://worldempiresafaris.co.ke/api/addToCart', product)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -148,13 +148,13 @@ export default {
 
 
 
-        // Fetch initial data
+
         this.fetchData();
 
-        // Set selected category ID from route parameter
+
         this.selectedCategoryId = this.$route.params.id;
 
-        // Only fetch products if a category is selected
+
         if (this.selectedCategoryId) {
 
             this.fetchProductsByCategory(this.selectedCategoryId);
@@ -163,7 +163,5 @@ export default {
 };
 </script>
   
-<style scoped>
-/* Add Tailwind CSS classes or your custom styles here */
-</style>
+<style scoped></style>
   

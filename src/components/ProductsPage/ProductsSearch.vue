@@ -13,7 +13,7 @@
                 class="p-4 border rounded shadow-md hover:shadow-lg transition duration-300">
                 <h3 class="text-lg font-semibold mb-2">{{ product.name }}</h3>
                 <p class="text-gray-500 mb-2">$ {{ product.price }}</p>
-                <!-- Add more product details here -->
+
             </div>
         </div>
         <div v-else class="mt-4">
@@ -63,7 +63,7 @@ export default {
     },
     methods: {
         filterProducts() {
-            // Call this method if you need to perform additional actions on filtering
+
         }
     }
 };
