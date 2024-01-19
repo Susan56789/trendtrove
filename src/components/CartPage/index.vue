@@ -84,7 +84,7 @@ export default {
     },
     fetchCartItems() {
       return new Promise((resolve, reject) => {
-        axios.get('https://worldempiresafaris.co.ke/api/getCartItems')
+        axios.get('http://localhost:3000/api/getCartItems')
           .then(response => {
             this.cartItems = response.data.map(item => ({
               ...item,
@@ -104,7 +104,7 @@ export default {
     },
     async updateQuantityInDatabase(productId, newQuantity) {
       try {
-        const response = await axios.put(`https://worldempiresafaris.co.ke/api/products/${productId}`, {
+        const response = await axios.put(`http://localhost:3000/api/products/${productId}`, {
           quantity: newQuantity,
         });
 
@@ -146,7 +146,7 @@ export default {
       const itemId = this.cartItems[index].id;
 
 
-      axios.delete(`https://worldempiresafaris.co.ke/api/removeCartItem/${itemId}`)
+      axios.delete(`http://localhost:3000/api/removeCartItem/${itemId}`)
         .then(response => {
           console.log(response.data);
 
@@ -159,7 +159,7 @@ export default {
     },
     clearCart() {
 
-      axios.delete('https://worldempiresafaris.co.ke/api/clearCart')
+      axios.delete('http://localhost:3000/api/clearCart')
         .then(response => {
           console.log(response.data);
 

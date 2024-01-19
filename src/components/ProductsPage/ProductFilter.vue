@@ -34,7 +34,7 @@ export default {
     methods: {
         async fetchCategoryNames() {
             try {
-                const response = await axios.get('https://worldempiresafaris.co.ke/api/categories');
+                const response = await axios.get('http://localhost:3000/api/categories');
                 this.categories = response.data || [];
             } catch (error) {
                 console.error('Error fetching category names:', error);

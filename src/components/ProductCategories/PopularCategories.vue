@@ -41,8 +41,8 @@ export default {
         async fetchData() {
             try {
                 const [productsResponse, categoriesResponse] = await Promise.all([
-                    axios.get('https://worldempiresafaris.co.ke/api/products'),
-                    axios.get('https://worldempiresafaris.co.ke/api/categories'),
+                    axios.get('http://localhost:3000/api/products'),
+                    axios.get('http://localhost:3000/api/categories'),
                 ]);
 
                 this.products = productsResponse.data || [];
@@ -54,7 +54,7 @@ export default {
         },
         async fetchProducts() {
             try {
-                const response = await axios.get('https://worldempiresafaris.co.ke/api/products');
+                const response = await axios.get('http://localhost:3000/api/products');
                 this.products = response.data || [];
             } catch (error) {
                 console.error('Error fetching products:', error);

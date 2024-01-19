@@ -43,7 +43,7 @@
                 <ul>
                     <li v-for="(item, index) in localCartItems" :key="index" class="mb-2">
                         {{ item.ProductName }} ({{ item.quantity }}) - KES. {{ formatNumber(item.quantity *
-                            (item.DiscountedPrice || item.Price)) }}
+                                                (item.DiscountedPrice || item.Price)) }}
                     </li>
                     <li class="mb-2">Shipping Fee - KES. {{ formatNumber(shippingFee) }}</li>
                 </ul>
@@ -139,7 +139,7 @@ export default {
 
 
                 axios
-                    .post("https://worldempiresafaris.co.ke/api/submitOrder", orderData)
+                    .post("http://localhost:3000/api/submitOrder", orderData)
                     .then((response) => {
                         console.log("Order submitted:", response.data);
 
@@ -159,7 +159,7 @@ export default {
         },
         clearCart() {
 
-            axios.delete('https://worldempiresafaris.co.ke/api/clearCart')
+            axios.delete('http://localhost:3000/api/clearCart')
                 .then(response => {
                     console.log('Cart cleared:', response.data);
 

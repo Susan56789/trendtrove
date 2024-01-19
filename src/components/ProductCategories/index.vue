@@ -19,7 +19,7 @@
                 <div class="mt-3 flex items-end justify-between">
                     <router-link :to="'/product/' + product.ProductName">
                         <p v-if="product.DiscountedPrice" class="text-green-500 font-semibold">KES. {{
-                            formatNumber(product.DiscountedPrice) }} </p>
+                                                    formatNumber(product.DiscountedPrice) }} </p>
                         <p v-else class="text-green-500 font-semibold">KES. {{ formatNumber(product.Price) }}</p>
                     </router-link>
                     <div
@@ -71,7 +71,7 @@ export default {
             const product = this.selectedProduct;
 
             if (product && product.ProductName && product.Price && product.ProductID) {
-                axios.post('https://worldempiresafaris.co.ke/api/addToWishlist', product)
+                axios.post('http://localhost:3000/api/addToWishlist', product)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -87,7 +87,7 @@ export default {
             const product = this.selectedProduct;
 
             if (product && product.ProductName && product.Price) {
-                axios.post('https://worldempiresafaris.co.ke/api/addToCart', product)
+                axios.post('http://localhost:3000/api/addToCart', product)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -102,8 +102,8 @@ export default {
             try {
 
                 const [productsResponse, categoriesResponse] = await Promise.all([
-                    axios.get('https://worldempiresafaris.co.ke/api/products'),
-                    axios.get('https://worldempiresafaris.co.ke/api/categories'),
+                    axios.get('http://localhost:3000/api/products'),
+                    axios.get('http://localhost:3000/api/categories'),
                 ]);
 
                 this.products = productsResponse.data || [];
@@ -116,7 +116,7 @@ export default {
         async fetchProductsByCategory(CategoryID) {
             try {
 
-                const response = await axios.get(`https://worldempiresafaris.co.ke/api/category/id?CategoryID=${CategoryID}`);
+                const response = await axios.get(`http://localhost:3000/api/category/id?CategoryID=${CategoryID}`);
 
                 this.products = Array.from(response.data) || [];
 
