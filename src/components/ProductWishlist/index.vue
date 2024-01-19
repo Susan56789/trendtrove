@@ -44,7 +44,7 @@ export default {
         },
         fetchWishlistItems() {
 
-            axios.get('https://worldempiresafaris.co.ke/api/getWishlistItems')
+            axios.get('http://localhost:3000/api/getWishlistItems')
                 .then(response => {
                     this.wishlistItems = response.data;
                     console.log(response.data)
@@ -60,7 +60,7 @@ export default {
 
 
                 if (product && product.ProductName && product.Price) {
-                    axios.post('https://worldempiresafaris.co.ke/api/addToCart', product)
+                    axios.post('http://localhost:3000/api/addToCart', product)
                         .then(response => {
                             console.log(response.data);
                         })
@@ -77,7 +77,7 @@ export default {
         removeFromWishlist(index) {
 
             const itemId = this.wishlistItems[index].id;
-            axios.delete(`https://worldempiresafaris.co.ke/api/removeFromWishlist/${itemId}`)
+            axios.delete(`http://localhost:3000/api/removeFromWishlist/${itemId}`)
                 .then(response => {
                     console.log(response.data);
 

@@ -16,7 +16,7 @@
         <div class="mt-3 flex items-end justify-between">
           <router-link :to="'/product/' + product.ProductName">
             <p v-if="product.DiscountedPrice" class="text-green-500 font-semibold">KES. {{
-              formatNumber(product.DiscountedPrice) }} </p>
+                          formatNumber(product.DiscountedPrice) }} </p>
             <p v-else class="text-green-500 font-semibold">KES. {{ formatNumber(product.Price) }}</p>
           </router-link>
           <button @click="handleCartAction" :class="cartButtonClass">
@@ -85,7 +85,7 @@ export default {
 
           this.wishlist.push(product);
 
-          axios.post('https://worldempiresafaris.co.ke/api/addToWishlist', product)
+          axios.post('http://localhost:3000/api/addToWishlist', product)
             .then(response => {
               console.log(response.data);
 
@@ -116,7 +116,7 @@ export default {
 
           this.cart.push(product);
           this.saveCartToStorage();
-          axios.post('https://worldempiresafaris.co.ke/api/addToCart', product)
+          axios.post('http://localhost:3000/api/addToCart', product)
             .then(response => {
               console.log(response.data);
 

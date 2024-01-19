@@ -16,7 +16,7 @@
                     <p class="mt-1 text-sm text-slate-400">{{ product.Prod_Description }}</p>
                     <div class="mt-3 flex items-end justify-between">
                         <p v-if="product.DiscountedPrice" class="text-green-500 font-semibold">KES. {{
-                            formatNumber(product.DiscountedPrice) }} </p>
+                                                    formatNumber(product.DiscountedPrice) }} </p>
                         <p v-else class="text-green-500 font-semibold">KES. {{ formatNumber(product.Price) }}</p>
 
                         <div
@@ -71,7 +71,7 @@ export default {
             const product = this.selectedProduct;
 
             if (product && product.ProductName && product.Price && product.ProductID) {
-                axios.post('https://worldempiresafaris.co.ke/api/addToWishlist', product)
+                axios.post('http://localhost:3000/api/addToWishlist', product)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -87,7 +87,7 @@ export default {
             const product = this.selectedProduct;
 
             if (product && product.ProductName && product.Price) {
-                axios.post('https://worldempiresafaris.co.ke/api/addToCart', product)
+                axios.post('http://localhost:3000/api/addToCart', product)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -103,7 +103,7 @@ export default {
             const productName = this.$route.params.name;
 
 
-            axios.get(`https://worldempiresafaris.co.ke/api/product/${productName}`)
+            axios.get(`http://localhost:3000/api/product/${productName}`)
                 .then(response => {
                     this.product = response.data[0];
                     console.log('Product Details:', this.product);
