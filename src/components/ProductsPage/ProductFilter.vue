@@ -17,6 +17,7 @@
 
 <script>
 export default {
+    name: 'ProductFilter',
     data() {
         return {
             selectedCategory: '',

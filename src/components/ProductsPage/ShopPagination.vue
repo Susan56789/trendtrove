@@ -5,9 +5,10 @@
         <button @click="changePage(currentPage + 1)" :disabled="currentPage === totalPages">Next</button>
     </div>
 </template>
-  
+
 <script>
 export default {
+    name: 'ShopPagination',
     props: {
         totalPages: {
             type: Number,
@@ -29,4 +30,3 @@ export default {
     },
 };
 </script>
-  

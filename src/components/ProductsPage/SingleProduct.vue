@@ -29,6 +29,7 @@
 import axios from 'axios';
 
 export default {
+  name: 'SingleProduct',
   props: {
     product: {
       type: Object,
