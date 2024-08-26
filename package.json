@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@vue/cli": "^5.0.8",
     "eslint-plugin-vue": "9.27.0",
     "sass-loader": "16.0.1"
   },
