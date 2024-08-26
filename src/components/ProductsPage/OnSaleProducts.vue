@@ -47,9 +47,9 @@
     </div>
   </div>
 </template>
-  
-  
-  
+
+
+
 <script>
 import axios from 'axios';
 
@@ -67,7 +67,7 @@ export default {
   methods: {
     async fetchProducts() {
       try {
-        const response = await axios.get('http://localhost:3000/api/products');
+        const response = await axios.get('https://posinet.onrender.com/api/products');
         this.products = response.data || [];
         this.calculateAmountSavedForEachProduct();
 
@@ -114,7 +114,7 @@ export default {
 
           this.wishlist.push(product);
 
-          axios.post('http://localhost:3000/api/addToWishlist', product)
+          axios.post('https://posinet.onrender.com/api/addToWishlist', product)
             .then(response => {
               console.log(response.data);
 
@@ -153,7 +153,7 @@ export default {
       this.saveCartToStorage();
 
 
-      axios.post('http://localhost:3000/addToCart', product)
+      axios.post('https://posinet.onrender.com/addToCart', product)
         .then(response => {
           console.log(response.data);
 

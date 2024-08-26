@@ -4,8 +4,8 @@
         <select v-model="selectedCategory" @change="filterProducts"
             class="w-100 mt-1 py-1 px-1 rounded-lg border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
             <option value="">All</option>
-            <option v-for="category in categories" :key="category.CategoryID">
-                {{ category.CategoryName }}
+            <option v-for="category in uniqueCategories" :key="category" :value="category">
+                {{ category }}
             </option>
         </select>
         <label>Filter by Price:</label>
@@ -16,46 +16,29 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
     data() {
         return {
             selectedCategory: '',
             selectedPrice: null,
-            categories: [],
         };
     },
     computed: {
         uniqueCategories() {
-            return [...new Set(this.$parent.products.map((product) => product.CategoryName))];
+            return [...new Set(this.$parent.products.map((product) => product.category))];
         },
     },
     methods: {
-        async fetchCategoryNames() {
-            try {
-                const response = await axios.get('http://localhost:3000/api/categories');
-                this.categories = response.data || [];
-            } catch (error) {
-                console.error('Error fetching category names:', error);
-            }
-        },
         filterProducts() {
             const filteredProducts = this.$parent.products.filter((product) => {
                 const categoryMatch =
-                    this.selectedCategory === '' || product.CategoryName === this.selectedCategory;
-                const priceMatch = this.selectedPrice === null || product.Price <= this.selectedPrice;
+                    this.selectedCategory === '' || product.category === this.selectedCategory;
+                const priceMatch = this.selectedPrice === null || product.price <= this.selectedPrice;
                 return categoryMatch && priceMatch;
             });
 
             this.$emit('filterProducts', filteredProducts);
         },
-    },
-    watch: {
-        uniqueCategories: 'fetchCategoryNames',
-    },
-    created() {
-        this.fetchCategoryNames();
     },
 };
 </script>
