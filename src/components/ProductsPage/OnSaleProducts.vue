@@ -14,7 +14,7 @@
                 SAVE<br />{{ formatNumber(product.amountSaved) }}
               </button>
               <router-link :to="'/product/' + product._id">
-                <img :src="product.ImagePath" :alt="product.title" class="mx-auto w-full h-full object-cover mb-2" />
+                <img :src="product.imagePath" :alt="product.title" class="mx-auto w-full h-full object-cover mb-2" />
               </router-link>
               <div class="absolute bottom-2 left-2 inline-flex items-center rounded-lg bg-white p-1 shadow-md">
                 <i class="fas fa-star text-yellow-400"></i>
@@ -40,6 +40,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import axios from 'axios';
 
@@ -87,7 +88,7 @@ export default {
       }
     },
     addToWishlist(product) {
-      if (product && product.title && product.Price && product.ProductID) {
+      if (product && product.title && product.price && product._id) {
         if (this.isProductInWishlist(product)) {
           alert('Product already in wishlist');
         } else {
@@ -106,10 +107,10 @@ export default {
       }
     },
     isProductInWishlist(product) {
-      return this.wishlist.some(item => item.ProductID === product.ProductID);
+      return this.wishlist.some(item => item._id === product._id);
     },
     addToCart(product) {
-      if (!product || !product.title || !product.Price) {
+      if (!product || !product.title || !product.price) {
         console.error('Invalid product data for cart:', product);
         return;
       }
@@ -119,7 +120,7 @@ export default {
       }
       this.cart.push(product);
       this.saveCartToStorage();
-      axios.post('https://posinet.onrender.com/addToCart', product)
+      axios.post('https://posinet.onrender.com/api/addToCart', product)
         .then(response => {
           console.log(response.data);
           alert('Successfully added to cart');
@@ -166,6 +167,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .save-button {
   position: absolute;
@@ -186,4 +188,3 @@ export default {
   }
 }
 </style>
-
