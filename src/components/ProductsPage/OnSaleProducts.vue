@@ -14,7 +14,7 @@
                 SAVE<br />{{ product.percentageSaved }}%
               </button>
               <router-link :to="'/product/' + product._id">
-                <img :src="product.imagePath" :alt="product.title" class="mx-auto w-full h-full object-cover mb-2" />
+                <img :src="product.imageUrl" :alt="product.title" class="w-full h-48 object-cover">
               </router-link>
               <div class="absolute bottom-2 left-2 inline-flex items-center rounded-lg bg-white p-1 shadow-md">
                 <i class="fas fa-star text-yellow-400"></i>
@@ -58,7 +58,12 @@ export default {
     async fetchProducts() {
       try {
         const response = await axios.get('https://posinet.onrender.com/api/products');
-        this.products = response.data || [];
+        this.products = response.data.map(product => ({
+          ...product,
+          imageUrl: product.images && product.images.length > 0
+            ? `data:${product.images[0].contentType};base64,${product.images[0].data}`
+            : null
+        }));
         this.calculatePercentageSavedForEachProduct();
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -69,8 +74,6 @@ export default {
         if (product && typeof product.price === 'number' && typeof product.discountedPrice === 'number') {
           const savings = product.price - product.discountedPrice;
           product.percentageSaved = ((savings / product.price) * 100).toFixed(0);
-        } else {
-          console.error('Invalid Price or DiscountedPrice for a product:', product);
         }
       });
     },

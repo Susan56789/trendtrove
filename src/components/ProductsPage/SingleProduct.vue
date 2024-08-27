@@ -10,7 +10,7 @@
       <h2 class="text-sm font-semibold text-slate-700 truncate">{{ product.title }}</h2>
       <div class="flex items-center justify-between">
         <router-link :to="'/product/' + product._id" class="text-base font-bold text-green-600">
-          KES. {{ formatNumber(product.price) }}
+          KES. {{ formatNumber(product.discountedPrice || product.price) }}
         </router-link>
         <div class="flex space-x-1">
           <button @click="handleCartAction" :class="cartButtonClass">
