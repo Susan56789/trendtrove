@@ -9,9 +9,9 @@
           <div v-for="product in productsOnSale" :key="product._id"
             class="p-2 border rounded shadow-lg hover:shadow-xl hover:transform hover:scale-105 mb-4">
             <div class="image-container relative flex items-end overflow-hidden rounded-xl">
-              <button v-if="product.amountSaved > 0"
+              <button v-if="product.percentageSaved > 0"
                 class="save-button sm:absolute sm:top-0 sm:right-0 bg-green-500 text-white p-2 duration-100 hover:bg-green-700 rounded-full">
-                SAVE<br />{{ formatNumber(product.amountSaved) }}
+                SAVE<br />{{ product.percentageSaved }}%
               </button>
               <router-link :to="'/product/' + product._id">
                 <img :src="product.imagePath" :alt="product.title" class="mx-auto w-full h-full object-cover mb-2" />
@@ -40,7 +40,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import axios from 'axios';
 
@@ -60,15 +59,16 @@ export default {
       try {
         const response = await axios.get('https://posinet.onrender.com/api/products');
         this.products = response.data || [];
-        this.calculateAmountSavedForEachProduct();
+        this.calculatePercentageSavedForEachProduct();
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     },
-    calculateAmountSavedForEachProduct() {
+    calculatePercentageSavedForEachProduct() {
       this.products.forEach((product) => {
         if (product && typeof product.price === 'number' && typeof product.discountedPrice === 'number') {
-          product.amountSaved = product.price - product.discountedPrice;
+          const savings = product.price - product.discountedPrice;
+          product.percentageSaved = ((savings / product.price) * 100).toFixed(0);
         } else {
           console.error('Invalid Price or DiscountedPrice for a product:', product);
         }
@@ -167,7 +167,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 .save-button {
   position: absolute;
@@ -181,9 +180,6 @@ export default {
 
 @media (min-width: 640px) {
   .save-button {
-    position: absolute;
-    top: 0;
-    right: 0;
     font-size: 10px;
   }
 }
