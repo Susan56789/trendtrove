@@ -1,95 +1,88 @@
 <template>
-    <nav class="fixed z-10 w-full bg-white md:absolute md:bg-transparent">
-      <div class="container m-auto px-2 md:px-12 lg:px-7">
-        <div class="flex flex-wrap items-center justify-between py-3 gap-6 md:py-4 md:gap-0">
-          <div class="w-full px-6 flex justify-between lg:w-max md:px-0">
-            <a href="/" aria-label="logo" class="flex space-x-2 items-center">
-              <img :src="imageUrl" class="w-12" alt="tailus logo" width="200" height="200">
-              <span class="text-2xl font-bold text-yellow-900">Trend <span class="text-yellow-700">Trove</span></span>
+  <nav class="fixed z-10 w-full bg-white md:absolute md:bg-transparent">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-4">
+        <div class="flex items-center">
+          <a href="/" aria-label="logo" class="flex items-center space-x-2">
+            <img :src="imageUrl" class="w-12 h-12" alt="tailus logo" width="48" height="48">
+            <span class="text-2xl font-bold text-yellow-900">Trend <span class="text-yellow-700">Trove</span></span>
+          </a>
+        </div>
+
+        <div class="hidden lg:flex items-center space-x-6">
+          <a v-for="item in navItems" :key="item.href" :href="item.href"
+            class="text-sm font-medium text-gray-600 hover:text-yellow-700 transition duration-150 ease-in-out">
+            {{ item.name }}
+          </a>
+          <div class="flex items-center space-x-2 border-l border-yellow-200 pl-6">
+            <a href="/signup"
+              class="px-4 py-2 text-sm font-semibold text-yellow-800 rounded-full hover:bg-yellow-100 transition duration-150 ease-in-out">
+              Sign up
             </a>
-  
-            <button aria-label="hamburger" id="hamburger" class="relative w-10 h-10 -mr-2 lg:hidden" @click="toggleMobileMenu">
-              <div aria-hidden="true" id="line" class="inset-0 w-6 h-0.5 m-auto rounded bg-yellow-900 transition duration-300"></div>
-              <div aria-hidden="true" id="line2" class="inset-0 w-6 h-0.5 mt-2 m-auto rounded bg-yellow-900 transition duration-300"></div>
-            </button>
-          </div>
-  
-          <div v-if="isMobileMenuOpen || isLargeScreen" class="w-full lg:flex flex-wrap justify-end items-center space-y-6 p-6 rounded-xl bg-white md:space-y-0 md:p-0 md:flex-nowrap md:bg-transparent lg:w-7/12">
-            <div class="text-gray-600 lg:pr-4">
-              <ul class="space-y-6 tracking-wide font-medium text-sm md:flex md:space-y-0">
-                <li>
-                  <a href="/shop" class="block md:px-4 transition hover:text-yellow-700">
-                    <span>Shop</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="/sale" class="block md:px-4 transition hover:text-yellow-700">
-                    <span>Today's Deals</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="/wishlist" class="block md:px-4 transition hover:text-yellow-700">
-                    <span>Wishlist</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="/cart" @click.prevent="navigateTo('/cart')" class="block md:px-4 transition hover:text-yellow-700">
-                    <span>Cart</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-  
-            <div class="w-full space-y-2 border-yellow-200 lg:space-y-0 md:w-max lg:border-l">
-              <a href="/signup" type="button" title="Start buying" class="w-full py-3 px-6 text-center rounded-full transition active:bg-yellow-200 focus:bg-yellow-100 sm:w-max">
-                <span class="block text-yellow-800 font-semibold text-sm">
-                  Sign up
-                </span>
-              </a>
-              <a href="/login" type="button" title="Start buying" class="w-full py-3 px-6 text-center rounded-full transition bg-yellow-300 hover:bg-yellow-100 active:bg-yellow-400 focus:bg-yellow-300 sm:w-max">
-                <span class="block text-yellow-900 font-semibold text-sm">
-                  Login
-                </span>
-              </a>
-            </div>
+            <a href="/login"
+              class="px-4 py-2 text-sm font-semibold text-yellow-900 bg-yellow-300 rounded-full hover:bg-yellow-400 transition duration-150 ease-in-out">
+              Login
+            </a>
           </div>
         </div>
+
+        <button @click="toggleMobileMenu" class="lg:hidden" aria-label="Toggle menu">
+          <svg class="w-6 h-6 text-yellow-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
       </div>
-    </nav>
-  </template>
+    </div>
+
+    <!-- Mobile menu -->
+    <div v-if="isMobileMenuOpen" class="lg:hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a v-for="item in navItems" :key="item.href" :href="item.href"
+          class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-yellow-700 hover:bg-yellow-50 rounded-md transition duration-150 ease-in-out">
+          {{ item.name }}
+        </a>
+      </div>
+      <div class="pt-4 pb-3 border-t border-yellow-200">
+        <div class="flex items-center px-5">
+          <a href="/signup"
+            class="block px-3 py-2 text-base font-medium text-yellow-800 hover:bg-yellow-100 rounded-md transition duration-150 ease-in-out">
+            Sign up
+          </a>
+          <a href="/login"
+            class="ml-4 block px-3 py-2 text-base font-medium text-yellow-900 bg-yellow-300 hover:bg-yellow-400 rounded-md transition duration-150 ease-in-out">
+            Login
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</template>
+
 <script>
 import Logo from '../assets/logo2.png'
 
-
 export default {
-    name: "PageNavbar",
-    data() {
-        return {
-            imageUrl: Logo,
-            isMobileMenuOpen: false,
-      isLargeScreen: window.innerWidth >= 1024,
-      
-
-        }
-    },
-    methods: {
-        toggleMobileMenu() {
+  name: "PageNavbar",
+  data() {
+    return {
+      imageUrl: Logo,
+      isMobileMenuOpen: false,
+      navItems: [
+        { name: 'Shop', href: '/shop' },
+        { name: "Today's Deals", href: '/sale' },
+        { name: 'Wishlist', href: '/wishlist' },
+        { name: 'Cart', href: '/cart' },
+      ]
+    }
+  },
+  methods: {
+    toggleMobileMenu() {
       this.isMobileMenuOpen = !this.isMobileMenuOpen;
     },
-        navigateTo(route) {
-            this.$router.push(route);
-        },
-        handleResize() {
-      this.isLargeScreen = window.innerWidth >= 1024; // Adjust the breakpoint as needed
+    navigateTo(route) {
+      this.$router.push(route);
     },
-    },
-    mounted() {
-    window.addEventListener('resize', this.handleResize);
-  },
-  unmounted() {
-    window.removeEventListener('resize', this.handleResize);
   }
- 
 }
-
 </script>

@@ -2,8 +2,10 @@
     <section>
         <article class="mt-50">
             <h2 class="text-2xl font-extrabold text-gray-900">Popular Categories</h2>
-
-            <section class="mt-6 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-8">
+            <section v-if="loading" class="flex justify-center items-center h-64">
+                <p class="text-lg font-semibold text-gray-500">Loading...</p>
+            </section>
+            <section v-else class="mt-6 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-8">
                 <article v-for="category in popularCategories" :key="category.name"
                     class="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out"
                     :style="{ backgroundImage: 'url(' + category.RandomImageUrl + ')' }">
@@ -33,7 +35,8 @@ export default {
     data() {
         return {
             products: [],
-            categories: [],  // Categories will be derived from products
+            categories: [],
+            loading: true, // Loading state
         };
     },
     methods: {
@@ -51,6 +54,8 @@ export default {
                 this.categories = [...new Set(this.products.map(product => product.category))];
             } catch (error) {
                 console.error('Error fetching products:', error);
+            } finally {
+                this.loading = false; // Stop loading when data is fetched
             }
         },
         // Picks a random image URL from the products in the given category
@@ -82,7 +87,6 @@ export default {
             return sortedCategories.slice(0, 3);
         }
     },
-
     mounted() {
         this.fetchData();
     }

@@ -6,7 +6,7 @@
     <div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between">
       <ProductFilter v-if="categories.length > 0" :categories="categories" @filterProducts="filterProducts" />
     </div>
-    <div class="grid grid-cols-3 gap-4 p-4">
+    <div class="grid grid-cols-4 gap-4 p-4">
       <SingleProduct v-for="product in paginatedProducts" :key="product._id" :product="product" />
     </div>
     <ShopPagination :totalPages="totalPages" @changePage="changePage" />
@@ -29,8 +29,7 @@ export default {
     return {
       products: [],
       categories: [],
-      filteredProducts: [],
-      categoryFilter: null,
+      categoryFilter: '',
       priceFilter: null,
       currentPage: 1,
       itemsPerPage: 9,
@@ -48,8 +47,8 @@ export default {
         filteredProducts = filteredProducts.filter(product => product.category === this.categoryFilter);
       }
 
-      if (this.priceFilter !== null && this.priceFilter !== undefined) {
-        filteredProducts = filteredProducts.filter(product => product.price <= this.priceFilter);
+      if (this.priceFilter !== null && this.priceFilter !== '') {
+        filteredProducts = filteredProducts.filter(product => product.price <= parseFloat(this.priceFilter));
       }
 
       return filteredProducts;

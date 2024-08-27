@@ -19,8 +19,8 @@
                                 class="w-full p-4 rounded-r-full">
                             <!-- Search button -->
                             <button type="submit" title="Start buying" class="ml-auto py-3 px-6 rounded-full text-center transition bg-gradient-to-b 
-                    from-yellow-200 to-yellow-300 hover:to-red-300 active:from-yellow-400 
-                    focus:from-red-400 md:px-12">
+                       from-yellow-200 to-yellow-300 hover:to-red-300 active:from-yellow-400 
+                       focus:from-red-400 md:px-12">
                                 <span class="hidden text-yellow-900 font-semibold md:block">Search</span>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="w-5 mx-auto text-yellow-900 md:hidden bi bi-search" fill="currentColor"
@@ -38,26 +38,22 @@
                             <article>
                                 <div class="mt-1 p-2">
                                     <div class="image-container relative flex items-end overflow-hidden rounded-xl">
-                                        <router-link :to="'/product/' + product.ProductName">
-                                            <img :src="product.imageUrl" :alt="product.ProductName"
+                                        <router-link :to="'/product/' + product.title">
+                                            <img :src="product.imageUrl" :alt="product.title"
                                                 class="mx-auto h-100 w-100 object-cover mb-4" />
                                         </router-link>
                                         <div
                                             class="absolute bottom-3 left-3 inline-flex items-center rounded-lg bg-white p-2 shadow-md">
                                             <i class="fas fa-star text-yellow-400"></i>
-                                            <span class="ml-1 text-sm text-gray-700">{{ product.Rating }}</span>
+                                            <span class="ml-1 text-sm text-gray-700">{{ product.price
+                                                }}</span>
                                         </div>
                                     </div>
-                                    <h2 class="text-slate-700">{{ product.ProductName }}</h2>
+                                    <h2 class="text-slate-700">{{ product.title }}</h2>
                                     <div class="mt-3 flex items-end justify-between">
-                                        <router-link :to="'/product/' + product.ProductName">
-                                            <p v-if="product.DiscountedPrice" class="text-gray-500 line-through">KES. {{
-                        formatNumber(product.Price) }}</p>
-                                            <p v-if="product.DiscountedPrice" class="text-green-500 font-semibold">KES.
-                                                {{
-                        formatNumber(product.DiscountedPrice) }}</p>
-                                            <p v-else class="text-green-500 font-semibold">KES. {{ formatNumber(
-                        product.Price) }}</p>
+                                        <router-link :to="'/product/' + product.title">
+                                            <p class="text-green-500 font-semibold">KES. {{ product.price
+                                                }}</p>
                                         </router-link>
                                         <div
                                             class="flex items-center space-x-1.5 rounded-lg bg-indigo-500 px-2 py-1 text-white duration-100 hover:bg-indigo-600">
@@ -118,25 +114,24 @@ export default {
             if (this.searchQuery || this.selectedCategory) {
                 const lowerCaseQuery = this.searchQuery.toLowerCase();
                 return this.products.filter(product =>
-                    (!this.searchQuery || product.ProductName.toLowerCase().includes(lowerCaseQuery)) &&
-                    (!this.selectedCategory || product.CategoryName === this.selectedCategory)
+                    (!this.searchQuery || product.title.toLowerCase().includes(lowerCaseQuery)) &&
+                    (!this.selectedCategory || product.category === this.selectedCategory)
                 );
             }
             return this.products;
         }
     },
     methods: {
-        formatNumber(value) {
-            return value.toLocaleString();
-        },
         async fetchData() {
             try {
                 const response = await axios.get('https://posinet.onrender.com/api/products');
                 this.products = response.data.map(product => ({
                     ...product,
-                    imageUrl: product.ImagePath, // Assuming the image URL is provided directly
+                    imageUrl: product.images && product.images.length > 0
+                        ? `data:${product.images[0].contentType};base64,${product.images[0].data}`
+                        : 'default-image.jpg'
                 }));
-                this.categories = [...new Set(this.products.map(product => product.CategoryName))];
+                this.categories = [...new Set(this.products.map(product => product.category))];
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -151,7 +146,7 @@ export default {
             this.addToCart(product);
         },
         addToWishlist(product) {
-            if (product && product.ProductName && product.Price) {
+            if (product && product.title && product.price) {
                 axios.post('https://posinet.onrender.com/addToWishlist', product)
                     .then(response => {
                         console.log(response.data);
@@ -164,7 +159,7 @@ export default {
             }
         },
         addToCart(product) {
-            if (product && product.ProductName && product.Price) {
+            if (product && product.title && product.price) {
                 axios.post('https://posinet.onrender.com/addToCart', product)
                     .then(response => {
                         console.log(response.data);

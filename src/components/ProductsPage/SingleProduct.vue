@@ -1,29 +1,33 @@
 <template>
-  <article class="rounded-xl bg-yellow-50 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
-    <div class="mt-1 p-2">
-      <div class="image-container relative flex items-end overflow-hidden rounded-xl">
+  <article
+    class="rounded-xl bg-yellow-50 p-3 shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 w-full max-w-xs">
+    <div class="space-y-3">
+      <div class="w-full overflow-hidden rounded-lg bg-gray-200">
         <router-link :to="'/product/' + product._id">
-          <img :src="product.imageUrl" :alt="product.title" class="mx-auto h-200 w-200 object-cover mb-4" />
+          <img :src="product.imageUrl" :alt="product.title" class="w-full h-48 object-cover">
         </router-link>
       </div>
-      <h2 class="text-slate-700">{{ product.title }}</h2>
-
-      <div class="mt-3 flex items-end justify-between">
-        <router-link :to="'/product/' + product._id">
-          <p class="text-green-500 font-semibold">KES. {{ formatNumber(product.price) }}</p>
+      <h2 class="text-sm font-semibold text-slate-700 truncate">{{ product.title }}</h2>
+      <div class="flex items-center justify-between">
+        <router-link :to="'/product/' + product._id" class="text-base font-bold text-green-600">
+          KES. {{ formatNumber(product.price) }}
         </router-link>
-        <button @click="handleCartAction" :class="cartButtonClass">
-          <i :class="cartButtonIcon"></i> {{ cartButtonText }}
-        </button>
-
-        <button @click="addToWishlistButton"
-          class="bg-green-500 text-white px-2 py-1.5 rounded-lg duration-100 hover:bg-green-700">
-          <i class="fas fa-heart"></i>
-        </button>
+        <div class="flex space-x-1">
+          <button @click="handleCartAction" :class="cartButtonClass">
+            <i :class="cartButtonIcon"></i>
+            <span class="sr-only">{{ isProductInCart(product) ? 'Remove from cart' : 'Add to cart' }}</span>
+          </button>
+          <button @click="addToWishlistButton"
+            class="bg-green-500 hover:bg-green-600 text-white p-1.5 rounded-lg transition duration-150">
+            <i class="fas fa-heart text-xs"></i>
+            <span class="sr-only">Add to wishlist</span>
+          </button>
+        </div>
       </div>
     </div>
   </article>
 </template>
+
 
 <script>
 import axios from 'axios';
